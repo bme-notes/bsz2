@@ -46,6 +46,42 @@ RÉSZGRÁF Definíció: A G' = (V',E') gráf a G = (V,E) \textbf{részgráfja}, 
 FESZÍTŐ RÉSZGRÁF Definíció: G' = (V',E') gráf a G = (V,E)\textbf{ feszítő részgráfja}, ha G' részgráfja G-nek és V' = V.
 \end{shaded}
 \begin{shaded}
+FESZÍTETT RÉSZGRÁF Definíció: Ha E' pontosan azokból az E-beli élekből áll, amelyeknek két végpontja V'-ben van, és az E' az összes ilyen élet tartalmazza, akkor G' a G gráf V' által feszített részgráfja.
+\end{shaded}
+\begin{shaded}
 ÉLSOROZAT, ÚT, KÖR Definíció: Egy $(v_0, e_1, v_1 ... v_{k-1}, e_k, v_k)$ sorozatot \textbf{élsorozatnak} nevezzük, ha $e_i$ a $v_{i-1}$-et és $v_i$-t összekötő él. Ha $v_0 = v_k$, akkor az élsorozat zárt. Ha a csúcsok mind különbözőek, akkor egy \textbf{útról} beszélünk. Ha a csúcsok mind különbözőek és az élsorozat zárt, akkor pedig egy \textbf{körről}.
 \end{shaded}
+%\begin{framed}
+%EKVIVALENCIA RELÁCIÓ Tétel: Definiáljuk úgy a $p \equiv q$ relációt, hogy $p \equiv q$ akkor és csak akkor, ha $p,q\in V(G)$ és vezet út p és q közt, vagy p = q, ez egy ekvivalencia reláció.  
+%\end{framed}
+%\begin{leftbar}
+%Bizonyítás: Reflexivitás és szimmetria triviális. Tranzitivitás: Legyen két utunk, p-t q-val (($p, e_0, p_1, e_1...q$)) és q-t r-rel (($q, f_0, q_1, f_1...r$)) összekötő út. Legyen $p_i$ a legkisebb indexű p, ami előfordul q-k között is. Mondjuk, hogy $p_i = q_j$. Ekkor a ($p, e_0, p_1, e_1...p_i, f, q_{j+1},...r$) egy p-t és r-t összekötő út.
+%\end{leftbar}
+\begin{shaded}
+ÖSSZEFÜGGŐSÉG Definíció: $K \subseteq V(G)$ (összefüggő) \textbf{komponense} G-nek, ha minden $u,v \in K$ esetén bármely u és v között létezik út, viszont ha $v \in V(G)\backslash K$, akkor u és v között NEM létezik út. Ha a komponensek száma 1, vagyik ha G bármely két pontja között vezet út, akkor a G gráf \textbf{összefüggő}.
+\end{shaded}
+\begin{shaded}
+FA Definíció: Az összefüggő körmentes gráfokat \textbf{fának} nevezzük. Amennyiben körmentes egy gráf, de nem összefüggő (tehát több fából áll), akkor azt \textbf{erdőnek} nevezzük.
+\end{shaded}
+\begin{framed}
+FA FOKSZÁMA Tétel: Minden legalább 2 pontú fában van legalább 2 egy fokszámú pont.
+\end{framed}
+\begin{leftbar}
+Tekintsük a fában található leghosszabb utat, legyen ez ($v_1, v_2,..., v_k$), ekkor beláthatjuk, hogy $v_1$ és $v_k$ végpontok egyfokúak lesznek. T.f.h $v_k$ nem egy fokszámú, tehát belőle vezet még él a fa valamely pontjába. Az út többi pontjába nem vezethet, mivel a fa definíció alapján körmentes, és új pontba sem vezethet, mivel akkor egy hosszabb utat kapnánk, amivel ellentmondást kapunk.
+\end{leftbar}
+\begin{framed}
+FA ÉLEINEK SZÁMA Tétel: n pontú fa éleinek száma n-1.
+\end{framed}
+\begin{leftbar}
+Bizonyítás: Teljes indukcióval. n = 2-re az állítás triviálisan teljesül. T.f.h. az állítás igaz minden $n < n_0$-ra. Az előző tétel szerint minden $n_0$ fában van egy fokszámú pont, ezt hagyjuk el. Ha elhagyjuk ezt a pontot és a hozzá tartozó élet, akkor mivel a maradék $n_0 - 1$ fára már igaz az állítás, látható, hogy az $n_0$ pontú eredeti fának $n_0 - 1$ éle van.
+\end{leftbar}
+\begin{shaded}
+Az F gráf a G gráf feszítőfája, ha F fa, és részgráfja G-nek.
+\end{shaded}
+\begin{framed}
+FESZÍTŐFA LÉTEZÉSE Tétel: Minden összefüggő G gráf tartalmaz feszítőfát.
+\end{framed}
+\begin{leftbar}
+Ha G-ben van kör, akkor hagyjuk el a kör egy tetszőleges élét, ha a maradék gráfban még mindig van kör, akkor annak is hagyjuk el egy tetszőleges élét, folytatjuk, amíg körmentes lesz a gráf. Ha már nincsen több kör, akkor nézzünk rá, hogy mit kaptunk - az összefüggőség nem sérül, mivel körök egy-egy élét hagytuk el, és pontot se hagytunk el - tehát amit kaptunk, az láthatóan G gráf feszítőfája.
+\end{leftbar}
 \end{document}
