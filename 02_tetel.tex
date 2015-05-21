@@ -1,0 +1,51 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{polyglossia}
+\usepackage{listings}
+\usepackage{tcolorbox}
+\usepackage{etoolbox}
+\usepackage{setspace}
+\usepackage{framed}
+\usepackage[a4paper,margin=2cm,footskip=.5cm]{geometry}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rn}[1]{$\mathbb{R}^{#1}$}
+\newcommand{\Und}[1]{\underline{#1}}
+\definecolor{shadecolor}{gray}{0.9}
+%opening 
+\title{Bevezetés a Számításelméletbe 2.\\{\large 2. tétel}}
+\author{Hegyi Zsolt}
+\begin{document}
+\maketitle{}
+\begin{shaded}
+GRÁF Definíció: Egy \textbf{gráf} rendezett pár, $G = (V,E)$ egy nem-üres halmaz, E pedig ebből a halmazból képezhető párok egy halmaza, V elemeit \textbf{pontoknak} v. \textbf{csúcsoknak} nevezzük, E elemeit pedig \textbf{éleknek}. A csúcsok számát v(G)-vel jelöljük, az élekét pedig e(G)-vel. A gráf csúcshalmazát V(G)-vel, az élhalmazt pedig E(G)-vel jelöljük.
+\end{shaded}
+\begin{shaded}
+HUROKÉL, TÖBBSZÖRÖS ÉL Definíció: Ha az $e \in E$ a {$v_1, v_2$} párnak felel meg, akkor \textbf{hurokélnek} nevezzük azon éleket, melynek két végpontja ugyanazon pont (tehát $v_1 = v_2$). Ha két nem különböző nem hurokélnek végpontjai azonosak, akkor a két élet \textbf{párhuzamos} v. \textbf{többszörös élnek} nevezzük.
+\end{shaded}
+\begin{shaded}
+EGYSZERŰ GRÁF Definíció: Azokat a gráfokat, melyek nem tartalmaznak hurokéleket és többszörös éleket, \textbf{egyszerű gráfnak} nevezünk.
+\end{shaded}
+%\begin{shaded}
+%SZOMSZÉDOS ÉLEK, PONTOK Definíció: Két él akkor \textbf{szomszédos}, ha legalább egy pontban megosztoznak. Hasonlóan, két pont akkor szomszédos, ha él összeköti őket. Ha egy pont egy él végpontja, akkor azt mondjuk, hogy a pont \textbf{illeszkedik} az élre.
+%\end{shaded}
+%\begin{shaded}
+%FOKSZÁM Definíció: Egy pontra illeszkedő élek számát a pont \textbf{fokszámának} nevezzük. Amennyiben egy pont fokszáma 0, akkor azt \textbf{izolált pontnak} nevezzük. A v pont fokszámát d(v)-vel jelöljük. A maximális fokszámot $\Delta$-val (nagy delta), a minimálisat pedig $\delta$-val (kis delta) jelöljük. 
+%\end{shaded}
+\begin{shaded}
+KOMPLEMENTER GRÁF Definíció: Egy G gráf \textbf{komplementerén} azt a $\bar{G}$ gráfot értjük, amelyet akkor kapunk, ha a G-t a $K_{v(G)}$ részgráfjának tekintjük és $\bar{G}$-ben azon pontpárok vannak összekötve, amelyek G-ben nincsenek.
+\end{shaded}
+\begin{shaded}
+IZOMORFIA Definíció: G = (V,E) és G'= (V',E') gráfok \textbf{izomorfak}, ha van olyan egyértelmű megfeleltetés (bijekció), hogy G-ben pontosan akkor szomszédos két pont, a G'-ben a nekik megfelelő pontok szomszédosak, és a szomszédos pontpárok esetén ugyanannyi él fut közöttük.
+\end{shaded}
+\begin{shaded}
+RÉSZGRÁF Definíció: A G' = (V',E') gráf a G = (V,E) \textbf{részgráfja}, ha a $V' \subseteq V$, $E' \subseteq E$ valamint egy pont és egy él pontosan akkor illeszkedik egymásra G-ben, ha a G-ben is illeszkedők.
+\end{shaded}
+\begin{shaded}
+FESZÍTŐ RÉSZGRÁF Definíció: G' = (V',E') gráf a G = (V,E)\textbf{ feszítő részgráfja}, ha G' részgráfja G-nek és V' = V.
+\end{shaded}
+\begin{shaded}
+ÉLSOROZAT, ÚT, KÖR Definíció: Egy $(v_0, e_1, v_1 ... v_{k-1}, e_k, v_k)$ sorozatot \textbf{élsorozatnak} nevezzük, ha $e_i$ a $v_{i-1}$-et és $v_i$-t összekötő él. Ha $v_0 = v_k$, akkor az élsorozat zárt. Ha a csúcsok mind különbözőek, akkor egy \textbf{útról} beszélünk. Ha a csúcsok mind különbözőek és az élsorozat zárt, akkor pedig egy \textbf{körről}.
+\end{shaded}
+\end{document}

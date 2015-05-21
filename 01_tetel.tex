@@ -1,0 +1,104 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{polyglossia}
+\usepackage{listings}
+\usepackage{tcolorbox}
+\usepackage{etoolbox}
+\usepackage{setspace}
+\usepackage{framed}
+\usepackage[a4paper,margin=2cm,footskip=.5cm]{geometry}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rn}[1]{$\mathbb{R}^{#1}$}
+\newcommand{\Und}[1]{\underline{#1}}
+\definecolor{shadecolor}{gray}{0.9}
+%opening 
+\title{Bevezetés a Számításelméletbe 2.\\{\large 1. tétel}}
+\author{Hegyi Zsolt}
+\begin{document}
+\maketitle{}
+\begin{shaded}
+FAKTORIÁLIS Definíció: Az $n(n-1)(n-2)...\cdot2\cdot1$ szorzatot n \textbf{faktoriálisának} nevezzük. Definíció szerint $0! = 1$.\\
+Jel: $n!$
+\end{shaded}
+\begin{shaded}
+PERMUTÁCIÓ Definíció: Az n elem összes lehetséges sorrendjének a száma $n!$ és ezt hívjük \textbf{permutációnak}.
+\end{shaded}
+\begin{shaded}
+ISMÉTLÉSES PERMUTÁCIÓ Definíció: $k_1$ darab első típusú elem, ..., $k_n$ darab n-edik típusú elem lehetséges sorbarendezésének a száma a $k_1 + k_2 + ... + k_n$ \textbf{ismétléses permutációi}. Számuk:
+$$\frac{(k_1+k_2+...+k_n)!}{k_1!\cdot k_2!\cdot...\cdot k_n!}$$
+\end{shaded}
+\begin{shaded}
+VARIÁCIÓ Definíció: n-ből k elem összes lehetséges sorrendben való kiválasztása az n elem k-ad osztályú (ismétlés nélküli) \textbf{variációja}, ezek száma:
+$$n(n-1)(n-2)...(n-k+1) = \frac{n!}{(n-k)!}$$
+Ha $k=n$, akkor permutációról beszélünk.
+\end{shaded}
+\begin{shaded}
+ISMÉTLÉSES VARIÁCIÓ Definíció: n elemből k tagú sorozatok kiválasztása, ahol egy-egy elem többször is szerepelhet, az n-elem k-ad osztályú \textbf{ismétléses variációja}. Ezeknek a száma:
+$$n^k$$
+\end{shaded}
+\begin{shaded}
+KOMBINÁCIÓ Definíció: Egy n elemű halmaz k elemű részhalmazainak a száma: n elem k-ad osztályú \textbf{kombinációja}. Száma:
+$$\begin{pmatrix}
+n\\k
+\end{pmatrix} = \frac{n(n-1)(n-2)...(n-k+1)}{k!}$$
+Az $\begin{pmatrix}
+n\\k
+\end{pmatrix}$ a binomiális együttható.
+\end{shaded}
+\begin{shaded}
+ISMÉTLÉSES KOMBINÁCIÓ Definíció: n elemből k kiválasztása, ha a sorrend nem számít, de az elemek többször is szerepelhetnek: n elem k-ad osztályú \textbf{ismétléses kombinációi}. Számuk: $$\begin{pmatrix}
+n+k-1\\k
+\end{pmatrix}$$
+\end{shaded}
+\begin{framed}
+BINOMIÁLIS TÉTEL Tétel: Tetszőleges valós x, y-ra és nemnegatív egész n-re:$$
+(x+y)^n = \begin{pmatrix}
+n\\0
+\end{pmatrix} x^n + \begin{pmatrix}
+n\\1
+\end{pmatrix} x^{n-1}y + \begin{pmatrix}
+n\\2
+\end{pmatrix} x^{n-2}y^2 + ... \begin{pmatrix}
+n\\k
+\end{pmatrix} x^{n-k}y^k + ... + \begin{pmatrix}
+n\\n
+\end{pmatrix} y^n$$
+\end{framed}
+\begin{shaded}
+PASCAL HÁROMSZÖG: A háromszög csúcsán álljon az  $\begin{pmatrix}
+0\\0
+\end{pmatrix}$ együttható. Alatta álljon az $\begin{pmatrix}
+1\\0
+\end{pmatrix}$ illetve a $\begin{pmatrix}
+1\\1
+\end{pmatrix}$ együttható. A piramis $(k-1)$-edik sorában álljanak a $\begin{pmatrix}
+k\\0
+\end{pmatrix}$, $\begin{pmatrix}
+k\\1
+\end{pmatrix}$ ... $\begin{pmatrix}
+k\\k-1
+\end{pmatrix}$, $\begin{pmatrix}
+k\\k
+\end{pmatrix}$ együtthatók. A legutóbbi állítás alapján a Pascal-háromszög minden sorának a sorösszege:
+$2^{i-1}$. Ez abból is belátható, hogy minden sor összege kétszerese az előzőnek, ugyanis az együtthatókat úgy is meg lehet kapni, hogy az új elem a felette álló két együttható összegéből áll össze.
+\end{shaded}
+\begin{framed}
+BINOMIÁLIS ÖSSZEG Tétel: Minden n nemnegatív számra
+$$\begin{pmatrix}
+n\\0
+\end{pmatrix} + \begin{pmatrix}
+n\\1
+\end{pmatrix} + \begin{pmatrix}
+n\\2
+\end{pmatrix} + ... + \begin{pmatrix}
+n\\n-1
+\end{pmatrix} + \begin{pmatrix}
+n\\n
+\end{pmatrix} = 2^n = \sum_{k = 0}^{n}\begin{pmatrix}
+n\\k
+\end{pmatrix}$$
+\end{framed}
+
+\end{document}
