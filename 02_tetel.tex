@@ -58,7 +58,10 @@ FESZÍTETT RÉSZGRÁF Definíció: Ha E' pontosan azokból az E-beli élekből �
 %Bizonyítás: Reflexivitás és szimmetria triviális. Tranzitivitás: Legyen két utunk, p-t q-val (($p, e_0, p_1, e_1...q$)) és q-t r-rel (($q, f_0, q_1, f_1...r$)) összekötő út. Legyen $p_i$ a legkisebb indexű p, ami előfordul q-k között is. Mondjuk, hogy $p_i = q_j$. Ekkor a ($p, e_0, p_1, e_1...p_i, f, q_{j+1},...r$) egy p-t és r-t összekötő út.
 %\end{leftbar}
 \begin{shaded}
-ÖSSZEFÜGGŐSÉG Definíció: $K \subseteq V(G)$ (összefüggő) \textbf{komponense} G-nek, ha minden $u,v \in K$ esetén bármely u és v között létezik út, viszont ha $v \in V(G)\backslash K$, akkor u és v között NEM létezik út. Ha a komponensek száma 1, vagyik ha G bármely két pontja között vezet út, akkor a G gráf \textbf{összefüggő}.
+ÖSSZEFÜGGŐSÉG Definíció: G gráf \textbf{összefüggő}, ha bármely 2 csúcs között létezik élsorozat vagy út.
+\end{shaded}
+\begin{shaded}
+KOMPONENS Definíció: G gráf komponense olyan H feszített részgráfja G-nek, amire teljesül, hogy H összefüggő és bárhogy egy további csúcsot hozzáteszink, már nem összefüggő feszített részgráfot kapunk.
 \end{shaded}
 \begin{shaded}
 FA Definíció: Az összefüggő körmentes gráfokat \textbf{fának} nevezzük. Amennyiben körmentes egy gráf, de nem összefüggő (tehát több fából áll), akkor azt \textbf{erdőnek} nevezzük.

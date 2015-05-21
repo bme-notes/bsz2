@@ -1,0 +1,38 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{polyglossia}
+\usepackage{listings}
+\usepackage{tcolorbox}
+\usepackage{etoolbox}
+\usepackage{setspace}
+\usepackage{framed}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true}
+\usepackage[a4paper,margin=2cm,footskip=.5cm]{geometry}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rn}[1]{$\mathbb{R}^{#1}$}
+\newcommand{\Und}[1]{\underline{#1}}
+\definecolor{shadecolor}{gray}{0.9}
+%opening 
+\title{Bevezetés a Számításelméletbe 2.\\{\large 3. tétel}}
+\author{Hegyi Zsolt}
+\begin{document}
+\maketitle{}
+\begin{framed}
+ALGORITMUS: BFS $\rightarrow$ \url{http://cs.bme.hu/bsz2/bfs.pdf}
+\end{framed}
+\begin{framed}
+ALGORITMUS: Kruskal $\rightarrow$ Az éleket rendezzük sorba úgy, hogy a legalacsonyabb költségűek legyenek először a sorban. A sorban kezdjünk előre haladni. Ha az él bevétele esetén a kapott gráf körmentes marad, akkor vegyük be. Ha az élsorozat végére érünk, akkor készen vagyunk. A kapott gráf a G gráf minimális költségű feszítőfája.
+\\
+\\
+Ezt az eljárást \textbf{mohó algoritmusnak} nevezzük, mivel a végrehajtás során minden lépésben az éppen akkor a legjobbnak tűnő lehetőséget választjuk ki.
+\end{framed}
+\begin{framed}
+Tétel: A Kruskal-algoritmus minimális súlyú fesz.fát talál.
+\end{framed}
+\begin{leftbar}
+???
+\end{leftbar}
+\end{document}
