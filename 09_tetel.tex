@@ -1,0 +1,62 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{polyglossia}
+\usepackage{listings}
+\usepackage{tcolorbox}
+\usepackage{etoolbox}
+\usepackage{setspace}
+\usepackage{framed}
+\usepackage[a4paper,margin=2cm,footskip=.5cm]{geometry}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rn}[1]{$\mathbb{R}^{#1}$}
+\newcommand{\Und}[1]{\underline{#1}}
+\definecolor{shadecolor}{gray}{0.9}
+%opening 
+\title{Bevezetés a Számításelméletbe 2.\\{\large 9. tétel}}
+\author{Hegyi Zsolt}
+\begin{document}
+\maketitle
+\begin{shaded}
+PÁROSÍTÁS Definíció: \textbf{Párosításnak} vagy \textbf{részleges párosításnak} nevezünk egy M élhalmazt, ha semelyik két élnek nincsen közös pontja. Az ilyen éleket \textbf{független éleknek} nevezzük. A részleges párosítás \textbf{lefedi} éleinek végpontjait. Egy párosítás \textbf{teljes párosítás}, ha a gráf minden pontját lefedi.
+\end{shaded}
+\begin{shaded}
+FLEN/LEFOGÓ ÉLEK/PONTOK Definíció: Jelöljük $\nu(G)$-vel a G gráfban található \textbf{független élek} maximális számát. $X \subseteq V(G)$ egy \textbf{lefogó ponthalmaz}, ha G minden élének legalább egyik végpontját tartalmazza. A lefogó pontok minimális számát $\tau(G)$-vel jelöljük. $Y \subseteq E(G)$ \textbf{lefogó élhalmaz}, ha minden pontot lefog. A lefogó élek minimális számát $\rho(G)$ jelöli. $X \subseteq V(G)$ \textbf{független ponthalmaz}, ha nincs benne két szomszédos pont. A független pontok maximális száma $\alpha(G)$
+\end{shaded}
+\begin{framed}
+CUCCOS VISZONY TÉTEL Minden G gráfra:
+$$\nu(G) \leq \tau(G)$$
+$$\alpha(G) \leq \rho(G)$$
+\end{framed}
+\begin{leftbar}
+Bizonyítás: Legyen M maximális méretű független élhalmaz. Mivel pusztán M éleinek lefogásához legalább $|M|$ pontra van szükség, ezért $\tau(G) \geq |M| = \nu(G)$.
+Hasonlóan bizonyítjuk második állítást is.
+\end{leftbar}
+\begin{framed}
+GALLAI TÉTEL I. Tétel: Minden olyan G gráfra, mely hurokmentes:
+$$\tau(G) + \alpha(G) = v(G) = n$$
+\end{framed}
+\begin{leftbar}
+Bizonyítás: Egy X halmaz pontjai akkor és csak akkor függetlenek, ha a $V(G)\backslash X$ halmaz lefogó ponthalmaz. Hiszen ha X nem független, akkor van két összekötött pont, és így $V(G)\backslash X$ nem fogja le ezt az élet. Fordítva, ha $V(G)\backslash X$ nem fog le egy huroktól különböző élet, akkor X-ben ennek az élnek mindkét végpontja szerepel. Tehát $\tau(G) \leq |V(G)\backslash X|$ teljesül minden X független ponthalmazra. Ebből pedig következik, hogy a $\tau(G) + \alpha(G) = v(G) = n$. Hasonlóan $\alpha(G) \geq |V(G) \backslash Y|$ minden Y lefogó ponthalmazra, amiből $\tau(G) + \alpha(G) \geq v(G)$ következik.
+\end{leftbar}
+\begin{framed}
+GALLAI TÉTEL II. Tétel: Minden olyan G gráfra, melyben nincs izolált pont:
+$$\nu(G) + \rho(G) = v(G) = n$$
+\end{framed}
+\begin{leftbar}
+Bizonyítás: Egy $\nu(G)$ elemű X független élhalmaz lefog $2\nu(G)$ különböző ponott. A többi pont (mivel nincs izolált) nyilván lefogható $v(G) - 2\nu(G)$ éllel, így $v(G) - \nu(G) \geq \rho(G)$. Másrészt, ha Y egy minimális lefogó élhalmaz, akkor Y néhány (k darab) diszjunkt csillag egyesítése. Ha ugyanis Y tartalmazna kört, akkor annak bármely élét, ha pedig 3 hosszú utat, akkor a közepét el lehetne hagyni Y-ból, mert a többi él még mindig lefogná az összes pontot. Így $\rho(G) = v(G) - k$. Minden csillagból kiválasztunk egy élet, az így kapott élhalmaz nyílván független. Tehát $\nu(G) \geq k = v(G) - \rho(G)$.
+\end{leftbar}
+\begin{framed}
+KŐNIG-TÉTEL Tétel: Ha G páros gráf, akkor $\nu(G) = \tau(G)$. Ha G-ben nincs izolált pont, akkor $\alpha(G) = \rho(G)$ is teljesül.
+\end{framed}
+\begin{leftbar}
+Először az első állítást bizonyítjuk. Legyen M egy olyan párosítás, mely a javító utak módszerével már nem bővíthető. Legyen $U = A - X$, T' azon B-beli pontok halmaza, amelyek élerhetőek U-ból alternáló úton. T pedi ezek párjainak halmaza. Legyen $Y = T' \cup (X - T)$. Ennek a halmaznak éppen $|M|$ pontja van. Ezek minden élet lefognak, hiszen $N(T\cup U) = T'$, ugyanúgy, mint Hall-tétel bizonyításában. Így $\tau(G) \leq |M| \leq \nu(G)$ amiből viszont már következik az állítás a CUCCOS VISZONY tétel alapján. Most már könnyű belátni a második állítást is, Gallai két tétele miatt ugyanis $\nu(G) + \rho(G) = \tau(G) + \alpha(G)$ és imént beláttuk, hogy $\nu(G) = \tau(G)$.
+\end{leftbar}
+\begin{framed}
+TUTTE-TÉTEL Tétel: Egy G gráfban akkor és csak akkor van teljes párosítás, ha minden $X \subseteq c_p(G - X)\leq |X|$, azaz akárhogy hagyunk el a gráfból k pontot, a maradékban a páratlan komponensek száma nem lehet több, mint k. 
+\end{framed}
+\begin{leftbar}
+Bizonyítás (csak szükséges): Ha G-ben van teljes párosítás, akkor nyílvánvalóan teljesül a feltétel. Hiszen ha elhagyunk a gráfból X-et, akkor a páratlan komponensek mindegyikéből az eredeti gráfban indul ki legalább egy párosításbeli él, és ezek az élek csak egy-egy (különböző) X-beli pontba mehetnek. Tehát $c_p(G - X) \leq |X|$.
+\end{leftbar}
+\end{document}

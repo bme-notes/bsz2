@@ -1,0 +1,30 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{polyglossia}
+\usepackage{listings}
+\usepackage{tcolorbox}
+\usepackage{etoolbox}
+\usepackage{setspace}
+\usepackage{framed}
+\usepackage[a4paper,margin=2cm,footskip=.5cm]{geometry}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rn}[1]{$\mathbb{R}^{#1}$}
+\newcommand{\Und}[1]{\underline{#1}}
+\definecolor{shadecolor}{gray}{0.9}
+%opening 
+\title{Bevezetés a Számításelméletbe 2.\\{\large 8. tétel}}
+\author{Hegyi Zsolt}
+\begin{document}
+\maketitle
+\begin{shaded}
+PÁROS GRÁF Definíció: Egy G gráfot \textbf{páros gráfnak} nevezünk, ha G pontjainak V(G) halmazát két részre, egy A és B halmazra tudjuk osztani úgy, hogy G minden élének egyik végpontja A-ban, a másik pedig B-ben van. Ennek jelölése: $G = (A,B)$. A $K_{a,b}$-vel jelölt teljes páros gráf olyan $G=(A,B)$ gráf, ahol $|A| = a$ és $|B| = b$ és minden A-beli pont össze van kötve minden B-beli ponttal.
+\end{shaded}
+\begin{framed}
+PÁROSÍTÁS LÉTEZÉSE Tétel: Egy G gráf akkor és csak akkor páros gráf, ha minden G-ben lévő kör páros.
+\end{framed}
+\begin{leftbar}
+Bizonyítás: Ha G páros gráf, és C egy kör G-ben, akkor C pontjai felváltva vannak A-ban és B-ben, így $|V(C)|$ nyílván páros. Ha G minden köre páros hosszú, akkor megadhatjuk az A és B halmazt. Válasszunk egy tetszőleges v pontot, legyen ez A első pontja.  v minden szomszédját tegyük bele B-be, majd ezeknek a szomszédjait rakjuk bele A-ba. Ezt folytassuk, amíg ki nem fogyunk a pontokból. Ez biztosan jó elosztás, mivel ha például lenne A-ban két szomszédos pont, akkor léteznie kéne a gráfban páratlan körnek, így ellentmondásra jutnánk. Nem öf. gráfok esetén komponensenként hajtsuk végre.
+\end{leftbar}
+\end{document}

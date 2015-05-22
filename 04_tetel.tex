@@ -41,7 +41,7 @@ BECSLÉS AZ ÉLEK SZÁMÁRA Tétel: Ha G egyszerű, síkbarajzolható gráf és 
 $$e \leq 3n - 6$$ 
 \end{framed}
 \begin{leftbar}
-Vegyük G tetsz. síkbarajzolását és jelöljük az egyes tartományokat határoló élek számát $c_1, c_2...c_t$-vel. Mivel a gráf egyszerű, ezért minden tartományát legalább 3 él határolja, tehát $c_i \geq 3$. Nyílvánvaló, hogy egy élhez legfeljebb 2 tartomány tartozik, tehát ha összegezzük a tartományokat határoló élek számát minden tartományra, akkor legfeljebb $2e$-t kaphatunk. Tehát:
+Bizonyítás: Vegyük G tetsz. síkbarajzolását és jelöljük az egyes tartományokat határoló élek számát $c_1, c_2...c_t$-vel. Mivel a gráf egyszerű, ezért minden tartományát legalább 3 él határolja, tehát $c_i \geq 3$. Nyílvánvaló, hogy egy élhez legfeljebb 2 tartomány tartozik, tehát ha összegezzük a tartományokat határoló élek számát minden tartományra, akkor legfeljebb $2e$-t kaphatunk. Tehát:
 $$3t \leq c_1 + c_2 + ... + c_t = \sum_{i=1}^{t} c_i \leq 2e$$
 Az Euler-formulát felhasználva:
 $$3(e - n + 2) \leq 2e$$
@@ -53,5 +53,11 @@ $$e \leq 2n - 4$$
 \end{framed}
 \begin{leftbar}
 Minden tartományt legalább 4 él határol. Az előző biz. gondolatmenete alapján $4t \leq 2e$ és ez alapján megkapjuk a képletet.
+\end{leftbar}
+\begin{framed}
+BECSLÉS MINIMÁLIS FOKSZÁMRA Tétel: Ha G egyszerű, síkbarajzolható gráf, akkor $$\delta = min\, d(v) \leq 5$$ azaz a minimális fokszám legfeljebb 5.
+\end{framed}
+\begin{leftbar}
+Bizonyítás: Feltehetjük, hogy a gráf pontjainak a száma legalább 3. T.f.h. $\delta \geq 6$. Mivel a fokszámok összege egyenlő az élszámok kétszeresével, $6n \leq 2e$. Az élszám-becslés alapján azonban $2e \leq 6n - 12$, ezzel ellentmondásra jutottunk, mivel $6n \not\leq 6n - 12$.
 \end{leftbar}
 \end{document}
