@@ -1,0 +1,52 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{polyglossia}
+\usepackage{listings}
+\usepackage{tcolorbox}
+\usepackage{etoolbox}
+\usepackage{setspace}
+\usepackage{framed}
+\usepackage[a4paper,margin=2cm,footskip=.5cm]{geometry}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rn}[1]{$\mathbb{R}^{#1}$}
+\newcommand{\Und}[1]{\underline{#1}}
+\definecolor{shadecolor}{gray}{0.9}
+%opening 
+\title{Bevezetés a Számításelméletbe 2.\\{\large 5. tétel}}
+\author{Hegyi Zsolt}
+\begin{document}
+\maketitle
+\begin{framed}
+KURATOWSKI-GRÁFOK Tétel: A Kuratowski-gráfok, tehát a $K_5$ és a $K_{3,3}$ nem rajzolhatóak síkba.
+\end{framed}
+\begin{leftbar}
+Ha $K_5$ síkbarajzolható volna, akkor teljesülne rá a élbecslés tétel. Azonban $K_5$ pontjainak száma 5, éleinek száma 10 és $10 \not\leq 3 \cdot 5 -6 = 9$, tehát $K_5$ nem síkbarajzolható.
+A $K_{3,3}$ minden körének hossza legalább 4. Ha volna 3 hosszú kör, legalább 2 "kút" vagy "ház" között kellene annak mennie, ami nem lehetséges. Így tehát a 2. élbecslés alkalmazható. $K_{3,3}$ pontjainak a száma 6, éleinek száma 9 és $9 \not\leq 2 \cdot 6 - 4 = 8$, tehát $K_{3,3}$ nem síkbarajzolható.
+\end{leftbar}
+Érdemes megjegyezni, hogy ezeknek a topologikus izomorf megfelelőit (tehát ha egy él helyett 2 hosszú út van) se lehet síkba lerajzolni. Ezeket úgy tudjuk konstruálni, hogy egy él helyett vagy egy új, 2-fokú csúccsal helyettesítünk, vagy egy 2-fokú csúcsot egy éllel.
+\begin{shaded}
+TOPOLÓGIKUS IZOMORFIA Definíció: A G és H gráfok \textbf{topológikusan izomorfak}, ha a fentebb említett transzformációk ismételt alkalmazásával izomorf gráfokba transzformálhatóak.
+\end{shaded}
+\begin{framed}
+KURATOWSKI-TÉTEL Tétel: Egy gráf akkor és csak akkor síkbarajzolható, ha nem tartalmaz olyan részgráfot, amely topológikusan izomorf lenne $K_{3,3}$-al vagy $K_5$-el. \textbf{A bizonyítás a szükségességre fentebb található.}
+\end{framed}
+\begin{framed}
+FÁRY-WAGNER TÉTEL Tétel: Ha G egy egyszerű, síkbarajzolható gráf, akkor létezik olyan síkbeli ábrázolása is, melyben minden élet egy egyenes szakasszal rajzoltunk le.
+\end{framed}
+\begin{shaded}
+DUÁLIS Definíció: Egy G gráf \textbf{duálisát} úgy kapjuk meg, hogy G tartományaihoz rendelünk pontokat (G* pontjai) és G*-ban akkor kössünk össze két pontot, ha a megfelelő G-beli tartományoknak van közös határvonala.
+\end{shaded}
+A duális gráfban tehát $n* = t$ és $t* = n$, valamint $e* = e$.
+A párhuzamos élekből "soros élek", hurokélekből pedig elvágó élek lesznek.
+\begin{shaded}
+ELVÁGÓ ÉLHALMAZ Definíció: G összefüggő gráf, $x \in E(G)$. x elvágó élhalmaz, ha $(V(G),E(G)\backslash x) = G'$ és G' nem összefüggő. x vágás, ha x elv. élhalmaz, de semelyik részhalmaza sem az.
+\end{shaded}
+\begin{framed}
+VÁGÁSOK ÉS KÖRÖK Tétel: G összefüggő és síkbarajzolt, ekkor ha C kör a G-ben, a C* vágás lesz G duálisában, G*-ban és fordítva, ha C vágás G-ben, a C* kör lesz a G*-ban.
+\end{framed}
+\begin{framed}
+FA DUÁLISON BELÜL Tétel: G összefüggő, egyszerű gráf, F ezen belül feszítőfa. A G* duálison belül ez az F a saját komplementereként fog megjelenni.
+\end{framed}
+\end{document}
