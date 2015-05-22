@@ -29,7 +29,7 @@ $$\chi(G) \leq \Delta(G)+1$$
 Bizonyítás: A mohó színezés segítségével bizonyítjuk. Színezzük ki G pontjait ($v_1, v_2,..., v_n$) úgy, hogy az i-edik lépésben $v_i$-t olyan színre színezzük, ami nem szerepel $v_i$ kiszínezett szomszédságában. Mivel $v_i$-nek legfeljebb $\Delta(G)$ kiszínezett szomszédja lehet, és mindegyik szomszéd legfeljebb egy-egy színt zár ki, ezért $v_i$ színezése elvégezhető a rendelkezésre álló színek valamelyikével (a kimaradó $\Delta(G)+1)$-edik). $v_n$ kiszínezése után G egy $(\Delta(G)+1)$ színezését kapjuk meg.
 \end{leftbar}
 \begin{shaded}
-INTERVALLUMGRÁF Definíció: Legyenek $I_1 = [a_1, b_1], I_2 = [a_2, b_2],...$ korlátos zárt intervallumok, és minden $a_i, b_i$ legyen pozitív egész. Legyenek $p_1, p_2,...$ egy G gráf pontjai és ${p_i, p_j}$ akkor és csak akkor legyen él G-ben, ha $I_i\cap I_j = \emptyset$. Az így előálló gráfokat \textbf{intervallumgráfnak} nevezzük.
+INTERVALLUMGRÁF Definíció: Legyenek $I_1 = [a_1, b_1], I_2 = [a_2, b_2],...$ korlátos zárt intervallumok, és minden $a_i, b_i$ legyen pozitív egész. Legyenek $p_1, p_2,...$ egy G gráf pontjai és ${p_i, p_j}$ akkor és csak akkor legyen él G-ben, ha $I_i\cap I_j \not= \emptyset$. Az így előálló gráfokat \textbf{intervallumgráfnak} nevezzük.
 \end{shaded}
 \begin{framed}
 INTERVALLUMGRÁF SZÍNEZÉSE Tétel: G intervallumgráf, emiatt:
