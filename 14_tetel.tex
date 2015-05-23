@@ -1,0 +1,60 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{polyglossia}
+\usepackage{listings}
+\usepackage{tcolorbox}
+\usepackage{etoolbox}
+\usepackage{setspace}
+\usepackage{framed}
+\usepackage[a4paper,margin=2cm,footskip=.5cm]{geometry}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rn}[1]{$\mathbb{R}^{#1}$}
+\newcommand{\Und}[1]{\underline{#1}}
+\definecolor{shadecolor}{gray}{0.9}
+%opening 
+\title{Bevezetés a Számításelméletbe 2.\\{\large 13. tétel}}
+\author{Hegyi Zsolt}
+\begin{document}
+\maketitle
+\begin{framed}
+MENGER Tétel: Ha G egy irányított gráf, $s,t\in V(G)$, akkor az s-ből t-be vezető páronként élidegen irányított utak maximális száma megegyezik az összes irányított s-t utat lefogó élek minimális számával.
+\end{framed}
+\begin{leftbar}
+Bizonyítás: Ha létezik G-ben k darab ilyen irányított s-t út, akkor az s-t utakat lefogó élek száma nyilvánvalóan legalább k. Nézzük az egyenlőtlenség másik oldaláról is. T.f.h. az s-t utakat lefogó élek minimális száma k. Legyen minden él kapacitása 1. Az így kapott hálózatban a maximális folyam értéke legalább k. Ekkor a Ford-Fulkerson tétel miatt a minimális vágás értéke is legalább k. Azt már beláttuk, hogy van olyan max. folyam, ahol minden élen a folyamérték 0 vagy 1. Lássuk be, hogy G-ben van k élidegen irányított s-t út. Egy ilyen út legalább van, különben nem lehetne k a folyam értéke. Az ebben az útban szereplő élek kapacitását csökkentsük nullára, így a folyam értéke legalább k-1 lesz. Folytassuk a gondolatmenetet és kapunk k élidegen irányított s-t utat.
+\end{leftbar}
+\begin{framed}
+MENGER Tétel: Ha G egy irányított gráf, $s,t\in V(G)$ két nem szomszédos pont, akkor az s-ből t-be vezető, végpontoktól eltekintve pontidegen irányított utak maximális száma megegyezik az összes irányított s-t utat s és t felhasználása nélkül lefogó pontok minimális számával.
+\end{framed}
+\begin{leftbar}
+Bizonyítás: Készítsünk egy új G' gráfot. Minden pontot húzzunk szét két ponttá. Ha a G gráfban egy minimális ponthalmaz lefogja az irányított s-t utakat, akkor a lefogó pontoknak megfelelő (v', v'') pontok is lefogó ponthalmazt alkotnak s-t-re G'-ben. Kevesebb él nem elég a lefogáshoz, mert ha a lefogó élek közt lennének (a'', b') típusú élek, akkor ezeket helyettesítjük (b', b'')-vel, ha $b' \neq t$, illetve (a', a'')-val, ha $b' = t$. Így pedig G-ben egy kisebb lefogó ponthalmazt nyernénk. Vagyis a G-beli lefogó pontok és a G'-beli lefogó élek minimális száma egyenlő. Az is könnyen látható, hogy G-beli pontdiszjunkt utaknak G'-ben éldiszjunkt utak felelnek meg és fordítva, G'-beli élidegen utaknak G-ben pontidegen utaknak felelnek egy. Innen az előző tétel segítségével bizonyítjuk az állítást.
+\end{leftbar}
+\begin{framed}
+MENGER Tétel: Ha G egy irányítatlan gráf, $s,t\in V(G)$, akkor az s-ből t-be vezető élidegen irányítatlan utak maximális száma megegyezik az összes irányítatlan s-t utat lefogó élek minimális számával.
+\end{framed}
+\begin{leftbar}
+Bizonyítás: Vezessük vissza irányított gráfos problémára. A bizonyítás a számításelmélet jegyzet 70. oldalán található, hosszú.
+\end{leftbar}
+\begin{framed}
+MENGER Tétel: Ha G egy irányítatlan gráf, $s,t\in V(G)$ két nem szomszédos pont, akkor az s-ből t-be vezető, végpontoktól eltekintve pontidegen irányítatlan utak maximális száma megegyezik az összes irányítatlan s-t utat s és t felhasználása nélkül lefogó pontok minimális számával.
+\end{framed}
+\begin{leftbar}
+Bizonyítás: Előző tételhez hasonlóan.
+\end{leftbar}
+\begin{shaded}
+TÖBBSZÖRÖS ÖSSZEFÜGGŐSÉG Definíció: Egy G gráfot \textbf{k-szorosan összefüggőnek} nevezünk, ha legalább k+1 pontja van, és akárhogy hagyunk el belőle k-nál kevesebb pontot, a maradék gráf összefüggő marad. A gráf \textbf{k-szorosan élösszefüggő}, ha akárhogy hagyunk el belőle k-nál kevesebb élet, összefüggő gráfot kapunk. A k-szoros összefüggőség "erősebb" a k-szoros élösszefüggőségnél.
+\end{shaded}
+\begin{framed}
+A G gráf akkor és csak akkor k-szorosan összefüggő, ha legalább $k + 1$ pontja van, és bármely két pontja között létezik k pontidegen út. Hasonlóan, G akkor és csak akkor k-szorosan élösszefüggő, ha bármely két pntja között létezik k élidegen út.
+\end{framed}
+\begin{leftbar}
+Bizonyítás: Először a második részt bizonyítjuk. Ha G k-szorosan élösszefüggő, akkor az u-v utakat lefogó élek minimális száma nyilván legalább k. Így Menger idevágó tétele szerint élidegen u-v utak maximális száma legalább k. Ennek a résznek a megfordítása is következik a Menger tételből. Ha G k-szorosan összefüggő, akkor bármely két, $u,v\in V(G)$ pontot választva legalább k darab, u-tól és v-től különböző pontra van szükség ahhoz, hogy lefogjuk az összes u és v közötti utat (u-v éltől eltekintve). Így az utolsó Menger tétel alapján létezik u és v között k pontidegen út. Ha G bármely két pontja között létezik k pontidegen út, akkor nyilván nem lehet ezeket k-nál kevesebb ponttal lefogni, tehát a k-szoros összefüggőség következik ebből.
+\end{leftbar}
+\begin{framed}
+MENGER Tétel: A legalább 3 pontú G gráf akkor és csak akkor 2-szeresen összefüggő, ha tetszőleges két pontján át vezet kör. Igaz az is, hogy akkor és csak akkor 2-szeresen összefüggő, ha bármely két élén át vezet kör.
+\end{framed}
+\begin{leftbar}
+Bizonyítás: Az első állítás triviális, hiszen két pontidegen u-v út együtt egy kört ad, amely átmegy u-n és v-n. A második állítás pedig az elsőből következik. Lássuk be, hogy ha G 2-szeresen összefüggő, akkor e, f éleken keresztül van kör. Vegyünk fel két pontot úgy, hogy ezekkel osszuk két részre az e illetve az f élet. Az így kapott gráf is 2-szeresen összefüggő. Az első állítás szeromt ezen a két ponton át is megy kör, és ez a kör az eredeti gráfban átmegy e-n és f-en. A megfordítás ismét nyílvávaló. 
+\end{leftbar}
+\end{document}
