@@ -1,0 +1,54 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{polyglossia}
+\usepackage{listings}
+\usepackage{tcolorbox}
+\usepackage{etoolbox}
+\usepackage{setspace}
+\usepackage{framed}
+\usepackage[a4paper,margin=2cm,footskip=.5cm]{geometry}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rn}[1]{$\mathbb{R}^{#1}$}
+\newcommand{\Und}[1]{\underline{#1}}
+\definecolor{shadecolor}{gray}{0.9}
+%opening 
+\title{Bevezetés a Számításelméletbe 2.\\{\large 11. tétel}}
+\author{Hegyi Zsolt}
+\begin{document}
+\maketitle
+\begin{shaded}
+REGULÁRIS GRÁF Definíció: Egy gráfot \textbf{$k$-regulárisnak} nevezünk, ha minden pont foka $k$. Egy gráfra azt mondjuk, hogy \textbf{reguláris}, ha létezik olyan k, amire k-reguláris.
+\end{shaded}
+\begin{framed}
+REGULÁRIS GRÁFBAN TELJES PÁROSÍTÁS Definíció: Minden reguláris páros gráfban létezik teljes párosítás.
+\end{framed}
+\begin{leftbar}
+Bizonyítás:
+$|A|\cdot k = |E| - |B|\cdot k$, ebből következik az, hogy $|A| = |B|$. z legyen tetszőleges $X \subseteq A$ esetén X és N(X) közötti élek száma.
+$|X|\cdot k = z \leq |N(X)|\cdot k$ és ebből adódik, hogy $|N(X)| \geq |X|$, ami már a Frobenius-tétellel bizonyítható.
+%Tegyük fel, hogy G k-reguláris és rendelkezik A, B pontosztályokkal és $k \geq 1$, és tekintsünk tetszőleges $X \subseteq A$ ponthalmazt. Mivel X-beli pontokból összesen $|X|\cdot k$ darab él indul ki, és N(X) minden pontjába ezek közül legfeljebb k fut be, ezért
+%$$|N(X)| \geq \frac{1}{k}k|X| = |X|$$
+%Az $X = A$ esetre ugyanezzel a módszerrel $|A| = |B|$, mert $N(A) = B$ és így az A-beli pontokból kiinduló élekből N(A) minden pontjába pontosan k él fut be. Ebből Frobenius tétellel kijön a teljes párosítás.
+\end{leftbar}
+\begin{shaded}
+ÉLSZÍNEZÉS Definíció: Egy G gráf élei \textbf{k színnel színezhetőek}, ha minden élet ki lehet színezni k színnel úgy, hogy bármely két szomszédos él színe különböző legyen. G \textbf{élkromatikus száma} $\chi_e(G) = k$, ha G élei k színnel színezhetőek, de $k - 1$-el már nem.
+\end{shaded}
+\begin{framed}
+VIZING-TÉTEL Tétel: Ha G egyszerű gráf, akkor $\chi_e(G) \leq \Delta(G) + 1$. Bizonyítás $\emptyset$.
+\end{framed}
+\begin{framed}
+ÉLKROMATIKUS SZÁM Tétel: Tetszőleges G gráfra $\chi_e(G) \geq \Delta(G)$ áll.
+\end{framed}
+\begin{leftbar}
+Bizonyítás: Az egy csúcsból induló élek egymástól különböző színt kapnak, és ez speciálisan a maximális fokszámú csúcsokból induló élekre is igaz.
+\end{leftbar}
+\begin{framed}
+KŐNIG-TÉTEL Tétel: Ha G páros gráf, akkor $\chi_e(G) = \Delta(G)$
+\end{framed}
+\begin{leftbar}
+Elég azt igazolni, hogy $\chi_e(G) \leq \Delta(G)$ az előző állítás miatt. Létezik olyan H páros gráf, melynek G részgráfja, és H minden csúcsának fokszáma $\Delta(G)$. Ha sikerül a $\Delta(G)$-reguláris H gráf éleit $\Delta(G)$ színnel kiszínezni, akkor egyúttal a G részgráf éleinek is megkapjuk egy ugyanennyi színnek való színezését. H gráf élszínezéséhez elegendő azt megmutatni, hogy tetszőleges reguláris páros gráfban létezik teljes párosítás, ezt pedig már bizonyítottuk egy fentebbi tételben. 
+\end{leftbar}
+
+\end{document}
