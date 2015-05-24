@@ -71,7 +71,10 @@ MINIMÁLIS SÚLYÚ FESZÍTŐFA Definíció: Legyen G gráf és annak éleihez re
 Tétel: A Kruskal-algoritmus minimális súlyú feszítőfát talál.
 \end{framed}
 \begin{leftbar}
-???
+Két állítást kell bizonyítanunk - azt, hogy feszítőfát ad az algoritmus, és azt, hogy az minimális. Kezdjük az elsővel. Legyen G egy összefüggő, súlyozott gráf (tehát van súlyfüggvény hozzárendelve) és F legyen egy részgráfja, amit az algoritmus produkál. F-ben nem lehet kör, mivel az algoritmus egy fát épít. F nem lehet nem összefüggő sem, mivel az első él (amit az algoritmus talál), ami összeköt két független komponenst F-ben még nem hozhat létre kört. Tehát F feszítőgráf.
+\\
+A következő állítást teljes indukcióval bizonyítjuk be. Legyen H egy élhalmaz, amit az algoritmus a futása során generál, a minimális súlyú feszítőfának ezt a H élhalmazt tartalmaznia kell, hiszen ebben vannak minimális súlyú élek.
+Az első lépésnél az állítás igaz, hiszen H üres, és minden gráfnak részgráfja az üres gráf. A k-adik lépésnél vegyük az állítást igaznak és legyen T a minimális súlyú feszítőfa, ami tartalmazza H-t. Ha az algoritmus által kiválasztott következő él, e, szintúgy benne van a T-ben, akkor az állítás szintúgy igaz a $H + {e}$ élhalmazra. Különben $T + {e}$ élhalmazban létezik egy C kör, és ezen kívül még létezik egy olyan f él, ami befejezi a C kört, de nem része H-nak. (Ha nem létezne f, akkor e-t már nem vehettük volna be, mivel kört produkált volna $H + f$-ben). Ekkor $T - {f} + {e}$ szintúgy egy fa, és azonos az összsúlya T-jével, hiszen T-nek minimális az összsúlya, és f-nek a súlya nem lehet kisebb, mint e-nek, hiszen akkor e helyett az f élet választotta volna az algoritmus. Tehát $T - {f} + {e}$ egy minimális súlyú feszítőfa. Ezek alapján az indukciós feltevést bebizonyítottuk, és az állítás igaz, amikor H egy feszítőfává válik, ami csak akkor igaz, ha H egy minimális súlyú feszítőfa.
 \end{leftbar}
 \begin{framed}
 Alkalmazás: Pontok - városok, élek - utak, súly - hossz; Villamos hálózatok, Kirchoff-törvények, áramköri elemekhez súlyokat párosítunk
