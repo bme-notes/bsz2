@@ -5,3 +5,4 @@
 *.pdf
 *_stripped.tex
 /pdfs/*
+makelog
