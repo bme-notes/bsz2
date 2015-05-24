@@ -28,6 +28,10 @@ $$\chi(G) \leq \Delta(G)+1$$
 \begin{leftbar}
 Bizonyítás: A mohó színezés segítségével bizonyítjuk. Színezzük ki G pontjait ($v_1, v_2,..., v_n$) úgy, hogy az i-edik lépésben $v_i$-t olyan színre színezzük, ami nem szerepel $v_i$ kiszínezett szomszédságában. Mivel $v_i$-nek legfeljebb $\Delta(G)$ kiszínezett szomszédja lehet, és mindegyik szomszéd legfeljebb egy-egy színt zár ki, ezért $v_i$ színezése elvégezhető a rendelkezésre álló színek valamelyikével (a kimaradó $\Delta(G)+1)$-edik). $v_n$ kiszínezése után G egy $(\Delta(G)+1)$ színezését kapjuk meg.
 \end{leftbar}
+Érdemes megjegyezni, hogy $\chi(G) = \Delta(G)+1$ abban az esetben, ha teljes gráfról vagy húr nélküli páratlan körről beszélünk.
+\begin{framed}
+BROOKS-TÉTEL Tétel: Ha G egyszerű, összefüggő, nem teljes gráf, nem páratlan hosszúságú kör, akkor $\chi(G) \leq \Delta(G)$, tehát a kromatikus szám nem nagyobb, mint a maximális fokszám.
+\end{framed}
 \begin{shaded}
 INTERVALLUMGRÁF Definíció: Legyenek $I_1 = [a_1, b_1], I_2 = [a_2, b_2],...$ korlátos zárt intervallumok, és minden $a_i, b_i$ legyen pozitív egész. Legyenek $p_1, p_2,...$ egy G gráf pontjai és ${p_i, p_j}$ akkor és csak akkor legyen él G-ben, ha $I_i\cap I_j \not= \emptyset$. Az így előálló gráfokat \textbf{intervallumgráfnak} nevezzük.
 \end{shaded}
@@ -47,5 +51,11 @@ PÁROSÍTÁS LÉTEZÉSE Tétel: Egy G gráf akkor és csak akkor páros gráf, h
 \end{framed}
 \begin{leftbar}
 Bizonyítás: Ha G páros gráf, és C egy kör G-ben, akkor C pontjai felváltva vannak A-ban és B-ben, így $|V(C)|$ nyílván páros. Ha G minden köre páros hosszú, akkor megadhatjuk az A és B halmazt. Válasszunk egy tetszőleges v pontot, legyen ez A első pontja.  v minden szomszédját tegyük bele B-be, majd ezeknek a szomszédjait rakjuk bele A-ba. Ezt folytassuk, amíg ki nem fogyunk a pontokból. Ez biztosan jó elosztás, mivel ha például lenne A-ban két szomszédos pont, akkor léteznie kéne a gráfban páratlan körnek, így ellentmondásra jutnánk. Nem öf. gráfok esetén komponensenként hajtsuk végre.
+\end{leftbar}
+\begin{framed}
+KROMATIKUS SZÁM ÉS PÁROSÍTÁS KAPCSOLATA Tétel: Egy legalább egy élet tartalmazó G gráf akkor és csak akkor páros, ha $\chi(G) = 2$.
+\end{framed}
+\begin{leftbar}
+Ha a gráf páros, akkor az egyik oldalon lévő pontokat pirossal, másik oldal lévőeket megszínezzük kékkel. Ha a gréfnak van egy éle, akkor ennek a két végpontját már nem színezhetjük egy színűre. A színek megfelelnek a két halmaznak, amire fel tudjuk bontani a páros gráfokat.
 \end{leftbar}
 \end{document}
