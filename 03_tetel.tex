@@ -59,11 +59,14 @@ Az algoritmus lineáris futásidejű, tehát $c \cdot e$ lépésszámú.
 BFS-FA Definíció: A BFS algoritmus futtatása után kapott F feszítőfát nevezzük \textbf{BFS fának}. F összefüggő, ha az eredeti bemeneti gráf is összefüggő volt, valamint F nem tartalmaz kört (a fa definíciója miatt). Az is megfigyelhető, hogy bármely $v \in V$ csúcsra az s-et v-vel összekötő F-beli út a legrövidebbek egyike az s-ből a v-be vezető G-beli utak közül.
 \end{shaded}
 \begin{framed}
-Kruskal Algoritmus: Az éleket rendezzük sorba úgy, hogy a legalacsonyabb költségűek legyenek először a sorban. A sorban kezdjünk előre haladni. Ha az él bevétele esetén a kapott gráf körmentes marad, akkor vegyük be. Ha az élsorozat végére érünk, akkor készen vagyunk. A kapott gráf a G gráf minimális költségű feszítőfája.
+Kruskal Algoritmus: Bemenet: G gráf és az élekhez tartozó w súlyfüggvény. Az éleket rendezzük sorba úgy, hogy a legalacsonyabb költségűek legyenek először a sorban. A sorban kezdjünk előre haladni. Ha az él bevétele esetén a kapott gráf körmentes marad, akkor vegyük be. Ezt addig ismételjük, amíg van izolált pont, vagy amíg az élsorozat végére nem érünk. A kapott gráf a G gráf minimális költségű feszítőfája.
 \\
 \\
 Ezt az eljárást \textbf{mohó algoritmusnak} nevezzük, mivel a végrehajtás során minden lépésben az éppen akkor a legjobbnak tűnő lehetőséget választjuk ki.
 \end{framed}
+\begin{shaded}
+MINIMÁLIS SÚLYÚ FESZÍTŐFA Definíció: Legyen G gráf és annak éleihez rendelt $w: E \rightarrow \mathbb{R}$ súlyfüggvény. A gráfnak azon feszítőfáját, melyre ez a súlyfüggvény minimális, a gráf \textbf{minimális súlyú feszítőfájának} nevezzük.
+\end{shaded}
 \begin{framed}
 Tétel: A Kruskal-algoritmus minimális súlyú feszítőfát talál.
 \end{framed}
@@ -71,6 +74,6 @@ Tétel: A Kruskal-algoritmus minimális súlyú feszítőfát talál.
 ???
 \end{leftbar}
 \begin{framed}
-Alkalmazás: Villamos hálózatok, Kirchoff-törvények, áramköri elemekhez súlyokat párosítunk
+Alkalmazás: Pontok - városok, élek - utak, súly - hossz; Villamos hálózatok, Kirchoff-törvények, áramköri elemekhez súlyokat párosítunk
 \end{framed}
 \end{document}
