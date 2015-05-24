@@ -1,4 +1,4 @@
-# Bsz1-tetelek
+# Bsz2-tételek
 Tételek a BME-VIK SZIT által tanított Bevezetés a Számításelméletbe 2. (VISZIAA01) tárgyához.
 
 # Build-elés és "fejlesztés"
