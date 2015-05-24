@@ -43,7 +43,7 @@ SZÜKSÉGES FELTÉTEL A H-KÖR (ÚT) LÉTEZÉSÉHEZ Tétel: Ha a G gráfban lét
 Indirekt t.f.h. van a gráfban H-kör, ez legyen $(v_1, v_2,..., v_n)$ és legyen $(v_{i_1}, v_{i_2},...,v_{i_k})$ az a k pont, amelyet elhagyva a gráf több mint k komponensre esik. Az elhagyott pontok közötti "ívek" biztosan összefüggő komponenseket alkotnak. Pl. a $(v_{i_{1}+1}, v_{i_{1}+2},..., v_{i_{2}-1})$ is összefüggő lesz, hiszen két szomszédos pontja között az eredeti H-kör éle fut. Mivel épp k ilyen ívet kapunk, ezért nem lehet több komponens k-nál (kevesebb lehet, mivel különb. ívek közt futhatnak élek). U.a. bizonyítjuk útra. Ha egy H-útból elhagyunk k pontot, legfeljebb k+1 öf. ív marad.
 \end{leftbar}
 \begin{framed}
-ELÉGSÉGES FELTÉTEL - ORE TÉTEL Tétel: Ha az n pontú G gráfban minden olyan $x,y\in V(G)$ pontpárra, amelyre ${x,y}\in E(G)$ teljesül az is, hogy $d(x) + d(y) \geq n$, akkor a gráfban van H-kör. 
+ELÉGSÉGES FELTÉTEL - ORE TÉTEL Tétel: Ha az n pontú G egyszerű gráfban minden olyan $x,y\in V(G)$ pontpárra, amelyre ${x,y}\in E(G)$ teljesül az is, hogy $d(x) + d(y) \geq n$, akkor a gráfban van H-kör. 
 \end{framed}
 \begin{leftbar}
 Indirekt t.f.h. a gráf kielégíti a feltételt de nincs benne H-kör. Vegyünk hozzá a gráfhoz éleket úgy, hogy továbbra se legyen benne H-kör. Ezt egészen addig csináljuk, amíg már akárhogyan is veszünk hozzá egy élet, lesz a gráfban H-kör. Az így kapott G' gráfra továbbra is teljesül a feltétel, hiszen új élek behúzásával "rossz pontpárt" nem lehet létrehozni. Biztosan van két olyan pont, hogy ${x,y} \not \in E(G')$. Ennek a behúzásával már lesz $G' + {x,y}$-ban H-kör, tehát G'-ben van H-út. Legyen ez $P = {z_1, z_2,...,z_n}$ ahol $z_1 = x$ és $z_n = y$.
@@ -52,7 +52,7 @@ $$d(y) \leq n - 1 - d(x)$$
 ami viszont ellentmondás, hisz ${x,y} \not\in E(G)$.
 \end{leftbar}
 \begin{framed}
-ELÉGSÉGES FELTÉTEL - DIRAC TÉTEL Tétel: Ha egy n pontú G gráfban minden pont foka legalább n/2, akkor a gráfban létezik H-kör.
+ELÉGSÉGES FELTÉTEL - DIRAC TÉTEL Tétel: Ha egy n pontú G egyszerű gráfban minden pont foka legalább n/2, akkor a gráfban létezik H-kör.
 \end{framed}
 \begin{leftbar}
 Ez az előző tételből következik, hiszen ha minden pont foka legalább n/2, akkor teljesül az Ore-tétel feltétele, mivel bármely pontpárra $$d(x) + d(y) \geq n$$
