@@ -5,7 +5,7 @@ Tételek a BME-VIK SZIT által tanított Bevezetés a Számításelméletbe 2. (
 A build-hez a XeLaTeX engine-t használd, a kimenet tetszőleges lehet (PDF target a leggyakoribb).
 IDE-nek a TeXstudio-t ajánlom, és a LaTeX fejlesztői eszközöket pedig a TeXlive disztribúció keretében lehet a legkönnyebben beszerezni.
 
-A teljes tételsor legenerálásához először a tételekből ki kell szedni a preambulumot és a dokumentum elejét és végét jelző tag-ot, ezt a mellékelt shell script meg is teszi.
+A teljes tételsor, valamint a tételek egyesével való legenerálásához érdemes használni a make_all.sh bash script-et, ami legenerálja és berakja ezeket a pdfs/ kimeneti könyvtárba, valamint feltakarít maga után.
 
 # Dependency-k
 A következő csomagok szükségesek ahhoz, hogy a .tex fájlok sikeresen leforduljanak, ezt bemásolva terminálba ezek fel is települnek (TeXlive esetén):

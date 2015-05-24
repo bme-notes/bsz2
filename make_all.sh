@@ -1,6 +1,7 @@
 #!/bin/bash
 
 rm makelog
+rm ./pdfs/*
 echo "generating separate theses..."
 for i in *_tetel.tex; do
 	echo -n "${i}..."
@@ -30,3 +31,9 @@ rm ./pdfs/*.aux
 rm ./pdfs/*.log
 rm ./pdfs/*.gz
 rm ./pdfs/*.out
+rm ./pdfs/*.toc
+echo -n "do you want to generate a zip from these (y/n)? "
+read choice
+if [ "$choice" == "y" ]; then
+	zip -r -j pdfs/bsz2_tetelek.zip pdfs/
+fi
