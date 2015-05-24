@@ -4,3 +4,4 @@
 *.gz
 *.pdf
 *_stripped.tex
+/pdfs/*
