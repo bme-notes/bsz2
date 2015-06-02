@@ -26,8 +26,7 @@ REGULÁRIS GRÁFBAN TELJES PÁROSÍTÁS Definíció: Minden reguláris páros gr
 \end{framed}
 \begin{leftbar}
 Bizonyítás:
-$|A|\cdot k = |E| - |B|\cdot k$, ebből következik az, hogy $|A| = |B|$. z legyen tetszőleges $X \subseteq A$ esetén X és N(X) közötti élek száma.
-$|X|\cdot k = z \leq |N(X)|\cdot k$ és ebből adódik, hogy $|N(X)| \geq |X|$, ami már a Frobenius-tétellel bizonyítható.
+Vegyünk egy páros gráfot A, B pontosztállyal, ami k-reguláris. Először lássuk be, hogy ugyanaz az elemszáma A és B-nek. A-ból $k\cdot n$ él megy ki, B-be pedig $k \cdot m$ él megy. $k\cdot n = k\cdot m$, osszuk le k-val $\rightarrow n = m$. Hall-feltétel: $|N(A) \geq |A|$. A-ból $k\cdot|A|$ él megy ki, ezek a N(A) csúcsokba mennek. Ez annyit jelent, hogy egy N(A)-beli csúcsba átlagosan $(k\cdot |A|) \backslash |N(A)|$ él megy, tehát $(k\cdot |A|) \backslash |N(A)| \leq k$ (mivel egy csúcsba maximum k él megy). Szorozzuk be $|N(A|$-val és osszunk k-val. $|A| \leq |N(A)|$, Hall feltétel OK, Frobenius-tétel OK, létezik teljes párosítás.
 %Tegyük fel, hogy G k-reguláris és rendelkezik A, B pontosztályokkal és $k \geq 1$, és tekintsünk tetszőleges $X \subseteq A$ ponthalmazt. Mivel X-beli pontokból összesen $|X|\cdot k$ darab él indul ki, és N(X) minden pontjába ezek közül legfeljebb k fut be, ezért
 %$$|N(X)| \geq \frac{1}{k}k|X| = |X|$$
 %Az $X = A$ esetre ugyanezzel a módszerrel $|A| = |B|$, mert $N(A) = B$ és így az A-beli pontokból kiinduló élekből N(A) minden pontjába pontosan k él fut be. Ebből Frobenius tétellel kijön a teljes párosítás.
