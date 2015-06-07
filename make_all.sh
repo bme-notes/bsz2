@@ -1,6 +1,7 @@
 #!/bin/bash
 
 rm makelog
+mkdir -p ./pdfs
 rm ./pdfs/*
 echo "generating separate theses..."
 for i in *_tetel.tex; do
