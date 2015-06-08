@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rm makelog
+rm -f makelog
 mkdir -p ./pdfs
 rm ./pdfs/*
 echo "generating separate theses..."
@@ -17,37 +17,40 @@ for i in *_tetel.tex; do
 	echo "===end of ${i}===" >> makelog
 done
 source create_stripped.sh
-echo -n "generating complete document..."
-echo "===processing full_document.tex===" >> makelog
-xelatex -8bit --shell-escape -synctex=1 --output-directory=pdfs/ -interaction=nonstopmode "full_document".tex >> makelog
-echo "===end of full_document.tex===" >> makelog
-ret=$?
-if [ $ret -eq 0 ]; then
-	echo "OK"
-else
-	echo "[!] Failed, check full_document.log"
-fi
-echo -n "generating complete document (6\" ebook)..."
-echo "===processing full_document_kindle.tex===" >> makelog
-xelatex -8bit --shell-escape -synctex=1 --output-directory=pdfs/ -interaction=nonstopmode "full_document_ebook".tex >> makelog
-echo "===end of full_document_kindle.tex===" >> makelog
-ret=$?
-if [ $ret -eq 0 ]; then
-	echo "OK"
-else
-	echo "[!] Failed, check full_document_ebook.log"
-fi
-echo -n "generating complete document (kindle optimized version)..."
-echo "===processing full_document_kindle_optimized.tex===" >> makelog
-xelatex -8bit --shell-escape -synctex=1 --output-directory=pdfs/ -interaction=nonstopmode "full_document_kindle_optimized".tex >> makelog
-echo "===end of full_document_kindle_optimized.tex===" >> makelog
-ret=$?
-if [ $ret -eq 0 ]; then
-	echo "OK"
-else
-	echo "[!] Failed, check full_document_kindle_optimized.log"
-fi
-echo "cleaning up output directory"
+for j in 1 2; do
+	echo -n "generating complete document, pass ${j}..."
+	echo "===processing full_document.tex===" >> makelog
+	xelatex -8bit --shell-escape -synctex=1 --output-directory=pdfs/ -interaction=nonstopmode "full_document".tex >> makelog
+	echo "===end of full_document.tex===" >> makelog
+	ret=$?
+	if [ $ret -eq 0 ]; then
+		echo "OK"
+	else
+		echo "[!] Failed, check full_document.log"
+	fi
+	echo -n "generating complete document (6\" ebook), pass ${j}..."
+	echo "===processing full_document_kindle.tex===" >> makelog
+	xelatex -8bit --shell-escape -synctex=1 --output-directory=pdfs/ -interaction=nonstopmode "full_document_ebook".tex >> makelog
+	echo "===end of full_document_kindle.tex===" >> makelog
+	ret=$?
+	if [ $ret -eq 0 ]; then
+		echo "OK"
+	else
+		echo "[!] Failed, check full_document_ebook.log"
+	fi
+	echo -n "generating complete document (kindle optimized version), pass ${j}..."
+	echo "===processing full_document_kindle_optimized.tex===" >> makelog
+	xelatex -8bit --shell-escape -synctex=1 --output-directory=pdfs/ -interaction=nonstopmode "full_document_kindle_optimized".tex >> makelog
+	echo "===end of full_document_kindle_optimized.tex===" >> makelog
+	ret=$?
+	if [ $ret -eq 0 ]; then
+		echo "OK"
+	else
+		echo "[!] Failed, check full_document_kindle_optimized.log"
+	fi
+done
+echo "cleaning up output and temp files..."
+rm ./*_stripped.tex
 rm ./pdfs/*.aux
 rm ./pdfs/*.log
 rm ./pdfs/*.gz
