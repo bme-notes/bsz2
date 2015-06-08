@@ -27,15 +27,25 @@ if [ $ret -eq 0 ]; then
 else
 	echo "[!] Failed, check full_document.log"
 fi
-echo -n "generating complete document (kindle 6\")..."
+echo -n "generating complete document (6\" ebook)..."
 echo "===processing full_document_kindle.tex===" >> makelog
-xelatex -8bit --shell-escape -synctex=1 --output-directory=pdfs/ -interaction=nonstopmode "full_document_kindle".tex >> makelog
+xelatex -8bit --shell-escape -synctex=1 --output-directory=pdfs/ -interaction=nonstopmode "full_document_ebook".tex >> makelog
 echo "===end of full_document_kindle.tex===" >> makelog
 ret=$?
 if [ $ret -eq 0 ]; then
 	echo "OK"
 else
-	echo "[!] Failed, check full_document_kindle.log"
+	echo "[!] Failed, check full_document_ebook.log"
+fi
+echo -n "generating complete document (kindle optimized version)..."
+echo "===processing full_document_kindle_optimized.tex===" >> makelog
+xelatex -8bit --shell-escape -synctex=1 --output-directory=pdfs/ -interaction=nonstopmode "full_document_kindle_optimized".tex >> makelog
+echo "===end of full_document_kindle_optimized.tex===" >> makelog
+ret=$?
+if [ $ret -eq 0 ]; then
+	echo "OK"
+else
+	echo "[!] Failed, check full_document_kindle_optimized.log"
 fi
 echo "cleaning up output directory"
 rm ./pdfs/*.aux

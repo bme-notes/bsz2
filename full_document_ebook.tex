@@ -1,4 +1,4 @@
-\documentclass[]{article}
+\documentclass[8pt]{extarticle}
 \usepackage{lmodern}
 \usepackage{amssymb}
 \usepackage{amsmath}
@@ -9,27 +9,21 @@
 \usepackage{setspace}
 \usepackage{framed}
 \usepackage{hyperref}
-\usepackage[a4paper,margin=2cm,footskip=.5cm]{geometry}
+\usepackage{breqn}
+\usepackage{microtype}
+\usepackage[a6paper,margin=1pt]{geometry}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Rn}[1]{$\mathbb{R}^{#1}$}
 \newcommand{\Und}[1]{\underline{#1}}
-\definecolor{shadecolor}{HTML}{eeeeee} %Kindle-optimized color
 \setcounter{secnumdepth}{0} %this automagically removes extra numbering toc and sections
 \renewcommand{\contentsname}{Tartalomjegyzék}
+\definecolor{shadecolor}{HTML}{eeeeee}
 \title{Bevezetés a számításelméletbe 2. tételsor}
 \author{Zsolt Hegyi}
-\date{}
+\date{\textbf{Kellemes vizsgázást!}} %hekk
 \begin{document}
 \maketitle
-\noindent A tételsor Fleiner Tamás jegyzetei, a "Számítástudomány alapjai" című könyv (Katona Gyula Y., Recski András), valamint Szeszlér Dávid fantasztikus előadásai alapján készült.
-\\
-\\
-\noindent Álljon itt egy névsor azokról, akik a megjegyzéseikkel, támogatásukkal és munkájukkal érdemben részt vettek e tételsor létrehozásában illetve javításában:
-\\
-\indent Bálint Ádám, Bereczki Márk, Bokros Bálint, Braun Márton, Hanusch Róbert, az IRC-s baráti társaságom, Koczka Tamás, Kormány Zsolt, a KSZK reszort tagjai, Müller András, Nagy "Sid" Jenő, Rostás Balázs.
-\\\\
-\noindent \textbf{Kellemes vizsgázást!} %és ne felejtsétek otthon a síkosítót...
-\tableofcontents{}
+\tableofcontents
 \newpage
 \section{1. tétel}
 \input{01_tetel_stripped}
