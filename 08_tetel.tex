@@ -13,13 +13,13 @@
 \newcommand{\Rn}[1]{$\mathbb{R}^{#1}$}
 \newcommand{\Und}[1]{\underline{#1}}
 \definecolor{shadecolor}{gray}{0.9}
-%opening 
+%opening
 \title{Bevezetés a Számításelméletbe 2.\\{\large 8. tétel}}
 \author{Hegyi Zsolt}
 \begin{document}
 \maketitle
 \begin{framed}
-MOHÓ SZÍNEZÉS Algoritmus: A mohó színezés sorbarendezi a csúcsokat ($v_1, v_2...v_n$) és a $v_i.$-hoz azon legkisebb színt rendeli, amit a ($v_1,...v_{i-1}$) szomszédokhoz még nem rendelt. A mohó színezés nem feltétlenül a legoptimálisabb színezést adja.
+MOHÓ SZÍNEZÉS Algoritmus: A mohó színezés sorba rendezi a csúcsokat ($v_1, v_2...v_n$) és a $v_i.$-hoz azon legkisebb színt rendeli, amit a ($v_1,...v_{i-1}$) szomszédokhoz még nem rendelt. A mohó színezés nem feltétlenül a legoptimálisabb színezést adja.
 \end{framed}
 \begin{framed}
 $\chi(G)$ ÉS $\Delta(G)$ VISZONYA Tétel: Minden	G gráfra teljesül, hogy
@@ -50,12 +50,12 @@ PÁROS GRÁF Definíció: Egy G gráfot \textbf{páros gráfnak} nevezünk, ha G
 PÁROSÍTÁS LÉTEZÉSE Tétel: Egy G gráf akkor és csak akkor páros gráf, ha minden G-ben lévő kör páros.
 \end{framed}
 \begin{leftbar}
-Bizonyítás: Ha G páros gráf, és C egy kör G-ben, akkor C pontjai felváltva vannak A-ban és B-ben, így $|V(C)|$ nyílván páros. Ha G minden köre páros hosszú, akkor megadhatjuk az A és B halmazt. Válasszunk egy tetszőleges v pontot, legyen ez A első pontja.  v minden szomszédját tegyük bele B-be, majd ezeknek a szomszédjait rakjuk bele A-ba. Ezt folytassuk, amíg ki nem fogyunk a pontokból. Ez biztosan jó elosztás, mivel ha például lenne A-ban két szomszédos pont, akkor léteznie kéne a gráfban páratlan körnek, így ellentmondásra jutnánk. Nem öf. gráfok esetén komponensenként hajtsuk végre.
+Bizonyítás: Ha G páros gráf, és C egy kör G-ben, akkor C pontjai felváltva vannak A-ban és B-ben, így $|V(C)|$ nyilván páros. Ha G minden köre páros hosszú, akkor megadhatjuk az A és B halmazt. Válasszunk egy tetszőleges v pontot, legyen ez A első pontja.  v minden szomszédját tegyük bele B-be, majd ezeknek a szomszédjait rakjuk bele A-ba. Ezt folytassuk, amíg ki nem fogyunk a pontokból. Ez biztosan jó elosztás, mivel ha például lenne A-ban két szomszédos pont, akkor léteznie kéne a gráfban páratlan körnek, így ellentmondásra jutnánk. Nem öf. gráfok esetén komponensenként hajtsuk végre.
 \end{leftbar}
 \begin{framed}
-KROMATIKUS SZÁM ÉS PÁROSÍTÁS KAPCSOLATA Tétel: Egy legalább egy élet tartalmazó G gráf akkor és csak akkor páros, ha $\chi(G) = 2$.
+KROMATIKUS SZÁM ÉS PÁROSÍTÁS KAPCSOLATA Tétel: Egy legalább egy élt tartalmazó G gráf akkor és csak akkor páros, ha $\chi(G) = 2$.
 \end{framed}
 \begin{leftbar}
-Ha a gráf páros, akkor az egyik oldalon lévő pontokat pirossal, másik oldal lévőeket megszínezzük kékkel. Ha a gráfnak van egy éle, akkor ennek a két végpontját már nem színezhetjük egy színűre. A színek megfelelnek a két halmaznak, amire fel tudjuk bontani a páros gráfokat.
+Ha a gráf páros, akkor az egyik oldalon lévő pontokat pirossal, másik oldalon lévőeket kékkel megszínezzük. Ha a gráfnak van egy éle, akkor ennek a két végpontját már nem színezhetjük egy színűre. A színek megfelelnek a két halmaznak, amire fel tudjuk bontani a páros gráfokat.
 \end{leftbar}
 \end{document}

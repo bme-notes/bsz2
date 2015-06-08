@@ -14,7 +14,7 @@
 \newcommand{\Rn}[1]{$\mathbb{R}^{#1}$}
 \newcommand{\Und}[1]{\underline{#1}}
 \definecolor{shadecolor}{gray}{0.9}
-%opening 
+%opening
 \title{Bevezetés a Számításelméletbe 2.\\{\large 13. tétel}}
 \author{Hegyi Zsolt}
 \begin{document}
@@ -70,6 +70,6 @@ DFS-ERDŐ Definíció: s csúcsból indítva G irányított gráfban lefuttatuk 
 DFS ÉS ACIKLIKUSSÁG Tétel: Ha G irányított gráf aciklikus, a DFS futtatásakor nem keletkezik visszél. Ha nincs visszél, akkor f(v) szerinti csökkenő sorrend a topologikus sorrend.
 \end{framed}
 \begin{leftbar}
-Bizonyítás: Ha keletkezik visszél és $e = \overrightarrow{uv}$ ilyen, akkor G irányított gráf nyilván tartalmaz irányított kört: az F DFS-erdp tartalmaz v-ből u-ba irányított utat (mert e visszél), amit e-vel kiegészítve irányított körré zárhatunk. Tegyük fel ezért, hogy nem keletkezik visszaél. Ha megmutatjuk a tétel 2. állítását, hogy a csúcsoknak a befejezési számozás szerinti fordított sorrendje topologikus rendezés, akkor ebből nyilván következik G aciklikussága is. Azt kell megmutatnunk, hogy G minden $e = \overrightarrow{uv}$ élére $f(v) < f(u)$. Mivel feltettük, hogy visszaél nem keletkezett, ezért e lehet faél, keresztél vagy előreél. Ha e faél vagy előreél, akkor a DFS eljárás során u első aktívvá válásakor az u befejezéséig tartó szakasza során érte el v-t, így ennek során kellett befejeznie azt, tehát a v-t előbb fejezte be u-nál, tehát $f(v) < f(u)$. Ha pedig e keresztél, akkor e vizsgálatának a pillanatában f(v) már kapott értéket, u viszont épp aktív csúcs volt, így ekkor még $f(u) = *$ volt. Mivel az eljárás egyre nagyobb befejezési számokat ad, ezért $f(v) < f(u)$ erre is teljesülni fog.
+Bizonyítás: Ha keletkezik visszél és $e = \overrightarrow{uv}$ ilyen, akkor G irányított gráf nyilván tartalmaz irányított kört: az F DFS-erdő tartalmaz v-ből u-ba irányított utat (mert e visszél), amit e-vel kiegészítve irányított körré zárhatunk. Tegyük fel ezért, hogy nem keletkezik visszaél. Ha megmutatjuk a tétel 2. állítását, hogy a csúcsoknak a befejezési számozás szerinti fordított sorrendje topologikus rendezés, akkor ebből nyilván következik G aciklikussága is. Azt kell megmutatnunk, hogy G minden $e = \overrightarrow{uv}$ élére $f(v) < f(u)$. Mivel feltettük, hogy visszaél nem keletkezett, ezért e lehet faél, keresztél vagy előreél. Ha e faél vagy előreél, akkor a DFS eljárás során u első aktívvá válásakor az u befejezéséig tartó szakasza során érte el v-t, így ennek során kellett befejeznie azt, tehát a v-t előbb fejezte be u-nál, tehát $f(v) < f(u)$. Ha pedig e keresztél, akkor e vizsgálatának a pillanatában f(v) már kapott értéket, u viszont épp aktív csúcs volt, így ekkor még $f(u) = *$ volt. Mivel az eljárás egyre nagyobb befejezési számokat ad, ezért $f(v) < f(u)$ erre is teljesülni fog.
 \end{leftbar}
 \end{document}

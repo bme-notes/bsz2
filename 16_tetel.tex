@@ -14,15 +14,15 @@
 \newcommand{\Rn}[1]{$\mathbb{R}^{#1}$}
 \newcommand{\Und}[1]{\underline{#1}}
 \definecolor{shadecolor}{gray}{0.9}
-%opening 
+%opening
 \title{Bevezetés a Számításelméletbe 2.\\{\large 13. tétel}}
 \author{Hegyi Zsolt}
 \begin{document}
 \maketitle
 \url{http://cs.bme.hu/bsz2/dfs.pdf}
 \begin{framed}
-FLOYD-ALGORITMUS Algoritmus: A Floyd-algoritmus a gráfban lévő összes pontpár közt megadja a távolságokat. Ezt a Ford-algoritmussal is megtehettük volna, viszont annak a futási ideje, az összes pontból kiindítva, $c\cdot ev^2$-el lett volna arányos. A Floyd-algoritmus ezt megteszi mindössze $c\cdot v^3$ alatt. A sikeres futás feltétele az, hogy a gráfban NE legyen negatív összsúlyú kör.\\
-T.f.h. G irányított gráf a $V(G) = {v_1, v_2,..., v_n}$ pontokon. A $v_i$-ből $v_j$-be mutató él hosszát, azaz súlyát, jelöljük l(i,j)-vel és t.f.h. a gráfban nincs negatív összsúlyú irányított kör. Ha nincs él $v_i$-ből $v_j$-be, akkor legyen $l(i,j) = \infty$. Továbbá $l(i,i) = 0$, minden $i = 1, 2,..., n$-re. Jelölje $d^{(k)}(i,j)$ a $v_i$-ből $v_j$-be vezető legrövidebb olyan irányított út hosszát, mely csak k-nál szigorúan kisebb pontokon megy át. Így $d^{(1)}(i,j) = l(i,j)$ és $d^{(n+1)}$ lesz az eredetileg keresett legrövidebb irányított út hossza lesz $v_i$-ből $v_j$-be. Világos, hogy a $v_i$-ből $v_j$-be vezető legrövidebb olyan út, ami csak $k + 1$-nél szigorúan kisebb pontokon megy át, vagy átmegy $v_k$-n, vagy nem. Ha nem megy át, akkor $d^{(k+1)}(i,j) = d^{(k)}(i,j)$. Ha viszont átmegy, akkor $d^{(k+1)}(i,j) = d^{(k)}(i,k) + d^{(k)}(k,j)$. Csak azt kell megnéznünk, mely esetben találunk rövidebb utat. Ezek után már világos, hogy az algoritmus lépésszáma $c\cdot v^3$-al arányos.
+FLOYD-ALGORITMUS Algoritmus: A Floyd-algoritmus a gráfban lévő összes pontpár közt megadja a távolságokat. Ezt a Ford-algoritmussal is megtehettük volna, viszont annak a futási ideje az összes pontból kiindítva $c\cdot ev^2$-tel lett volna arányos. A Floyd-algoritmus ezt megteszi mindössze $c\cdot v^3$ alatt. A sikeres futás feltétele az, hogy a gráfban NE legyen negatív összsúlyú kör.\\
+T.f.h. G irányított gráf a $V(G) = {v_1, v_2,..., v_n}$ pontokon. A $v_i$-ből $v_j$-be mutató él hosszát, azaz súlyát, jelöljük l(i,j)-vel és t.f.h. a gráfban nincs negatív összsúlyú irányított kör. Ha nincs él $v_i$-ből $v_j$-be, akkor legyen $l(i,j) = \infty$. Továbbá $l(i,i) = 0$, minden $i = 1, 2,..., n$-re. Jelölje $d^{(k)}(i,j)$ a $v_i$-ből $v_j$-be vezető legrövidebb olyan irányított út hosszát, mely csak k-nál szigorúan kisebb pontokon megy át. Így $d^{(1)}(i,j) = l(i,j)$ és $d^{(n+1)}$ lesz az eredetileg keresett legrövidebb irányított út hossza lesz $v_i$-ből $v_j$-be. Világos, hogy a $v_i$-ből $v_j$-be vezető legrövidebb olyan út, ami csak $k + 1$-nél szigorúan kisebb pontokon megy át, vagy átmegy $v_k$-n, vagy nem. Ha nem megy át, akkor $d^{(k+1)}(i,j) = d^{(k)}(i,j)$. Ha viszont átmegy, akkor $d^{(k+1)}(i,j) = d^{(k)}(i,k) + d^{(k)}(k,j)$. Csak azt kell megnéznünk, mely esetben találunk rövidebb utat. Ezek után már világos, hogy az algoritmus lépésszáma $c\cdot v^3$-bel arányos.
 \\
 \textbf{Az algoritmus:}
 \begin{itemize}
@@ -48,7 +48,7 @@ Bizonyítás: Legyen P a leghosszabb irányított utak egyike, v legyen a végpo
 TOPOLOGIKUS ELRENDEZÉS Tétel: Ha egy G irányított gráfhoz létezik topologikus elrendezés, akkor az aciklikus.
 \end{framed}
 \begin{leftbar}
-Bizonyítás: A szükségesset triviális bizonyítani, viszont az elégségességet nem. Az előbbi lemma állítását felhasználjuk a bizonyításhoz. Keressünk ebben a gráfban egy nyelőcsúcsot, ez a $v_n$ csúcs. Ezt dobjuk ki. Ekkor $G\backslash{v_n}$-ben $v_{n-1}$ lesz nyelő. Ezt is dobjuk ki. Ismételjük, amíg semmi se marad. Amit "kidobtunk", ha fordítva sorba rendezzük (tehát a legvégén lesz az először kidobott elem), akkor az egy topologikus sorbarendezése lesz G-nek. A DFS is generál egy ilyet a futása során, ha nincs benne visszaél (tehát ha nincs benne kör).
+Bizonyítás: A szükségeset triviális bizonyítani, viszont az elégségességet nem. Az előbbi lemma állítását felhasználjuk a bizonyításhoz. Keressünk ebben a gráfban egy nyelőcsúcsot, ez a $v_n$ csúcs. Ezt dobjuk ki. Ekkor $G\backslash{v_n}$-ben $v_{n-1}$ lesz nyelő. Ezt is dobjuk ki. Ismételjük, amíg semmi se marad. Amit "kidobtunk", ha fordítva sorba rendezzük (tehát a legvégén lesz az először kidobott elem), akkor az egy topologikus sorbarendezése lesz G-nek. A DFS is generál egy ilyet a futása során, ha nincs benne visszaél (tehát ha nincs benne kör).
 \end{leftbar}
 \begin{framed}
 LEGRÖVIDEBB ÉS LEGHOSSZABB ÚT KERESÉSE DAG-BAN Algoritmus: A topologikus rendezést használva lineáris időben, tehát $n+e$-vel arányos lépésszámban megoldható a leghosszabb/legrövidebb út keresése.
