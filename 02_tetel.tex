@@ -13,7 +13,7 @@
 \newcommand{\Rn}[1]{$\mathbb{R}^{#1}$}
 \newcommand{\Und}[1]{\underline{#1}}
 \definecolor{shadecolor}{gray}{0.9}
-%opening 
+%opening
 \title{Bevezetés a Számításelméletbe 2.\\{\large 2. tétel}}
 \author{Hegyi Zsolt}
 \begin{document}
@@ -31,7 +31,7 @@ EGYSZERŰ GRÁF Definíció: Azokat a gráfokat, melyek nem tartalmaznak huroké
 %SZOMSZÉDOS ÉLEK, PONTOK Definíció: Két él akkor \textbf{szomszédos}, ha legalább egy pontban megosztoznak. Hasonlóan, két pont akkor szomszédos, ha él összeköti őket. Ha egy pont egy él végpontja, akkor azt mondjuk, hogy a pont \textbf{illeszkedik} az élre.
 %\end{shaded}
 %\begin{shaded}
-%FOKSZÁM Definíció: Egy pontra illeszkedő élek számát a pont \textbf{fokszámának} nevezzük. Amennyiben egy pont fokszáma 0, akkor azt \textbf{izolált pontnak} nevezzük. A v pont fokszámát d(v)-vel jelöljük. A maximális fokszámot $\Delta$-val (nagy delta), a minimálisat pedig $\delta$-val (kis delta) jelöljük. 
+%FOKSZÁM Definíció: Egy pontra illeszkedő élek számát a pont \textbf{fokszámának} nevezzük. Amennyiben egy pont fokszáma 0, akkor azt \textbf{izolált pontnak} nevezzük. A v pont fokszámát d(v)-vel jelöljük. A maximális fokszámot $\Delta$-val (nagy delta), a minimálisat pedig $\delta$-val (kis delta) jelöljük.
 %\end{shaded}
 \begin{shaded}
 KOMPLEMENTER GRÁF Definíció: Egy G gráf \textbf{komplementerén} azt a $\bar{G}$ gráfot értjük, amelyet akkor kapunk, ha a G-t a $K_{v(G)}$ részgráfjának tekintjük és $\bar{G}$-ben azon pontpárok vannak összekötve, amelyek G-ben nincsenek.
@@ -52,7 +52,7 @@ FESZÍTETT RÉSZGRÁF Definíció: Ha E' pontosan azokból az E-beli élekből �
 ÉLSOROZAT, ÚT, KÖR Definíció: Egy $(v_0, e_1, v_1 ... v_{k-1}, e_k, v_k)$ sorozatot \textbf{élsorozatnak} nevezzük, ha $e_i$ a $v_{i-1}$-et és $v_i$-t összekötő él. Ha $v_0 = v_k$, akkor az élsorozat zárt. Ha a csúcsok mind különbözőek, akkor egy \textbf{útról} beszélünk. Ha a csúcsok mind különbözőek és az élsorozat zárt, akkor pedig egy \textbf{körről}.
 \end{shaded}
 %\begin{framed}
-%EKVIVALENCIA RELÁCIÓ Tétel: Definiáljuk úgy a $p \equiv q$ relációt, hogy $p \equiv q$ akkor és csak akkor, ha $p,q\in V(G)$ és vezet út p és q közt, vagy p = q, ez egy ekvivalencia reláció.  
+%EKVIVALENCIA RELÁCIÓ Tétel: Definiáljuk úgy a $p \equiv q$ relációt, hogy $p \equiv q$ akkor és csak akkor, ha $p,q\in V(G)$ és vezet út p és q közt, vagy p = q, ez egy ekvivalencia reláció.
 %\end{framed}
 %\begin{leftbar}
 %Bizonyítás: Reflexivitás és szimmetria triviális. Tranzitivitás: Legyen két utunk, p-t q-val (($p, e_0, p_1, e_1...q$)) és q-t r-rel (($q, f_0, q_1, f_1...r$)) összekötő út. Legyen $p_i$ a legkisebb indexű p, ami előfordul q-k között is. Mondjuk, hogy $p_i = q_j$. Ekkor a ($p, e_0, p_1, e_1...p_i, f, q_{j+1},...r$) egy p-t és r-t összekötő út.
@@ -61,7 +61,7 @@ FESZÍTETT RÉSZGRÁF Definíció: Ha E' pontosan azokból az E-beli élekből �
 ÖSSZEFÜGGŐSÉG Definíció: G gráf \textbf{összefüggő}, ha bármely 2 csúcs között létezik élsorozat vagy út.
 \end{shaded}
 \begin{shaded}
-KOMPONENS Definíció: G gráf komponense olyan H feszített részgráfja G-nek, amire teljesül, hogy H összefüggő és bárhogy egy további csúcsot hozzáteszink, már nem összefüggő feszített részgráfot kapunk.
+KOMPONENS Definíció: G gráf komponense olyan H feszített részgráfja G-nek, amire teljesül, hogy H összefüggő és bárhogy egy további csúcsot hozzáteszünk, már nem összefüggő feszített részgráfot kapunk.
 \end{shaded}
 \begin{shaded}
 FA Definíció: Az összefüggő körmentes gráfokat \textbf{fának} nevezzük. Amennyiben körmentes egy gráf, de nem összefüggő (tehát több fából áll), akkor azt \textbf{erdőnek} nevezzük.

@@ -15,7 +15,7 @@
 \newcommand{\Rn}[1]{$\mathbb{R}^{#1}$}
 \newcommand{\Und}[1]{\underline{#1}}
 \definecolor{shadecolor}{gray}{0.9}
-%opening 
+%opening
 \title{Bevezetés a Számításelméletbe 2.\\{\large 3. tétel}}
 \author{Hegyi Zsolt}
 \begin{document}
@@ -38,7 +38,7 @@ Bemenete a BFS algoritmusnak: Egy G gráf és egy $s \in V$ csúcs.
 \textbf{Az algoritmus:}
 \begin{itemize}
 \item{\textbf{0.}} $j = 1$, $k = 1$, $b(1) = s$, $t(s) = 0$, minden $v \neq s$-re $t(v) = *$
-\item{\textbf{1.}} HA a b(k) csúcsnak van olyan v szomszédja, amelyre $t(v) = *$, AKKOR: 
+\item{\textbf{1.}} HA a b(k) csúcsnak van olyan v szomszédja, amelyre $t(v) = *$, AKKOR:
 	\begin{itemize}
 	\item $j = j + 1$
 	\item $b(j) = v$
@@ -77,6 +77,6 @@ A következő állítást teljes indukcióval bizonyítjuk be. Legyen H egy élh
 Az első lépésnél az állítás igaz, hiszen H üres, és minden gráfnak részgráfja az üres gráf. A k-adik lépésnél vegyük az állítást igaznak és legyen T a minimális súlyú feszítőfa, ami tartalmazza H-t. Ha az algoritmus által kiválasztott következő él, e, szintúgy benne van a T-ben, akkor az állítás szintúgy igaz a $H + {e}$ élhalmazra. Különben $T + {e}$ élhalmazban létezik egy C kör, és ezen kívül még létezik egy olyan f él, ami befejezi a C kört, de nem része H-nak. (Ha nem létezne f, akkor e-t már nem vehettük volna be, mivel kört produkált volna $H + f$-ben). Ekkor $T - {f} + {e}$ szintúgy egy fa, és azonos az összsúlya T-jével, hiszen T-nek minimális az összsúlya, és f-nek a súlya nem lehet kisebb, mint e-nek, hiszen akkor e helyett az f élet választotta volna az algoritmus. Tehát $T - {f} + {e}$ egy minimális súlyú feszítőfa. Ezek alapján az indukciós feltevést bebizonyítottuk, és az állítás igaz, amikor H egy feszítőfává válik, ami csak akkor igaz, ha H egy minimális súlyú feszítőfa.
 \end{leftbar}
 \begin{framed}
-Alkalmazás: Pontok - városok, élek - utak, súly - hossz; Villamos hálózatok, Kirchoff-törvények, áramköri elemekhez súlyokat párosítunk
+Alkalmazás: Pontok - városok, élek - utak, súly - hossz; Villamos hálózatok, Kirchhoff-törvények, áramköri elemekhez súlyokat párosítunk
 \end{framed}
 \end{document}

@@ -13,7 +13,7 @@
 \newcommand{\Rn}[1]{$\mathbb{R}^{#1}$}
 \newcommand{\Und}[1]{\underline{#1}}
 \definecolor{shadecolor}{gray}{0.9}
-%opening 
+%opening
 \title{Bevezetés a Számításelméletbe 2.\\{\large 13. tétel}}
 \author{Hegyi Zsolt}
 \begin{document}
@@ -43,10 +43,10 @@ MENGER Tétel: Ha G egy irányítatlan gráf, $s,t\in V(G)$ két nem szomszédos
 Bizonyítás: Előző tételhez hasonlóan.
 \end{leftbar}
 \begin{shaded}
-TÖBBSZÖRÖS ÖSSZEFÜGGŐSÉG Definíció: Egy G gráfot \textbf{k-szorosan összefüggőnek} nevezünk, ha legalább k+1 pontja van, és akárhogy hagyunk el belőle k-nál kevesebb pontot, a maradék gráf összefüggő marad. A gráf \textbf{k-szorosan élösszefüggő}, ha akárhogy hagyunk el belőle k-nál kevesebb élet, összefüggő gráfot kapunk. A k-szoros összefüggőség "erősebb" a k-szoros élösszefüggőségnél.
+TÖBBSZÖRÖS ÖSSZEFÜGGŐSÉG Definíció: Egy G gráfot \textbf{k-szorosan összefüggőnek} nevezünk, ha legalább k+1 pontja van, és akárhogy hagyunk el belőle k-nál kevesebb pontot, a maradék gráf összefüggő marad. A gráf \textbf{k-szorosan élösszefüggő}, ha akárhogy hagyunk el belőle k-nál kevesebb élt, összefüggő gráfot kapunk. A k-szoros összefüggőség "erősebb" a k-szoros élösszefüggőségnél.
 \end{shaded}
 \begin{framed}
-A G gráf akkor és csak akkor k-szorosan összefüggő, ha legalább $k + 1$ pontja van, és bármely két pontja között létezik k pontidegen út. Hasonlóan, G akkor és csak akkor k-szorosan élösszefüggő, ha bármely két pntja között létezik k élidegen út.
+A G gráf akkor és csak akkor k-szorosan összefüggő, ha legalább $k + 1$ pontja van, és bármely két pontja között létezik k pontidegen út. Hasonlóan, G akkor és csak akkor k-szorosan élösszefüggő, ha bármely két pontja között létezik k élidegen út.
 \end{framed}
 \begin{leftbar}
 Bizonyítás: Először a második részt bizonyítjuk. Ha G k-szorosan élösszefüggő, akkor az u-v utakat lefogó élek minimális száma nyilván legalább k. Így Menger idevágó tétele szerint élidegen u-v utak maximális száma legalább k. Ennek a résznek a megfordítása is következik a Menger tételből. Ha G k-szorosan összefüggő, akkor bármely két, $u,v\in V(G)$ pontot választva legalább k darab, u-tól és v-től különböző pontra van szükség ahhoz, hogy lefogjuk az összes u és v közötti utat (u-v éltől eltekintve). Így az utolsó Menger tétel alapján létezik u és v között k pontidegen út. Ha G bármely két pontja között létezik k pontidegen út, akkor nyilván nem lehet ezeket k-nál kevesebb ponttal lefogni, tehát a k-szoros összefüggőség következik ebből.
@@ -55,6 +55,6 @@ Bizonyítás: Először a második részt bizonyítjuk. Ha G k-szorosan élössz
 MENGER Tétel: A legalább 3 pontú G gráf akkor és csak akkor 2-szeresen összefüggő, ha tetszőleges két pontján át vezet kör. Igaz az is, hogy akkor és csak akkor 2-szeresen összefüggő, ha bármely két élén át vezet kör.
 \end{framed}
 \begin{leftbar}
-Bizonyítás: Az első állítás triviális, hiszen két pontidegen u-v út együtt egy kört ad, amely átmegy u-n és v-n. A második állítás pedig az elsőből következik. Lássuk be, hogy ha G 2-szeresen összefüggő, akkor e, f éleken keresztül van kör. Vegyünk fel két pontot úgy, hogy ezekkel osszuk két részre az e illetve az f élet. Az így kapott gráf is 2-szeresen összefüggő. Az első állítás szeromt ezen a két ponton át is megy kör, és ez a kör az eredeti gráfban átmegy e-n és f-en. A megfordítás ismét nyilvávaló. 
+Bizonyítás: Az első állítás triviális, hiszen két pontidegen u-v út együtt egy kört ad, amely átmegy u-n és v-n. A második állítás pedig az elsőből következik. Lássuk be, hogy ha G 2-szeresen összefüggő, akkor e, f éleken keresztül van kör. Vegyünk fel két pontot úgy, hogy ezekkel osszuk két részre az e illetve az f élt. Az így kapott gráf is 2-szeresen összefüggő. Az első állítás szerint ezen a két ponton át is megy kör, és ez a kör az eredeti gráfban átmegy e-n és f-en. A megfordítás ismét nyilvávaló.
 \end{leftbar}
 \end{document}

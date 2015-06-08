@@ -13,7 +13,7 @@
 \newcommand{\Rn}[1]{$\mathbb{R}^{#1}$}
 \newcommand{\Und}[1]{\underline{#1}}
 \definecolor{shadecolor}{gray}{0.9}
-%opening 
+%opening
 \title{Bevezetés a Számításelméletbe 2.\\{\large 11. tétel}}
 \author{Hegyi Zsolt}
 \begin{document}
@@ -32,7 +32,7 @@ Vegyünk egy páros gráfot A, B pontosztállyal, ami k-reguláris. Először l�
 %Az $X = A$ esetre ugyanezzel a módszerrel $|A| = |B|$, mert $N(A) = B$ és így az A-beli pontokból kiinduló élekből N(A) minden pontjába pontosan k él fut be. Ebből Frobenius tétellel kijön a teljes párosítás.
 \end{leftbar}
 \begin{shaded}
-ÉLSZÍNEZÉS Definíció: Egy G gráf élei \textbf{k színnel színezhetőek}, ha minden élet ki lehet színezni k színnel úgy, hogy bármely két szomszédos él színe különböző legyen. G \textbf{élkromatikus száma} $\chi_e(G) = k$, ha G élei k színnel színezhetőek, de $k - 1$-el már nem.
+ÉLSZÍNEZÉS Definíció: Egy G gráf élei \textbf{k színnel színezhetőek}, ha minden élt ki lehet színezni k színnel úgy, hogy bármely két szomszédos él színe különböző legyen. G \textbf{élkromatikus száma} $\chi_e(G) = k$, ha G élei k színnel színezhetőek, de $k - 1$-gyel már nem.
 \end{shaded}
 \begin{framed}
 VIZING-TÉTEL Tétel: Ha G egyszerű gráf, akkor $\chi_e(G) \leq \Delta(G) + 1$. Bizonyítás $\emptyset$.
@@ -47,7 +47,7 @@ Bizonyítás: Az egy csúcsból induló élek egymástól különböző színt k
 KŐNIG-TÉTEL Tétel: Ha G páros gráf, akkor $\chi_e(G) = \Delta(G)$
 \end{framed}
 \begin{leftbar}
-Bizonyítás: Elég azt igazolni, hogy $\chi_e(G) \leq \Delta(G)$ az előző állítás miatt. Létezik olyan H páros gráf, melynek G részgráfja, és H minden csúcsának fokszáma $\Delta(G)$. Ha sikerül a $\Delta(G)$-reguláris H gráf éleit $\Delta(G)$ színnel kiszínezni, akkor egyúttal a G részgráf éleinek is megkapjuk egy ugyanennyi színnek való színezését. H gráf élszínezéséhez elegendő azt megmutatni, hogy tetszőleges reguláris páros gráfban létezik teljes párosítás, ezt pedig már bizonyítottuk egy fentebbi tételben. 
+Bizonyítás: Elég azt igazolni, hogy $\chi_e(G) \leq \Delta(G)$ az előző állítás miatt. Létezik olyan H páros gráf, melynek G részgráfja, és H minden csúcsának fokszáma $\Delta(G)$. Ha sikerül a $\Delta(G)$-reguláris H gráf éleit $\Delta(G)$ színnel kiszínezni, akkor egyúttal a G részgráf éleinek is megkapjuk egy ugyanennyi színnel való színezését. H gráf élszínezéséhez elegendő azt megmutatni, hogy tetszőleges reguláris páros gráfban létezik teljes párosítás, ezt pedig már bizonyítottuk egy fentebbi tételben.
 \end{leftbar}
 
 \end{document}

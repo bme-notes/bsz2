@@ -13,7 +13,7 @@
 \newcommand{\Rn}[1]{$\mathbb{R}^{#1}$}
 \newcommand{\Und}[1]{\underline{#1}}
 \definecolor{shadecolor}{gray}{0.9}
-%opening 
+%opening
 \title{Bevezetés a Számításelméletbe 2.\\{\large 10. tétel}}
 \author{Hegyi Zsolt}
 \begin{document}
@@ -22,31 +22,31 @@
 PÁROSÍTÁS Definíció: \textbf{Párosításnak}, vagy \textbf{részleges párosításnak} nevezünk egy M élhalmazt, ha semelyik két élnek közös pontja. Az ilyen éleket független éleknek nevezzük. A részleges párosítás lefedi éleinek végpontjait. Egy párosítás \textbf{teljes párosítás}, ha a gráf minden pontját lefedi.
 \end{shaded}
 \begin{shaded}
-ALTERNÁLÓ ÚT Definíció: Hozzunk létre egy részleges párosítást egy páros gráfon belül, ekkor a párosítás során bevett élek legyenek az X élhalmaz elemei. Alternáló útnak nevezünk olyan élsorozatot, ami felváltva tartalmaz nem-X beli és X-beli élt. 
+ALTERNÁLÓ ÚT Definíció: Hozzunk létre egy részleges párosítást egy páros gráfon belül, ekkor a párosítás során bevett élek legyenek az X élhalmaz elemei. Alternáló útnak nevezünk olyan élsorozatot, ami felváltva tartalmaz nem-X beli és X-beli élt.
 \end{shaded}
 \begin{shaded}
-JAVÍTÓ ÚT Definíció: G(A,B,E) páros gráfban van már párosítás (nem teljes). P út \textbf{javítóút}, ha párosítatlan A-ból indul, párosítatlan B-be érkezik és P alternáló út. Ha ez a javítóút elkészül, úgy tudjuk bevenni, ha a "nem-X"-beli éleket bevesszük és a régebben X-beli éleket pedig nem.
+JAVÍTÓ ÚT Definíció: G(A,B,E) páros gráfban van már párosítás (nem teljes). P út \textbf{javító út}, ha párosítatlan A-ból indul, párosítatlan B-be érkezik és P alternáló út. Ha ez a javító út elkészül, úgy tudjuk bevenni, hogy a "nem-X"-beli éleket bevesszük és a régebben X-beli éleket pedig nem.
 \end{shaded}
 \begin{shaded}
-JAVÍTÓUTAS ALGORITMUS (MÓDOSÍTOTT BFS) Algoritmus: Bemenetként kapjuk meg M párosítást valamint G(A,B,E) gráfot. Ha létezik ebben a gráfban javítóút, akkor azt vegyük be, ezt folytassuk addig, amíg létre tudunk hozni újabb és újabb javítóutakat. Ha már nem tudunk újabb élt bevenni a párosításba, akkor álljunk le. Ebben az esetben már maximális a párosítás. Az algoritmus mohó módon működik.
+JAVÍTÚ UTAS ALGORITMUS (MÓDOSÍTOTT BFS) Algoritmus: Bemenetként kapjuk meg M párosítást valamint G(A,B,E) gráfot. Ha létezik ebben a gráfban javító út, akkor azt vegyük be, ezt folytassuk addig, amíg létre tudunk hozni újabb és újabb javító utakat. Ha már nem tudunk újabb élt bevenni a párosításba, akkor álljunk le. Ebben az esetben már maximális a párosítás. Az algoritmus mohó módon működik.
 \end{shaded}
 \begin{framed}
 KŐNIG-TÉTEL Tétel: Ha G páros gráf, akkor $\nu(G) = \tau(G)$. Ha G-ben nincs izolált pont, akkor $\alpha(G) = \rho(G)$ is teljesül.
 \end{framed}
 \begin{leftbar}
-Bizonyítás: Először az első állítást bizonyítjuk. Legyen M egy olyan párosítás, mely a javító utak módszerével már nem bővíthető. Legyen $U = A - X$, T' azon B-beli pontok halmaza, amelyek élerhetőek U-ból alternáló úton. T pedi ezek párjainak halmaza. Legyen $Y = T' \cup (X - T)$. Ennek a halmaznak éppen $|M|$ pontja van. Ezek minden élet lefognak, hiszen $N(T\cup U) = T'$, ugyanúgy, mint Hall-tétel bizonyításában. Így $\tau(G) \leq |M| \leq \nu(G)$ amiből viszont már következik az állítás a CUCCOS VISZONY (\textit{8. tétel}) tétel alapján. Most már könnyű belátni a második állítást is, Gallai két tétele miatt ugyanis $\nu(G) + \rho(G) = \tau(G) + \alpha(G)$ és imént beláttuk, hogy $\nu(G) = \tau(G)$.
+Bizonyítás: Először az első állítást bizonyítjuk. Legyen M egy olyan párosítás, mely a javító utak módszerével már nem bővíthető. Legyen $U = A - X$, T' azon B-beli pontok halmaza, amelyek élerhetőek U-ból alternáló úton. T pedig ezek párjainak halmaza. Legyen $Y = T' \cup (X - T)$. Ennek a halmaznak éppen $|M|$ pontja van. Ezek minden élt lefognak, hiszen $N(T\cup U) = T'$, ugyanúgy, mint a Hall-tétel bizonyításában. Így $\tau(G) \leq |M| \leq \nu(G)$ amiből viszont már következik az állítás a CUCCOS VISZONY (\textit{8. tétel}) tétel alapján. Most már könnyű belátni a második állítást is, Gallai két tétele miatt ugyanis $\nu(G) + \rho(G) = \tau(G) + \alpha(G)$ és imént beláttuk, hogy $\nu(G) = \tau(G)$.
 \end{leftbar}
 \begin{framed}
 HALL-TÉTEL Tétel: Egy $G = (A,B)$ páros gráfban akkor és csak akkor van A-t lefedő párosítás, ha minden $X \subseteq A$ részhalmazra $|N(X)| \geq |X|$ (ezt \textbf{Hall-feltételnek} nevezzük).
 \end{framed}
 \begin{leftbar}???
-Bizonyítás: Ha létezik A-t fedő párosítás, akkor minden A-beli pontnak különböző párja van, tehát tetszőleges $X \subseteq A$-ra. Azt kell igaolnunk, hogy $\nu(G) \geq |A|$. Legeyen U minimális (azaz $\tau(G)$ méretű) lefogó ponthalmaz, és legyen $U_A :=U\cap A,U_B:=U\cap B$. Mivel U lefogja az $X := A \backslash U_A$-ból induló téleket, ezért $N(X) \subseteq U_B$, tehát $|(NX)| \leq |U_B|$. A Kőnig-tétel ill. a Hall-feltétel miatt
+Bizonyítás: Ha létezik A-t fedő párosítás, akkor minden A-beli pontnak különböző párja van, tehát tetszőleges $X \subseteq A$-ra. Azt kell igazolnunk, hogy $\nu(G) \geq |A|$. Legyen U minimális (azaz $\tau(G)$ méretű) lefogó ponthalmaz, és legyen $U_A :=U\cap A,U_B:=U\cap B$. Mivel U lefogja az $X := A \backslash U_A$-ból induló éleket, ezért $N(X) \subseteq U_B$, tehát $|(NX)| \leq |U_B|$. A Kőnig-tétel ill. a Hall-feltétel miatt
 $$\nu(G) = \tau(G) = |U| = |U_A| + |U_B| \geq |U_A| + |N(X)| \geq |U_A| + |X| = |A|$$
 \end{leftbar}
 \begin{framed}
 FROBENIUS-TÉTEL Tétel: EGy $G = (A,B)$ páros gráfban akkor és csak akkor van teljes párosítás, ha $|A| = |B|$ és $|N(X)| \geq |X|$ minden $X \subseteq A$-ra.
 \end{framed}
 \begin{leftbar}
-A két feltétel szükségessége nyílvánvaló. Ha viszont teljesül a második feltétel, akkor a Hall-tétel miatt van A-t fedő párosítás. Mivel azonban $|A| = |B|$, ezért ez lefedi B-t is.
+A két feltétel szükségessége nyilvánvaló. Ha viszont teljesül a második feltétel, akkor a Hall-tétel miatt van A-t fedő párosítás. Mivel azonban $|A| = |B|$, ezért ez lefedi B-t is.
 \end{leftbar}
 \end{document}

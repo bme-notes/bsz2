@@ -13,25 +13,25 @@
 \newcommand{\Rn}[1]{$\mathbb{R}^{#1}$}
 \newcommand{\Und}[1]{\underline{#1}}
 \definecolor{shadecolor}{gray}{0.9}
-%opening 
+%opening
 \title{Bevezetés a Számításelméletbe 2.\\{\large 13. tétel}}
 \author{Hegyi Zsolt}
 \begin{document}
 \maketitle
 \begin{framed}
-Az algoritmus okfutása során a következőek tartjuk számon:
+Az algoritmus lefutása során a következőket tartjuk számon:
 \begin{itemize}
-\item[] l(e) - az e él hossz
-\item[] d(v) - a v pontba az s kezdőpontból eddigi legrövidebb út hossza. d(s) = 0. 
+\item[] l(e) - az e él hossza
+\item[] d(v) - a v pontba az s kezdőpontból eddigi legrövidebb út hossza. d(s) = 0.
 \end{itemize}
 Kulcslépések:
 \begin{itemize}
-\item[\textbf{(*)}]$d(s) = 0$, minden $v \neq s$-re $d(u) = \infty$ 
+\item[\textbf{(*)}]$d(s) = 0$, minden $v \neq s$-re $d(u) = \infty$
 \item[\textbf{(**)}]Ha x-ből vezet egy e él y-ba és $d(y) > d(x) + l(e)$, akkor $d(y) = d(x) + l(e)$.
 \end{itemize}
 \end{framed}
 \begin{framed}
-DIJKSTRA-ALGORITMUS Algoritmus: 
+DIJKSTRA-ALGORITMUS Algoritmus:
 \textbf{Az algoritmus:}
 \begin{itemize}
 \item[\textbf{0.}] $S = {s}, T = V\backslash {s}$ és \textbf{(*)}.
@@ -39,7 +39,7 @@ DIJKSTRA-ALGORITMUS Algoritmus:
 \item[\textbf{2.}] A T-beli pontok közül legyen $v_0$ az, amelyiken a d(v) érték a legkisebb. Tegyük át $v_0$-t T-ből S-be.
 \item[\textbf{3.}] Ha T üres, \textbf{STOP}. Ha nem, vissza \textbf{1.} lépéshez.
 \end{itemize}
-Az algoritmus lépésszáma $c\cdot n^3)$, mivel az 1. lépés k.-ik elvégzésekor $|S| = k,\,\, |T| = v - k$, így az összes \textbf{(**)} hívások száma $\sum k(v-k) = \sum kv - \sum k^2$ és ennek az összege $k^3$-höz közelít.\\Az algoritmusnak létezik optimalizáltabb változata, $c\cdot n^2$ lépésszámmal.\\
+Az algoritmus lépésszáma $c\cdot n^3)$, mivel az 1. lépés k. elvégzésekor $|S| = k,\,\, |T| = v - k$, így az összes \textbf{(**)} hívások száma $\sum k(v-k) = \sum kv - \sum k^2$ és ennek az összege $k^3$-höz közelít.\\Az algoritmusnak létezik optimalizáltabb változata, $c\cdot n^2$ lépésszámmal.\\
 \textbf{Az optimalizált algoritmus:}
 \begin{itemize}
 \item[\textbf{0.}] $S = {s}, T = V\backslash {s}$ és \textbf{(*)}, valamint $v_0 = s$.
