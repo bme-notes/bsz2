@@ -28,7 +28,7 @@ ALTERNÁLÓ ÚT Definíció: Hozzunk létre egy részleges párosítást egy pá
 JAVÍTÓ ÚT Definíció: G(A,B,E) páros gráfban van már párosítás (nem teljes). P út \textbf{javító út}, ha párosítatlan A-ból indul, párosítatlan B-be érkezik és P alternáló út. Ha ez a javító út elkészül, úgy tudjuk bevenni, hogy a "nem-X"-beli éleket bevesszük és a régebben X-beli éleket pedig nem.
 \end{shaded}
 \begin{shaded}
-JAVÍTÚ UTAS ALGORITMUS (MÓDOSÍTOTT BFS) Algoritmus: Bemenetként kapjuk meg M párosítást valamint G(A,B,E) gráfot. Ha létezik ebben a gráfban javító út, akkor azt vegyük be, ezt folytassuk addig, amíg létre tudunk hozni újabb és újabb javító utakat. Ha már nem tudunk újabb élt bevenni a párosításba, akkor álljunk le. Ebben az esetben már maximális a párosítás. Az algoritmus mohó módon működik.
+JAVÍTÓ UTAS ALGORITMUS (MÓDOSÍTOTT BFS) Algoritmus: Bemenetként kapjuk meg M párosítást valamint G(A,B,E) gráfot. Ha létezik ebben a gráfban javító út, akkor azt vegyük be, ezt folytassuk addig, amíg létre tudunk hozni újabb és újabb javító utakat. Ha már nem tudunk újabb élt bevenni a párosításba, akkor álljunk le. Ebben az esetben már maximális a párosítás. Az algoritmus mohó módon működik.
 \end{shaded}
 \begin{framed}
 KŐNIG-TÉTEL Tétel: Ha G páros gráf, akkor $\nu(G) = \tau(G)$. Ha G-ben nincs izolált pont, akkor $\alpha(G) = \rho(G)$ is teljesül.
