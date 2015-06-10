@@ -39,7 +39,7 @@ DIJKSTRA-ALGORITMUS Algoritmus:
 \item[\textbf{2.}] A T-beli pontok közül legyen $v_0$ az, amelyiken a d(v) érték a legkisebb. Tegyük át $v_0$-t T-ből S-be.
 \item[\textbf{3.}] Ha T üres, \textbf{STOP}. Ha nem, vissza \textbf{1.} lépéshez.
 \end{itemize}
-Az algoritmus lépésszáma $c\cdot n^3$, mivel az 1. lépés k. elvégzésekor $|S| = k,\,\, |T| = v - k$, így az összes \textbf{(**)} hívások száma $\sum k(v-k) = \sum kv - \sum k^2$ és ennek az összege $k^3$-höz közelít.\\Az algoritmusnak létezik optimalizáltabb változata, $c\cdot n^2$ lépésszámmal.\\
+Az algoritmus lépésszáma $c\cdot n^3$, mivel az 1. lépés k. elvégzésekor $|S| = k,\,\, |T| = v - k$, így az összes \textbf{(**)} hívások száma $\sum k(v-k) = \sum kv - \sum k^2$ és ennek az összege $k^3$-höz közelít.\\Az algoritmusnak létezik egy kedvezőbb futási idejű változata, $c\cdot n^2$ lépésszámmal.\\
 \textbf{Az optimalizált algoritmus:}
 \begin{itemize}
 \item[\textbf{0.}] $S = {s}, T = V\backslash {s}$ és \textbf{(*)}, valamint $v_0 = s$.
