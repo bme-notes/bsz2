@@ -45,7 +45,7 @@ TOPOLOGIKUS ELRENDEZÉS Lemma: Ha G irányított gráf aciklikus, akkor létezik
 Bizonyítás: Legyen P a leghosszabb irányított utak egyike, v legyen a végpontja. T.f.h. v nem nyelő. Járjuk be az utat topologikus sorrendben. Az előző állítás annyit jelent, hogy P vagy nem a legutolsó elem a topologikus elrendezésben (ellentmondás) vagy egy, a topologikus sorrendben előrébb lévő ponthoz csatlakozik vissza (ellentmondás).
 \end{leftbar}
 \begin{framed}
-TOPOLOGIKUS ELRENDEZÉS Tétel: Ha egy G irányított gráfhoz létezik topologikus elrendezés, akkor az aciklikus.
+TOPOLOGIKUS ELRENDEZÉS Tétel: Egy G irányított gráfhoz akkor és csak akkor létezik topologikus elrendezés, ha az aciklikus.
 \end{framed}
 \begin{leftbar}
 Bizonyítás: A szükségeset triviális bizonyítani, viszont az elégségességet nem. Az előbbi lemma állítását felhasználjuk a bizonyításhoz. Keressünk ebben a gráfban egy nyelőcsúcsot, ez a $v_n$ csúcs. Ezt dobjuk ki. Ekkor $G\backslash{v_n}$-ben $v_{n-1}$ lesz nyelő. Ezt is dobjuk ki. Ismételjük, amíg semmi se marad. Amit "kidobtunk", ha fordítva sorba rendezzük (tehát a legvégén lesz az először kidobott elem), akkor az egy topologikus sorbarendezése lesz G-nek. A DFS is generál egy ilyet a futása során, ha nincs benne visszaél (tehát ha nincs benne kör).
