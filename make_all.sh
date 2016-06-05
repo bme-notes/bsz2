@@ -1,5 +1,6 @@
 #!/bin/bash
 
+cd `dirname $0`
 rm -f makelog
 mkdir -p ./pdfs
 rm ./pdfs/*
