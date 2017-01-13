@@ -1,0 +1,34 @@
+%% BME-Notes jegyzethez header
+%% Ha nem érted, mi történik itt, akkor inkább ne változtasd meg!
+%% A fájlok fordításához XeLaTeX-et kell használni
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{polyglossia}
+\usepackage{listings}
+\usepackage{tcolorbox}
+\usepackage{etoolbox}
+\usepackage{setspace}
+\usepackage{framed}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage[hidelinks]{hyperref}
+\definecolor{shadecolor}{HTML}{eeeeee} %Kindle-optimized color
+\setcounter{secnumdepth}{0} %this automagically removes extra numbering toc and sections
+\renewcommand{\contentsname}{Tartalomjegyzék}
+\newtoks\cim
+\newtoks\szerzo
+\newtoks\segitettek
+\newtoks\datum
+
+\newcommand{\ujfejezet}[1]{\newpage \input{./fejezetek/#1.tex}}
+\newenvironment{tetel}[1]{\begin{framed}\noindent\ignorespaces\textbf{\large Tétel: #1}\normalsize\\}{\end{framed}\ignorespacesafterend}
+\newenvironment{definicio}[1]{\begin{shaded}\noindent\ignorespaces\textbf{\large Definíció: #1}\normalsize\\}{\end{shaded}\ignorespacesafterend}
+\newenvironment{bizonyitas}[1]{\begin{leftbar}\noindent\ignorespaces\textbf{\large Bizonyítás: #1}\normalsize\\}{\end{leftbar}\ignorespacesafterend}
+
+
+\title{\huge\textsc{\the\cim}}
+\author{\the\szerzo}
+\date{\the\datum}

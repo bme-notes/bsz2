@@ -1,23 +1,5 @@
-\documentclass[]{article}
-\usepackage{lmodern}
-\usepackage{amssymb}
-\usepackage{amsmath}
-\usepackage{polyglossia}
-\usepackage{listings}
-\usepackage{tcolorbox}
-\usepackage{etoolbox}
-\usepackage{setspace}
-\usepackage{framed}
-\usepackage[a4paper,margin=2cm,footskip=.5cm]{geometry}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\Rn}[1]{$\mathbb{R}^{#1}$}
-\newcommand{\Und}[1]{\underline{#1}}
-\definecolor{shadecolor}{gray}{0.9}
-%opening
-\title{Bevezetés a Számításelméletbe 2.\\{\large 12. tétel}}
-\author{Hegyi Zsolt}
-\begin{document}
-\maketitle
+\section{12. tétel}
+
 \begin{shaded}
 HÁLÓZAT Definíció: Legyen G egy irányított gráf. Rendeljünk minden éléhez egy c(e) nemnegatív számot, amit az él \textbf{kapacitásának} nevezünk. Jelöljünk ki két pontot, s-et és t-t G-ben, melyet \textbf{termelőnek} és \textbf{fogyasztónak} nevezünk. Ekkor a (G,s,t,c) négyest \textbf{hálózatnak} nevezzük.
 \end{shaded}
@@ -49,4 +31,3 @@ Bizonyítás: A maximális folyam nyilván nem lehet nagyobb a minimális vágá
 \begin{framed}
 EDMONDS-CARP TÉTEL Tétel: Ha mindig a legrövidebb javító utat vesszük, akkor a maximális folyam meghatározásához szükséges lépések száma felülről becsülhető a pontok számának polinomjával.
 \end{framed}
-\end{document}

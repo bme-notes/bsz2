@@ -1,23 +1,5 @@
-\documentclass[]{article}
-\usepackage{lmodern}
-\usepackage{amssymb}
-\usepackage{amsmath}
-\usepackage{polyglossia}
-\usepackage{listings}
-\usepackage{tcolorbox}
-\usepackage{etoolbox}
-\usepackage{setspace}
-\usepackage{framed}
-\usepackage[a4paper,margin=2cm,footskip=.5cm]{geometry}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\Rn}[1]{$\mathbb{R}^{#1}$}
-\newcommand{\Und}[1]{\underline{#1}}
-\definecolor{shadecolor}{gray}{0.9}
-%opening
-\title{Bevezetés a Számításelméletbe 2.\\{\large 13. tétel}}
-\author{Hegyi Zsolt}
-\begin{document}
-\maketitle
+\section{13. tétel}
+
 \begin{framed}
 EGÉSZÉRTÉKŰSÉGI LEMMA Lemma: Ha (G,s,t,c) hálózatban minden e él c(e) kapacitása egész szám, akkor létezik olyan f maximális folyam, hogy f a G gráf minden élén egész értéket vesz fel. Az ilyen folyamot \textbf{egészfolyamnak} nevezzük.
 \end{framed}
@@ -41,4 +23,3 @@ DISZJUNKT FOLYAMOK: Ha a kapacitások egész számok, akkor van olyan maximális
 DISZJUNKT UTAK Definíció: Vegyük (G,s,t,c) folyamot, ezen belül veszünk utakat. \textbf{Páronként éldiszjunkt útnak} nevezünk utakat, ha páronként nincsen közös élük. \textbf{Belsőleg pontdiszjunkt utaknak} nevezünk utakat, ha páronként nincs közös pontjuk.
 \end{shaded}
 Diszjukt folyam algoritmus: Vegyünk tetszőleges hálózatot, és futtassuk le a fentebb leírt módszert rajta úgy, hogy vegyünk egy minimális vágást a hálózatban. A visszaélek (tehát amik a t-t tartalmazó halmazból az s-et tartalmazó halmazba mennek) legyenek 0 értékűek, egyébként pedig 1 értékűek az élek. Ebben már meg lehet keresni a diszjunkt utakat.
-\end{document}

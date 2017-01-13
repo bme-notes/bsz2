@@ -1,23 +1,5 @@
-\documentclass[]{article}
-\usepackage{lmodern}
-\usepackage{amssymb}
-\usepackage{amsmath}
-\usepackage{polyglossia}
-\usepackage{listings}
-\usepackage{tcolorbox}
-\usepackage{etoolbox}
-\usepackage{setspace}
-\usepackage{framed}
-\usepackage[a4paper,margin=2cm,footskip=.5cm]{geometry}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\Rn}[1]{$\mathbb{R}^{#1}$}
-\newcommand{\Und}[1]{\underline{#1}}
-\definecolor{shadecolor}{gray}{0.9}
-%opening
-\title{Bevezetés a Számításelméletbe 2.\\{\large 9. tétel}}
-\author{Hegyi Zsolt}
-\begin{document}
-\maketitle
+\section{9. tétel}
+
 \begin{shaded}
 PÁROSÍTÁS Definíció: \textbf{Párosításnak} vagy \textbf{részleges párosításnak} nevezünk egy M élhalmazt, ha semelyik két élnek nincsen közös pontja. Az ilyen éleket \textbf{független éleknek} nevezzük. A részleges párosítás \textbf{lefedi} éleinek végpontjait. Egy párosítás \textbf{teljes párosítás}, ha a gráf minden pontját lefedi.
 \end{shaded}
@@ -53,4 +35,3 @@ TUTTE-TÉTEL Tétel: Egy G gráfban akkor és csak akkor van teljes párosítás
 \begin{leftbar}
 Bizonyítás (csak szükséges): Ha G-ben van teljes párosítás, akkor nyilvánvalóan teljesül a feltétel. Hiszen ha elhagyunk a gráfból X-et, akkor a páratlan komponensek mindegyikéből az eredeti gráfban indul ki legalább egy párosításbeli él, és ezek az élek csak egy-egy (különböző) X-beli pontba mehetnek. Tehát $c_p(G - X) \leq |X|$.
 \end{leftbar}
-\end{document}

@@ -1,24 +1,5 @@
-\documentclass[]{article}
-\usepackage{lmodern}
-\usepackage{amssymb}
-\usepackage{amsmath}
-\usepackage{polyglossia}
-\usepackage{listings}
-\usepackage{tcolorbox}
-\usepackage{etoolbox}
-\usepackage{setspace}
-\usepackage{framed}
-\usepackage{hyperref}
-\usepackage[a4paper,margin=2cm,footskip=.5cm]{geometry}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\Rn}[1]{$\mathbb{R}^{#1}$}
-\newcommand{\Und}[1]{\underline{#1}}
-\definecolor{shadecolor}{gray}{0.9}
-%opening
-\title{Bevezetés a Számításelméletbe 2.\\{\large 16. tétel}}
-\author{Hegyi Zsolt}
-\begin{document}
-\maketitle
+\section{16. tétel}
+
 \url{http://cs.bme.hu/bsz2/dfs.pdf}
 \begin{framed}
 FLOYD-ALGORITMUS Algoritmus: A Floyd-algoritmus a gráfban lévő összes pontpár közt megadja a távolságokat. Ezt a Ford-algoritmussal is megtehettük volna, viszont annak a futási ideje az összes pontból kiindítva $c\cdot ev^2$-tel lett volna arányos. A Floyd-algoritmus ezt megteszi mindössze $c\cdot v^3$ alatt. A sikeres futás feltétele az, hogy a gráfban NE legyen negatív összsúlyú kör.\\
@@ -62,4 +43,3 @@ Input legyen a G irányított gráf és annak egy topologikus sorrendje (s).
 \\END FOR
 \end{itemize}
 \end{framed}
-\end{document}

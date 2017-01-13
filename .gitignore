@@ -1,9 +1,9 @@
-*.out
+*.synctex.gz
 *.log
 *.aux
-*.gz
-*.pdf
-*_stripped.tex
-/pdfs/*
-makelog
 *.toc
+*.pdf
+*.out
+*~
+\#*\#
+dockercmd.sh

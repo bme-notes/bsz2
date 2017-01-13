@@ -1,23 +1,5 @@
-\documentclass[]{article}
-\usepackage{lmodern}
-\usepackage{amssymb}
-\usepackage{amsmath}
-\usepackage{polyglossia}
-\usepackage{listings}
-\usepackage{tcolorbox}
-\usepackage{etoolbox}
-\usepackage{setspace}
-\usepackage{framed}
-\usepackage[a4paper,margin=2cm,footskip=.5cm]{geometry}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\Rn}[1]{$\mathbb{R}^{#1}$}
-\newcommand{\Und}[1]{\underline{#1}}
-\definecolor{shadecolor}{gray}{0.9}
-%opening
-\title{Bevezetés a Számításelméletbe 2.\\{\large 4. tétel}}
-\author{Hegyi Zsolt}
-\begin{document}
-\maketitle
+\section{4. tétel}
+
 \begin{shaded}
 SÍKBARAJZOLHATÓSÁG Definíció: G \textbf{síkbarajzolható} gráf, ha lerajzolható úgy (a síkba), hogy az élei a csúcsokon kívül sehol máshol ne keresztezzék egymást.
 \end{shaded}
@@ -61,4 +43,3 @@ BECSLÉS MINIMÁLIS FOKSZÁMRA Tétel: Ha G egyszerű, síkbarajzolható gráf, 
 \begin{leftbar}
 Bizonyítás: Feltehetjük, hogy a gráf pontjainak a száma legalább 3. T.f.h. $\delta \geq 6$. Mivel a fokszámok összege egyenlő az élszámok kétszeresével, $6n \leq 2e$. Az élszám-becslés alapján azonban $2e \leq 6n - 12$, ezzel ellentmondásra jutottunk, mivel $6n \not\leq 6n - 12$.
 \end{leftbar}
-\end{document}

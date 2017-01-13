@@ -1,23 +1,5 @@
-\documentclass[]{article}
-\usepackage{lmodern}
-\usepackage{amssymb}
-\usepackage{amsmath}
-\usepackage{polyglossia}
-\usepackage{listings}
-\usepackage{tcolorbox}
-\usepackage{etoolbox}
-\usepackage{setspace}
-\usepackage{framed}
-\usepackage[a4paper,margin=2cm,footskip=.5cm]{geometry}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\Rn}[1]{$\mathbb{R}^{#1}$}
-\newcommand{\Und}[1]{\underline{#1}}
-\definecolor{shadecolor}{gray}{0.9}
-%opening
-\title{Bevezetés a Számításelméletbe 2.\\{\large 2. tétel}}
-\author{Hegyi Zsolt}
-\begin{document}
-\maketitle{}
+\section{2. tétel}
+
 \begin{shaded}
 GRÁF Definíció: Egy \textbf{gráf} rendezett pár, $G = (V,E)$, ahol V egy nem üres halmaz, E pedig az ebből a halmazból képezhető párok egy halmaza, V elemeit \textbf{pontoknak} v. \textbf{csúcsoknak} nevezzük, E elemeit pedig \textbf{éleknek}. A csúcsok számát v(G)-vel jelöljük, az élekét pedig e(G)-vel. A gráf csúcshalmazát V(G)-vel, az élhalmazt pedig E(G)-vel jelöljük.
 \end{shaded}
@@ -87,4 +69,3 @@ FESZÍTŐFA LÉTEZÉSE Tétel: Minden összefüggő G gráf tartalmaz feszítőf
 \begin{leftbar}
 Ha G-ben van kör, akkor hagyjuk el a kör egy tetszőleges élét, ha a maradék gráfban még mindig van kör, akkor annak is hagyjuk el egy tetszőleges élét, folytatjuk, amíg körmentes lesz a gráf. Ha már nincsen több kör, akkor nézzünk rá, hogy mit kaptunk - az összefüggőség nem sérül, mivel körök egy-egy élét hagytuk el, és pontot se hagytunk el - tehát amit kaptunk, az láthatóan G gráf feszítőfája.
 \end{leftbar}
-\end{document}
