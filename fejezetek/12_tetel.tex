@@ -1,33 +1,33 @@
 \section{12. tétel}
 
-\begin{shaded}
-HÁLÓZAT Definíció: Legyen G egy irányított gráf. Rendeljünk minden éléhez egy c(e) nemnegatív számot, amit az él \textbf{kapacitásának} nevezünk. Jelöljünk ki két pontot, s-et és t-t G-ben, melyet \textbf{termelőnek} és \textbf{fogyasztónak} nevezünk. Ekkor a (G,s,t,c) négyest \textbf{hálózatnak} nevezzük.
-\end{shaded}
-\begin{shaded}
-FOLYAM, FOLYAMÉRTÉK Definíció: Legyen f(e) az a "vízmennyiség", ami az e élen folyik át. Ez az f függvény \textbf{megengedett függvény}, ha $f(e) \leq c(e)$ minden élre és
+\begin{definicio}{
+HÁLÓZAT Definíció}: Legyen G egy irányított gráf. Rendeljünk minden éléhez egy c(e) nemnegatív számot, amit az él \textbf{kapacitásának} nevezünk. Jelöljünk ki két pontot, s-et és t-t G-ben, melyet \textbf{termelőnek} és \textbf{fogyasztónak} nevezünk. Ekkor a (G,s,t,c) négyest \textbf{hálózatnak} nevezzük.
+\end{definicio}
+\begin{definicio}{
+FOLYAM, FOLYAMÉRTÉK Definíció}: Legyen f(e) az a "vízmennyiség", ami az e élen folyik át. Ez az f függvény \textbf{megengedett függvény}, ha $f(e) \leq c(e)$ minden élre és
 $$m(v) = \sum\{f(e)|e\,\,vegpontja\,\,v\} - \sum\{f(e) | e\,\,kezdopontja\,\,v\} = 0$$
 minden $v\in V(G)$-re, kivéve az s és t pontokat. Egy megengedett függvényt \textbf{folyamnak} hívunk. Könnyen belátható, hogy $m(t) = -m(s)$. Ezt a közös értéket a folyam értékének nevezzük és $m_f$-el jelöljük. Egy élt \textbf{telítettnek} hívunk egy folyamban, ha $f(e) = c(e)$ és \textbf{telítetlennek}, ha $f(e) < c(e)$.
-\end{shaded}
-\begin{shaded}
-VÁGÁS Definíció: Legyen $s \in X \subseteq V(G) \backslash {t}$, sem X, sem $V(G) - X$ nem üres halmaz. Azoknak az éleknek a C halmazát, melyeknek egyik végpontja X-beli, másik $V(G) - X$-beli, a hálózati folyam egy (s,t)-\textbf{vágásának} nevezzük. A \textbf{vágás értéke}, c(C), azon éleken levő kapacitások összege, melyek egy X-beli pontból egy $V(G) - X$-beli pontba mutatnak. Ezeket előremutató éleknek nevezzük. Tehát a vágás értékében nem játszanak szerepet a visszafelé mutató élek, vagyis azok, melyek egy X-beli pontba mutatnak.
-\end{shaded}
-\begin{framed}
-JAVÍTÓ ÚT HÁLÓZATRA Algoritmus: Legyen a gráfban $s = v_0, v_1... v_k$ egy út, aminek most nem kell feltétlenül az irányítás szerint haladnia. Növelhetjük a folyam értékét abban az esetben, ha minden $i = 0,1,2,...,k-1$-re vagy $e_i = (v_i , v_{i + 1})$ és $f(e_i) < c(e_i) $, vagy $e_i = (v_{i + 1} , v_i )$ és $f(e_i) > 0 $.
+\end{definicio}
+\begin{definicio}{
+VÁGÁS Definíció}: Legyen $s \in X \subseteq V(G) \backslash {t}$, sem X, sem $V(G) - X$ nem üres halmaz. Azoknak az éleknek a C halmazát, melyeknek egyik végpontja X-beli, másik $V(G) - X$-beli, a hálózati folyam egy (s,t)-\textbf{vágásának} nevezzük. A \textbf{vágás értéke}, c(C), azon éleken levő kapacitások összege, melyek egy X-beli pontból egy $V(G) - X$-beli pontba mutatnak. Ezeket előremutató éleknek nevezzük. Tehát a vágás értékében nem játszanak szerepet a visszafelé mutató élek, vagyis azok, melyek egy X-beli pontba mutatnak.
+\end{definicio}
+\begin{tetel}{
+JAVÍTÓ ÚT HÁLÓZATRA Algoritmus}: Legyen a gráfban $s = v_0, v_1... v_k$ egy út, aminek most nem kell feltétlenül az irányítás szerint haladnia. Növelhetjük a folyam értékét abban az esetben, ha minden $i = 0,1,2,...,k-1$-re vagy $e_i = (v_i , v_{i + 1})$ és $f(e_i) < c(e_i) $, vagy $e_i = (v_{i + 1} , v_i )$ és $f(e_i) > 0 $.
 Ekkor az első típusú éleken növeljük a folyam értékét, míg a második típusúakon csökkentjük, így az össz folyamérték nő. Az ilyen utakat javító utaknak hívjuk.\\ Egy folyam értéke akkor és csak akkor maximális, ha nincs javító út s-ből t-be.
-\end{framed}
-\begin{framed}
-MAXIMÁLIS FOLYAM Tétel: Egy folyam értéke akkor és csak akkor maximális, ha nincs javító út s-ből t-be.
-\end{framed}
+\end{tetel}
+\begin{tetel}{
+MAXIMÁLIS FOLYAM Tétel}: Egy folyam értéke akkor és csak akkor maximális, ha nincs javító út s-ből t-be.
+\end{tetel}
 \begin{leftbar}
 Bizonyítás: Legyen P egy javító út. Ekkor P minden első típusú élére a $c(e) - f(e)$, második típusú élére pedig f(e) érték szigorúan pozitív. Legyen ezeknek minimuma d. Az első típusú élekre növeljük f(e)-t d-vel, második típusúaknál csökkentsük f(e)-t d-vel. Ekkor a módosított folyam is megengedett marad, értéke viszont d-vel nőtt. T.f.h. nincs javító út s-ből t-be. Lehetnek azonban olyan pontok a gráfban amelyek elérhetőek s-ből javító úton. Legyen az ilyen pontok halmaza $X \subset V(G)$. Ekkor sem X, sem $V(G) - X$ nem üres, hiszen $s \in X, t\in V(G) - X$. Tekintsünk egy olyan e élt, mely egy X-beli x pontból egy nem X-beli y-ba mutat. Ekkor $f(e) = c(e)$, hiszen ellenkező esetben az s-ből x-be vezető javító út e-vel meghosszabbítva egy s-ből y-ba vezető javító utat szolgáltatna. Ugyanígy egy olyan élre, ami egy nem X-beliből egy X-belibe mutat, teljesül, hogy f(e) = 0. Tehát az X és $V(G) - X$ között futó élek mind telítettek, és a visszafele mutató éleket nem használjuk, tehát ezen a vágáson nem folyhat több víz. Vagyis f maximális folyam.
 \end{leftbar}
-\begin{framed}
-FORD-FULKERSON (MAXFLOW-MINCUT) TÉTEL Tétel: A maximális folyam értéke egyenlő a minimális vágás értékével, azaz
+\begin{tetel}{
+FORD-FULKERSON (MAXFLOW-MINCUT) TÉTEL Tétel}: A maximális folyam értéke egyenlő a minimális vágás értékével, azaz
 $$max\{m_f|f\,\,egy\,\,folyam\,\,s-bol\,\,t-be\} = min(c(C)|C\,\,vagas)$$
-\end{framed}
+\end{tetel}
 \begin{leftbar}
 Bizonyítás: A maximális folyam nyilván nem lehet nagyobb a minimális vágásnál, hiszen ha minden előremutató él telített, a visszafele mutató éleken pedig 0 a folyam értéke, akkor ezen a vágáson nem folyhat át több víz. Az előző tételben beláttuk, hogy ha létezik egy f maximális folyam, akkor létezik ilyen értékű vágás. Azt, hogy maximális értékű folyam mindig létezik, a következő tételben bizonyítjuk.
 \end{leftbar}
-\begin{framed}
-EDMONDS-CARP TÉTEL Tétel: Ha mindig a legrövidebb javító utat vesszük, akkor a maximális folyam meghatározásához szükséges lépések száma felülről becsülhető a pontok számának polinomjával.
-\end{framed}
+\begin{tetel}{
+EDMONDS-CARP TÉTEL Tétel}: Ha mindig a legrövidebb javító utat vesszük, akkor a maximális folyam meghatározásához szükséges lépések száma felülről becsülhető a pontok számának polinomjával.
+\end{tetel}

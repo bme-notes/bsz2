@@ -1,41 +1,41 @@
 \section{1. tétel}
 
-\begin{shaded}
-FAKTORIÁLIS Definíció: Az $n(n-1)(n-2)...\cdot2\cdot1$ szorzatot n \textbf{faktoriálisának} nevezzük. Definíció szerint $0! = 1$.\\
+\begin{definicio}{
+FAKTORIÁLIS Definíció}: Az $n(n-1)(n-2)...\cdot2\cdot1$ szorzatot n \textbf{faktoriálisának} nevezzük. Definíció szerint $0! = 1$.\\
 Jel: $n!$
-\end{shaded}
-\begin{shaded}
-PERMUTÁCIÓ Definíció: Az n elem összes lehetséges sorrendjének a száma $n!$ és ezt hívjük \textbf{permutációnak}.
-\end{shaded}
-\begin{shaded}
-ISMÉTLÉSES PERMUTÁCIÓ Definíció: $k_1$ darab első típusú elem, ..., $k_n$ darab n-edik típusú elem lehetséges sorbarendezésének a száma a $k_1 + k_2 + ... + k_n$ \textbf{ismétléses permutációi}. Számuk:
+\end{definicio}
+\begin{definicio}{
+PERMUTÁCIÓ Definíció}: Az n elem összes lehetséges sorrendjének a száma $n!$ és ezt hívjük \textbf{permutációnak}.
+\end{definicio}
+\begin{definicio}{
+ISMÉTLÉSES PERMUTÁCIÓ Definíció}: $k_1$ darab első típusú elem, ..., $k_n$ darab n-edik típusú elem lehetséges sorbarendezésének a száma a $k_1 + k_2 + ... + k_n$ \textbf{ismétléses permutációi}. Számuk:
 $$\frac{(k_1+k_2+...+k_n)!}{k_1!\cdot k_2!\cdot...\cdot k_n!}$$
-\end{shaded}
-\begin{shaded}
-VARIÁCIÓ Definíció: n-ből k elem összes lehetséges sorrendben való kiválasztása az n elem k-ad osztályú (ismétlés nélküli) \textbf{variációja}, ezek száma:
+\end{definicio}
+\begin{definicio}{
+VARIÁCIÓ Definíció}: n-ből k elem összes lehetséges sorrendben való kiválasztása az n elem k-ad osztályú (ismétlés nélküli) \textbf{variációja}, ezek száma:
 $$n(n-1)(n-2)...(n-k+1) = \frac{n!}{(n-k)!}$$
 Ha $k=n$, akkor permutációról beszélünk.
-\end{shaded}
-\begin{shaded}
-ISMÉTLÉSES VARIÁCIÓ Definíció: n elemből k tagú sorozatok kiválasztása, ahol egy-egy elem többször is szerepelhet, az n-elem k-ad osztályú \textbf{ismétléses variációja}. Ezeknek a száma:
+\end{definicio}
+\begin{definicio}{
+ISMÉTLÉSES VARIÁCIÓ Definíció}: n elemből k tagú sorozatok kiválasztása, ahol egy-egy elem többször is szerepelhet, az n-elem k-ad osztályú \textbf{ismétléses variációja}. Ezeknek a száma:
 $$n^k$$
-\end{shaded}
-\begin{shaded}
-KOMBINÁCIÓ Definíció: Egy n elemű halmaz k elemű részhalmazainak a száma: n elem k-ad osztályú \textbf{kombinációja}. Száma:
+\end{definicio}
+\begin{definicio}{
+KOMBINÁCIÓ Definíció}: Egy n elemű halmaz k elemű részhalmazainak a száma: n elem k-ad osztályú \textbf{kombinációja}. Száma:
 $$\begin{pmatrix}
 n\\k
 \end{pmatrix} = \frac{n(n-1)(n-2)...(n-k+1)}{k!}$$
 Az $\begin{pmatrix}
 n\\k
 \end{pmatrix}$ a binomiális együttható.
-\end{shaded}
-\begin{shaded}
-ISMÉTLÉSES KOMBINÁCIÓ Definíció: n elemből k kiválasztása, ha a sorrend nem számít, de az elemek többször is szerepelhetnek: n elem k-ad osztályú \textbf{ismétléses kombinációi}. Számuk: $$\begin{pmatrix}
+\end{definicio}
+\begin{definicio}{
+ISMÉTLÉSES KOMBINÁCIÓ Definíció}: n elemből k kiválasztása, ha a sorrend nem számít, de az elemek többször is szerepelhetnek: n elem k-ad osztályú \textbf{ismétléses kombinációi}. Számuk: $$\begin{pmatrix}
 n+k-1\\k
 \end{pmatrix}$$
-\end{shaded}
-\begin{framed}
-BINOMIÁLIS TÉTEL Tétel: Tetszőleges valós x, y-ra és nemnegatív egész n-re:$$
+\end{definicio}
+\begin{tetel}{
+BINOMIÁLIS TÉTEL Tétel}: Tetszőleges valós x, y-ra és nemnegatív egész n-re:$$
 (x+y)^n = \begin{pmatrix}
 n\\0
 \end{pmatrix} x^n + \begin{pmatrix}
@@ -47,9 +47,9 @@ n\\k
 \end{pmatrix} x^{n-k}y^k + ... + \begin{pmatrix}
 n\\n
 \end{pmatrix} y^n$$
-\end{framed}
-\begin{shaded}
-PASCAL HÁROMSZÖG: A háromszög csúcsán álljon az  $\begin{pmatrix}
+\end{tetel}
+\begin{definicio}{
+PASCAL HÁROMSZÖG}: A háromszög csúcsán álljon az  $\begin{pmatrix}
 0\\0
 \end{pmatrix}$ együttható. Alatta álljon az $\begin{pmatrix}
 1\\0
@@ -65,9 +65,9 @@ k\\k-1
 k\\k
 \end{pmatrix}$ együtthatók. A legutóbbi állítás alapján a Pascal-háromszög minden sorának a sorösszege:
 $2^{i-1}$. Ez abból is belátható, hogy minden sor összege kétszerese az előzőnek, ugyanis az együtthatókat úgy is meg lehet kapni, hogy az új elem a felette álló két együttható összegéből áll össze.
-\end{shaded}
-\begin{framed}
-BINOMIÁLIS ÖSSZEG Tétel: Minden n nemnegatív számra
+\end{definicio}
+\begin{tetel}{
+BINOMIÁLIS ÖSSZEG Tétel}: Minden n nemnegatív számra
 $$\begin{pmatrix}
 n\\0
 \end{pmatrix} + \begin{pmatrix}
@@ -81,4 +81,4 @@ n\\n
 \end{pmatrix} = 2^n = \sum_{k = 0}^{n}\begin{pmatrix}
 n\\k
 \end{pmatrix}$$
-\end{framed}
+\end{tetel}

@@ -1,11 +1,11 @@
 \section{11. tétel}
 
-\begin{shaded}
-REGULÁRIS GRÁF Definíció: Egy gráfot \textbf{$k$-regulárisnak} nevezünk, ha minden pont foka $k$. Egy gráfra azt mondjuk, hogy \textbf{reguláris}, ha létezik olyan k, amire k-reguláris.
-\end{shaded}
-\begin{framed}
-REGULÁRIS GRÁFBAN TELJES PÁROSÍTÁS Definíció: Minden reguláris páros gráfban létezik teljes párosítás.
-\end{framed}
+\begin{definicio}{
+REGULÁRIS GRÁF Definíció}: Egy gráfot \textbf{$k$-regulárisnak} nevezünk, ha minden pont foka $k$. Egy gráfra azt mondjuk, hogy \textbf{reguláris}, ha létezik olyan k, amire k-reguláris.
+\end{definicio}
+\begin{tetel}{
+REGULÁRIS GRÁFBAN TELJES PÁROSÍTÁS Definíció}: Minden reguláris páros gráfban létezik teljes párosítás.
+\end{tetel}
 \begin{leftbar}
 Bizonyítás:
 Vegyünk egy páros gráfot A, B pontosztállyal, ami k-reguláris. Először lássuk be, hogy ugyanaz az elemszáma A és B-nek. A-ból $k\cdot n$ él megy ki, B-be pedig $k \cdot m$ él megy. $k\cdot n = k\cdot m$, osszuk le k-val $\rightarrow n = m$. Hall-feltétel: $|N(A) \geq |A|$. A-ból $k\cdot|A|$ él megy ki, ezek a N(A) csúcsokba mennek. Ez annyit jelent, hogy egy N(A)-beli csúcsba átlagosan $(k\cdot |A|) \backslash |N(A)|$ él megy, tehát $(k\cdot |A|) \backslash |N(A)| \leq k$ (mivel egy csúcsba maximum k él megy). Szorozzuk be $|N(A|$-val és osszunk k-val. $|A| \leq |N(A)|$, Hall feltétel OK, Frobenius-tétel OK, létezik teljes párosítás.
@@ -13,21 +13,21 @@ Vegyünk egy páros gráfot A, B pontosztállyal, ami k-reguláris. Először l�
 %$$|N(X)| \geq \frac{1}{k}k|X| = |X|$$
 %Az $X = A$ esetre ugyanezzel a módszerrel $|A| = |B|$, mert $N(A) = B$ és így az A-beli pontokból kiinduló élekből N(A) minden pontjába pontosan k él fut be. Ebből Frobenius tétellel kijön a teljes párosítás.
 \end{leftbar}
-\begin{shaded}
-ÉLSZÍNEZÉS Definíció: Egy G gráf élei \textbf{k színnel színezhetőek}, ha minden élt ki lehet színezni k színnel úgy, hogy bármely két szomszédos él színe különböző legyen. G \textbf{élkromatikus száma} $\chi_e(G) = k$, ha G élei k színnel színezhetőek, de $k - 1$-gyel már nem.
-\end{shaded}
-\begin{framed}
-VIZING-TÉTEL Tétel: Ha G egyszerű gráf, akkor $\chi_e(G) \leq \Delta(G) + 1$. Bizonyítás $\emptyset$.
-\end{framed}
-\begin{framed}
-ÉLKROMATIKUS SZÁM Tétel: Tetszőleges G gráfra $\chi_e(G) \geq \Delta(G)$ áll.
-\end{framed}
+\begin{definicio}{
+ÉLSZÍNEZÉS Definíció}: Egy G gráf élei \textbf{k színnel színezhetőek}, ha minden élt ki lehet színezni k színnel úgy, hogy bármely két szomszédos él színe különböző legyen. G \textbf{élkromatikus száma} $\chi_e(G) = k$, ha G élei k színnel színezhetőek, de $k - 1$-gyel már nem.
+\end{definicio}
+\begin{tetel}{
+VIZING-TÉTEL Tétel}: Ha G egyszerű gráf, akkor $\chi_e(G) \leq \Delta(G) + 1$. Bizonyítás $\emptyset$.
+\end{tetel}
+\begin{tetel}{
+ÉLKROMATIKUS SZÁM Tétel}: Tetszőleges G gráfra $\chi_e(G) \geq \Delta(G)$ áll.
+\end{tetel}
 \begin{leftbar}
 Bizonyítás: Az egy csúcsból induló élek egymástól különböző színt kapnak, és ez speciálisan a maximális fokszámú csúcsokból induló élekre is igaz.
 \end{leftbar}
-\begin{framed}
-KŐNIG-TÉTEL Tétel: Ha G páros gráf, akkor $\chi_e(G) = \Delta(G)$
-\end{framed}
+\begin{tetel}{
+KŐNIG-TÉTEL Tétel}: Ha G páros gráf, akkor $\chi_e(G) = \Delta(G)$
+\end{tetel}
 \begin{leftbar}
 Bizonyítás: Elég azt igazolni, hogy $\chi_e(G) \leq \Delta(G)$ az előző állítás miatt. Létezik olyan H páros gráf, melynek G részgráfja, és H minden csúcsának fokszáma $\Delta(G)$. Ha sikerül a $\Delta(G)$-reguláris H gráf éleit $\Delta(G)$ színnel kiszínezni, akkor egyúttal a G részgráf éleinek is megkapjuk egy ugyanennyi színnel való színezését. H gráf élszínezéséhez elegendő azt megmutatni, hogy tetszőleges reguláris páros gráfban létezik teljes párosítás, ezt pedig már bizonyítottuk egy fentebbi tételben.
 \end{leftbar}

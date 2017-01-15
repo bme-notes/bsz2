@@ -1,8 +1,8 @@
 \section{3. tétel}
 
 \url{http://cs.bme.hu/bsz2/bfs.pdf}
-\begin{framed}
-A BFS-algoritmus futása során a következőket tartjuk nyilván:
+\begin{tetel}{
+A BFS-algoritmus futása során a következőket tartjuk nyilván}:
 \begin{itemize}
 \item $b(i) (i = 1,2,3,...)$: az i-edikként bejárt csúcs
 \item $t(v) (v \in V)$: v távolsága s-től
@@ -10,9 +10,9 @@ A BFS-algoritmus futása során a következőket tartjuk nyilván:
 \item j: az eddig bejárt csúcsok száma
 \item k: a jelenleg aktív csúcs sorszáma a $b(1), b(2),...$ sorozatban.
 \end{itemize}
-\end{framed}
-\begin{framed}
-BFS Algoritmus:
+\end{tetel}
+\begin{tetel}{
+BFS Algoritmus}:
 Bemenete a BFS algoritmusnak: Egy G gráf és egy $s \in V$ csúcs.
 \\
 \textbf{Az algoritmus:}
@@ -34,28 +34,28 @@ Bemenete a BFS algoritmusnak: Egy G gráf és egy $s \in V$ csúcs.
 	\end{itemize}
 \end{itemize}
 Az algoritmus lineáris futásidejű, tehát $c \cdot e$ lépésszámú.
-\end{framed}
-\begin{shaded}
-BFS-FA Definíció: A BFS algoritmus futtatása után kapott F feszítőfát nevezzük \textbf{BFS fának}. F összefüggő, ha az eredeti bemeneti gráf is összefüggő volt, valamint F nem tartalmaz kört (a fa definíciója miatt). Az is megfigyelhető, hogy bármely $v \in V$ csúcsra az s-et v-vel összekötő F-beli út a legrövidebbek egyike az s-ből a v-be vezető G-beli utak közül.
-\end{shaded}
-\begin{framed}
-Kruskal Algoritmus: Bemenet: G gráf és az élekhez tartozó w súlyfüggvény. Az éleket rendezzük sorba úgy, hogy a legalacsonyabb költségűek legyenek először a sorban. A sorban kezdjünk előre haladni. Ha az él bevétele esetén a kapott gráf körmentes marad, akkor vegyük be. Ezt addig ismételjük, amíg van izolált pont, vagy amíg az élsorozat végére nem érünk. A kapott gráf a G gráf minimális költségű feszítőfája.
+\end{tetel}
+\begin{definicio}{
+BFS-FA Definíció}: A BFS algoritmus futtatása után kapott F feszítőfát nevezzük \textbf{BFS fának}. F összefüggő, ha az eredeti bemeneti gráf is összefüggő volt, valamint F nem tartalmaz kört (a fa definíciója miatt). Az is megfigyelhető, hogy bármely $v \in V$ csúcsra az s-et v-vel összekötő F-beli út a legrövidebbek egyike az s-ből a v-be vezető G-beli utak közül.
+\end{definicio}
+\begin{tetel}{
+Kruskal Algoritmus}: Bemenet: G gráf és az élekhez tartozó w súlyfüggvény. Az éleket rendezzük sorba úgy, hogy a legalacsonyabb költségűek legyenek először a sorban. A sorban kezdjünk előre haladni. Ha az él bevétele esetén a kapott gráf körmentes marad, akkor vegyük be. Ezt addig ismételjük, amíg van izolált pont, vagy amíg az élsorozat végére nem érünk. A kapott gráf a G gráf minimális költségű feszítőfája.
 \\
 \\
 Ezt az eljárást \textbf{mohó algoritmusnak} nevezzük, mivel a végrehajtás során minden lépésben az éppen akkor a legjobbnak tűnő lehetőséget választjuk ki.
-\end{framed}
-\begin{shaded}
-MINIMÁLIS SÚLYÚ FESZÍTŐFA Definíció: Legyen G gráf és annak éleihez rendelt $w: E \rightarrow \mathbb{R}$ súlyfüggvény. A gráfnak azon feszítőfáját, melyre ez a súlyfüggvény minimális, a gráf \textbf{minimális súlyú feszítőfájának} nevezzük.
-\end{shaded}
-\begin{framed}
-Tétel: A Kruskal-algoritmus minimális súlyú feszítőfát talál.
-\end{framed}
+\end{tetel}
+\begin{definicio}{
+MINIMÁLIS SÚLYÚ FESZÍTŐFA Definíció}: Legyen G gráf és annak éleihez rendelt $w: E \rightarrow \mathbb{R}$ súlyfüggvény. A gráfnak azon feszítőfáját, melyre ez a súlyfüggvény minimális, a gráf \textbf{minimális súlyú feszítőfájának} nevezzük.
+\end{definicio}
+\begin{tetel}{
+Tétel}: A Kruskal-algoritmus minimális súlyú feszítőfát talál.
+\end{tetel}
 \begin{leftbar}
 Két állítást kell bizonyítanunk - azt, hogy feszítőfát ad az algoritmus, és azt, hogy az minimális. Kezdjük az elsővel. Legyen G egy összefüggő, súlyozott gráf (tehát van súlyfüggvény hozzárendelve) és F legyen egy részgráfja, amit az algoritmus produkál. F-ben nem lehet kör, mivel az algoritmus egy fát épít. F nem lehet nem összefüggő sem, mivel az első él (amit az algoritmus talál), ami összeköt két független komponenst F-ben még nem hozhat létre kört. Tehát F feszítőgráf.
 \\
 A következő állítást teljes indukcióval bizonyítjuk be. Legyen H egy élhalmaz, amit az algoritmus a futása során generál, a minimális súlyú feszítőfának ezt a H élhalmazt tartalmaznia kell, hiszen ebben vannak minimális súlyú élek.
 Az első lépésnél az állítás igaz, hiszen H üres, és minden gráfnak részgráfja az üres gráf. A k-adik lépésnél vegyük az állítást igaznak és legyen T a minimális súlyú feszítőfa, ami tartalmazza H-t. Ha az algoritmus által kiválasztott következő él, e, szintúgy benne van a T-ben, akkor az állítás szintúgy igaz a $H + {e}$ élhalmazra. Különben $T + {e}$ élhalmazban létezik egy C kör, és ezen kívül még létezik egy olyan f él, ami befejezi a C kört, de nem része H-nak. (Ha nem létezne f, akkor e-t már nem vehettük volna be, mivel kört produkált volna $H + f$-ben). Ekkor $T - {f} + {e}$ szintúgy egy fa, és azonos az összsúlya T-jével, hiszen T-nek minimális az összsúlya, és f-nek a súlya nem lehet kisebb, mint e-nek, hiszen akkor e helyett az f élet választotta volna az algoritmus. Tehát $T - {f} + {e}$ egy minimális súlyú feszítőfa. Ezek alapján az indukciós feltevést bebizonyítottuk, és az állítás igaz, amikor H egy feszítőfává válik, ami csak akkor igaz, ha H egy minimális súlyú feszítőfa.
 \end{leftbar}
-\begin{framed}
-Alkalmazás: Pontok - városok, élek - utak, súly - hossz; Villamos hálózatok, Kirchhoff-törvények, áramköri elemekhez súlyokat párosítunk
-\end{framed}
+\begin{tetel}{
+Alkalmazás}: Pontok - városok, élek - utak, súly - hossz; Villamos hálózatok, Kirchhoff-törvények, áramköri elemekhez súlyokat párosítunk
+\end{tetel}

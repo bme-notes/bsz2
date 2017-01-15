@@ -1,41 +1,41 @@
 \section{6. tétel}
 
-\begin{shaded}
-EULER-ÚT ÉS KÖR Definíció: A G gráf \textbf{Euler-körének} nevezünk egy zárt élsorozatot, ha az élsorozat pontosan egyszer tartalmazza G összes élét. Ha az élsorozat nem feltétlenül zárt, akkor \textbf{Euler-útról} beszélünk.
-\end{shaded}
-\begin{framed}
-EULER-KÖR LÉTEZÉSE Tétel: G összefüggő gráfban akkor és csak akkor létezik Euler-kör, ha G minden pontjának fokszáma páros.
-\end{framed}
+\begin{definicio}{
+EULER-ÚT ÉS KÖR Definíció}: A G gráf \textbf{Euler-körének} nevezünk egy zárt élsorozatot, ha az élsorozat pontosan egyszer tartalmazza G összes élét. Ha az élsorozat nem feltétlenül zárt, akkor \textbf{Euler-útról} beszélünk.
+\end{definicio}
+\begin{tetel}{
+EULER-KÖR LÉTEZÉSE Tétel}: G összefüggő gráfban akkor és csak akkor létezik Euler-kör, ha G minden pontjának fokszáma páros.
+\end{tetel}
 \begin{leftbar}
 Először lássuk be, hogy ha van a gráfban E-kör, akkor minden pont foka páros. Induljunk el a gráf tetszőleges pontjából és járjuk körbe az E-kör mentén. Minden pontban ugyanannyiszor mentünk be, mint ahányszor kimentünk, a ki-bemenések száma a pont fokszáma. Ez biztosan páros. Másik irány jegyzet 29. oldal, baszódjon meg ez a bizonyítás.
 \end{leftbar}
-\begin{framed}
-EULER-ÚT LÉTEZÉSE Tétel: Egy összefüggő G gráfban akkor és csak akkor létezik Euler-út, ha a páratlan fokszámú pontok száma 0 vagy 2.
-\end{framed}
+\begin{tetel}{
+EULER-ÚT LÉTEZÉSE Tétel}: Egy összefüggő G gráfban akkor és csak akkor létezik Euler-út, ha a páratlan fokszámú pontok száma 0 vagy 2.
+\end{tetel}
 \begin{leftbar}
 Az előző tétel bizonyítása alapján, ebben az esetben ha 0 a páratlan fokszámú pontok száma, akkor Euler-körről is beszélhetünk, ha 2, akkor az élsorozat nem zárt, a két végpontnak lesz eltérő a fokszáma, mivel ezt úgy tudjuk képezni, hogy a két végpontot összekötő élt elhagyjuk.
 \end{leftbar}
-\begin{shaded}
-HAMILTON-ÚT ÉS KÖR Definíció: Egy G gráfban Hamilton-körnek nevezünk egy H kört, ha G minden pontját pontosan egyszer tartalmazza. Egy utat pedig Hamilton-útnak nevezünk, ha G minden pontját pontosan egyszer tartalmazza.
-\end{shaded}
-\begin{framed}
-SZÜKSÉGES FELTÉTEL A H-KÖR (ÚT) LÉTEZÉSÉHEZ Tétel: Ha a G gráfban létezik k olyan pont, melyeket elhagyva a gráf több mint k komponensre esik, akkor nem létezik a gráfban H-kör. Ha több mint k+1 komponensre esik, akkor nem létezik a gráfban H-út se.
-\end{framed}
+\begin{definicio}{
+HAMILTON-ÚT ÉS KÖR Definíció}: Egy G gráfban Hamilton-körnek nevezünk egy H kört, ha G minden pontját pontosan egyszer tartalmazza. Egy utat pedig Hamilton-útnak nevezünk, ha G minden pontját pontosan egyszer tartalmazza.
+\end{definicio}
+\begin{tetel}{
+SZÜKSÉGES FELTÉTEL A H-KÖR (ÚT) LÉTEZÉSÉHEZ Tétel}: Ha a G gráfban létezik k olyan pont, melyeket elhagyva a gráf több mint k komponensre esik, akkor nem létezik a gráfban H-kör. Ha több mint k+1 komponensre esik, akkor nem létezik a gráfban H-út se.
+\end{tetel}
 \begin{leftbar}
 Indirekt t.f.h. van a gráfban H-kör, ez legyen $(v_1, v_2,..., v_n)$ és legyen $(v_{i_1}, v_{i_2},...,v_{i_k})$ az a k pont, amelyet elhagyva a gráf több mint k komponensre esik. Az elhagyott pontok közötti "ívek" biztosan összefüggő komponenseket alkotnak. Pl. a $(v_{i_{1}+1}, v_{i_{1}+2},..., v_{i_{2}-1})$ is összefüggő lesz, hiszen két szomszédos pontja között az eredeti H-kör éle fut. Mivel épp k ilyen ívet kapunk, ezért nem lehet több komponens k-nál (kevesebb lehet, mivel különb. ívek közt futhatnak élek). U.a. bizonyítjuk útra. Ha egy H-útból elhagyunk k pontot, legfeljebb k+1 öf. ív marad.
 \end{leftbar}
-\begin{framed}
-ELÉGSÉGES FELTÉTEL - ORE TÉTEL Tétel: Ha az n pontú G egyszerű gráfban minden olyan $x,y\in V(G)$ pontpárra, amelyre ${x,y}\not\in E(G)$ (nem szomszédosak), teljesül az, hogy $d(x) + d(y) \geq n$, akkor a gráfban van H-kör.
-\end{framed}
+\begin{tetel}{
+ELÉGSÉGES FELTÉTEL - ORE TÉTEL Tétel}: Ha az n pontú G egyszerű gráfban minden olyan $x,y\in V(G)$ pontpárra, amelyre ${x,y}\not\in E(G)$ (nem szomszédosak), teljesül az, hogy $d(x) + d(y) \geq n$, akkor a gráfban van H-kör.
+\end{tetel}
 \begin{leftbar}
 Indirekt t.f.h. a gráf kielégíti a feltételt, de nincs benne H-kör. Vegyünk hozzá a gráfhoz éleket úgy, hogy továbbra se legyen benne H-kör. Ezt egészen addig csináljuk, amíg már akárhogyan is veszünk hozzá egy élet, lesz a gráfban H-kör. Az így kapott G' gráfra továbbra is teljesül a feltétel, hiszen új élek behúzásával "rossz pontpárt" nem lehet létrehozni. Biztosan van két olyan pont, hogy ${x,y} \not \in E(G')$. Ennek a behúzásával már lesz $G' + {x,y}$-ban H-kör, tehát G'-ben van H-út. Legyen ez $P = {z_1, z_2,...,z_n}$ ahol $z_1 = x$ és $z_n = y$.
 Ha x szomszédos a P út valamely $z_k$ pontjával, akkor y nem lehet összekötve $z_{k-1}$-el, mert akkor az egy H-kört adna. Így tehát y nem lehet összekötve legalább d(x) ponttal, ezért
 $$d(y) \leq n - 1 - d(x)$$
 ami viszont ellentmondás, hisz ${x,y} \not\in E(G)$.
 \end{leftbar}
-\begin{framed}
-ELÉGSÉGES FELTÉTEL - DIRAC TÉTEL Tétel: Ha egy n pontú G egyszerű gráfban minden pont foka legalább n/2, akkor a gráfban létezik H-kör.
-\end{framed}
+\begin{tetel}{
+ELÉGSÉGES FELTÉTEL - DIRAC TÉTEL Tétel}: Ha egy n pontú G egyszerű gráfban minden pont foka legalább n/2, akkor a gráfban létezik H-kör.
+\end{tetel}
 \begin{leftbar}
 Ez az előző tételből következik, hiszen ha minden pont foka legalább n/2, akkor teljesül az Ore-tétel feltétele, mivel bármely pontpárra $$d(x) + d(y) \geq n$$
 \end{leftbar}

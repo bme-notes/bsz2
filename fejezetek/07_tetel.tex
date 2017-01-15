@@ -1,20 +1,20 @@
 \section{7. tétel}
 
-\begin{shaded}
-GRÁFOK SZÍNEZÉSE Definíció: Egy G hurokmentes gráf \textbf{k színnel színezhető}, ha minden csúcsot ki lehet színezni k szín felhasználásával úgy, hogy bármely két szomszédos csúcs színe különböző legyen. G \textbf{kromatikus száma} $\chi(G) = k$, ha k színnel meg lehet színezni G-t, de $k - 1$-gyel már nem. Egy ilyen színezésnél az azonos színű pontok halmazát \textbf{színosztálynak} nevezzük.
-\end{shaded}
-\begin{shaded}
-KLIKK Definíció: G egy teljes részgráfját \textbf{klikknek} nevezzük. A G-ben található maximális méretű klikk méretet, azaz pontszámát $\omega(G)$-vel jelöljük és a gráf \textbf{klikkszámának} nevezzük.
-\end{shaded}
-\begin{framed}
-Minden G gráfra $\chi(G) \geq \omega(G)$.
-\end{framed}
+\begin{definicio}{
+GRÁFOK SZÍNEZÉSE Definíció}: Egy G hurokmentes gráf \textbf{k színnel színezhető}, ha minden csúcsot ki lehet színezni k szín felhasználásával úgy, hogy bármely két szomszédos csúcs színe különböző legyen. G \textbf{kromatikus száma} $\chi(G) = k$, ha k színnel meg lehet színezni G-t, de $k - 1$-gyel már nem. Egy ilyen színezésnél az azonos színű pontok halmazát \textbf{színosztálynak} nevezzük.
+\end{definicio}
+\begin{definicio}{
+KLIKK Definíció}: G egy teljes részgráfját \textbf{klikknek} nevezzük. A G-ben található maximális méretű klikk méretet, azaz pontszámát $\omega(G)$-vel jelöljük és a gráf \textbf{klikkszámának} nevezzük.
+\end{definicio}
+\begin{tetel}{
+Minden G gráfra $\chi(G) \geq \omega(G)$}.
+\end{tetel}
 \begin{leftbar}
 Bizonyítás: G pontjainak kiszínezésével a maximális klikk pontjait is kiszínezzük, mégpedig különböző színekkel. k nagyságú klikk esetén legalább k szín kell.
 \end{leftbar}
-\begin{framed}
-MYCIELSKI-KONSTRUKCIÓ Tétel: Minden $k \geq 2$ egész számra van olyan $G_k$ gráf, hogy $\omega(G_k) = 2$ és $\chi(G_k) = k$.
-\end{framed}
+\begin{tetel}{
+MYCIELSKI-KONSTRUKCIÓ Tétel}: Minden $k \geq 2$ egész számra van olyan $G_k$ gráf, hogy $\omega(G_k) = 2$ és $\chi(G_k) = k$.
+\end{tetel}
 \begin{leftbar}
 Bizonyítás: $G_2$-nek nyilván megfelel a 2 pontot és egy élt tartalmazó gráf. T.f.h. hogy már megkonstruáltuk a fenti tulajdonságokkal rendelkező $G_k$ gráfot. Ebből konstruáljuk meg a $G_{k+1}$-et. Jelöljük $G_k$ pontjait $v_1, v_2,..., v_n$-nel. Vegyünk fel $n + 1$ darab új pontot, $u_1, u_2,..., u_n$ és w-t, valamint az új éleket a következőképp: Minden $u_i$-t kössünk össze $v_i$ minden $G_k$-beli szomszédjával, de magával a $v_i$-vel ne. Végül w-t kössük össze $u_i$-val (de a többi v ponttal ne). Belátjuk, hogy az így kapott $G_{k+1}$ gráf kielégíti a feltételeket. Először lássuk be, ha $G_k$-ban nem volt háromszög, akkor $G_{k+1}$-ben sincs, azaz a klikkszáma még mindig 2. T.f.h. mégis van háromszög a $G_{k+1}$-ben. Ennek nyilván nem lehet mindhárom csúcsa $G_k$-ban, mivel ekkor volna már háromszög $G_k$-ban is. Ha w a háromszög egyik csúcsa, az sem jó, mivel akkor a háromszög másik két csúcsa $u_i$ és $u_j$ lehet, viszont ezek nem szomszédosak. Ha $u_i$ a háromszög egyik csúcsa, akkor a maradék két csúcs csak $v_x$ és $v_y$ lehet. Mivel azonban $u_i$ szomszédai megegyeznek a $v_i$ szomszédaival (kivéve w), ezért $v_i$-vel is szomszédosnak kellett volna lennie $v_x$ és $v_y$-nak, ekkor létezett volna $G_k$-ban is háromszög, ami ellentmondás. Ebből kijön az, hogy $\chi(G_{k+1}) \leq k + 1$. Színezzünk ki minden $v_i$-t valamilyen színnel, az $u_i$-ket színezzünk ugyanolyanra (mivel $v_i$-vel nem szomszédos) és w legyen a plusz egy szín, így jól színeztük ki $k+1$ színnel. T.f.h. $\chi(G_{k+1}) = k$. Jelöljük x pont színét c(x)-el, a színeket pedig $1, 2,..., k$-val. Azt is feltehetjük, hogy $c(w) = k$. Mivel w minden $u_i$ ponttal össze van kötve, ezért az $u_i$ pontokat a $1, 2,....k - 1$ színekkel színezzük. Megadunk egy c' színezést a $v_i$ pontok által feszített részgráfon (Ez éppen $G_k$-val izomorf részgráf). Ha $c(v_i) = k$ akkor legyen $c'(v_i) = c(u_i)$, különben $c'(v_i) = c(v_i)$, vagyis a k színűeket színezzük át a "párjuk" színére. Belátjuk, hogy c' egy jó $k-1$ színezése $G_k$-nak, ami ellentmondás.
 \end{leftbar}
