@@ -1,21 +1,20 @@
 sudo: required
 dist: trusty
 addons:
-  apt:
-    packages:
-    - texlive-xetex
-    - texlive-latex-extra
-    - lmodern
-    - texlive-latex-recommended
-    - xzdec
-    - texlive-fonts-recommended
+  apt_packages:
+   - texlive-xetex
+   - texlive-latex-extra
+   - lmodern
+   - texlive-latex-recommended
+   - xzdec
+   - texlive-fonts-recommended
 script:
-- tlmgr init-usertree
-- tlmgr option repository ftp://tug.org/historic/systems/texlive/2015/tlnet-final
-- tlmgr update --all
-- tlmgr install etoolbox tcolorbox framed polyglossia hyperref pgf xcolor
-- xelatex bsz2.tex
-- xelatex bsz2.tex
+ - tlmgr init-usertree
+ - tlmgr option repository ftp://tug.org/historic/systems/texlive/2015/tlnet-final
+ - tlmgr update --all
+ - tlmgr install etoolbox tcolorbox framed polyglossia hyperref pgf xcolor
+ - xelatex bsz2.tex
+ - xelatex bsz2.tex
 deploy:
   provider: releases
   api_key:
