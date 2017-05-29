@@ -1,27 +1,32 @@
 \section{1. tétel}
 
-\begin{definicio}{
-FAKTORIÁLIS Definíció}: Az $n(n-1)(n-2)...\cdot2\cdot1$ szorzatot n \textbf{faktoriálisának} nevezzük. Definíció szerint $0! = 1$.\\
+\begin{definicio}{FAKTORIÁLIS}
+Az $n(n-1)(n-2)...\cdot2\cdot1$ szorzatot n \textbf{faktoriálisának} nevezzük. Definíció szerint $0! = 1$.\\
 Jel: $n!$
 \end{definicio}
-\begin{definicio}{
-PERMUTÁCIÓ Definíció}: Az n elem összes lehetséges sorrendjének a száma $n!$ és ezt hívjük \textbf{permutációnak}.
+
+\begin{definicio}{PERMUTÁCIÓ}
+Az n elem összes lehetséges sorrendjének a száma $n!$ és ezt hívjük \textbf{permutációnak}.
 \end{definicio}
-\begin{definicio}{
-ISMÉTLÉSES PERMUTÁCIÓ Definíció}: $k_1$ darab első típusú elem, ..., $k_n$ darab n-edik típusú elem lehetséges sorbarendezésének a száma a $k_1 + k_2 + ... + k_n$ \textbf{ismétléses permutációi}. Számuk:
+
+\begin{definicio}{ISMÉTLÉSES PERMUTÁCIÓ}
+$k_1$ darab első típusú elem, ..., $k_n$ darab n-edik típusú elem lehetséges sorbarendezésének a száma a $k_1 + k_2 + ... + k_n$ \textbf{ismétléses permutációi}. Számuk:
 $$\frac{(k_1+k_2+...+k_n)!}{k_1!\cdot k_2!\cdot...\cdot k_n!}$$
 \end{definicio}
-\begin{definicio}{
-VARIÁCIÓ Definíció}: n-ből k elem összes lehetséges sorrendben való kiválasztása az n elem k-ad osztályú (ismétlés nélküli) \textbf{variációja}, ezek száma:
+
+\begin{definicio}{VARIÁCIÓ}
+n-ből k elem összes lehetséges sorrendben való kiválasztása az n elem k-ad osztályú (ismétlés nélküli) \textbf{variációja}, ezek száma:
 $$n(n-1)(n-2)...(n-k+1) = \frac{n!}{(n-k)!}$$
 Ha $k=n$, akkor permutációról beszélünk.
 \end{definicio}
-\begin{definicio}{
-ISMÉTLÉSES VARIÁCIÓ Definíció}: n elemből k tagú sorozatok kiválasztása, ahol egy-egy elem többször is szerepelhet, az n-elem k-ad osztályú \textbf{ismétléses variációja}. Ezeknek a száma:
+
+\begin{definicio}{ISMÉTLÉSES VARIÁCIÓ}
+n elemből k tagú sorozatok kiválasztása, ahol egy-egy elem többször is szerepelhet, az n-elem k-ad osztályú \textbf{ismétléses variációja}. Ezeknek a száma:
 $$n^k$$
 \end{definicio}
-\begin{definicio}{
-KOMBINÁCIÓ Definíció}: Egy n elemű halmaz k elemű részhalmazainak a száma: n elem k-ad osztályú \textbf{kombinációja}. Száma:
+
+\begin{definicio}{KOMBINÁCIÓ}
+Egy n elemű halmaz k elemű részhalmazainak a száma: n elem k-ad osztályú \textbf{kombinációja}. Száma:
 $$\begin{pmatrix}
 n\\k
 \end{pmatrix} = \frac{n(n-1)(n-2)...(n-k+1)}{k!}$$
@@ -29,13 +34,15 @@ Az $\begin{pmatrix}
 n\\k
 \end{pmatrix}$ a binomiális együttható.
 \end{definicio}
-\begin{definicio}{
-ISMÉTLÉSES KOMBINÁCIÓ Definíció}: n elemből k kiválasztása, ha a sorrend nem számít, de az elemek többször is szerepelhetnek: n elem k-ad osztályú \textbf{ismétléses kombinációi}. Számuk: $$\begin{pmatrix}
+
+\begin{definicio}{ISMÉTLÉSES KOMBINÁCIÓ}
+n elemből k kiválasztása, ha a sorrend nem számít, de az elemek többször is szerepelhetnek: n elem k-ad osztályú \textbf{ismétléses kombinációi}. Számuk: $$\begin{pmatrix}
 n+k-1\\k
 \end{pmatrix}$$
 \end{definicio}
-\begin{tetel}{
-BINOMIÁLIS TÉTEL Tétel}: Tetszőleges valós x, y-ra és nemnegatív egész n-re:$$
+
+\begin{tetel}{BINOMIÁLIS TÉTEL}
+Tetszőleges valós x, y-ra és nemnegatív egész n-re:$$
 (x+y)^n = \begin{pmatrix}
 n\\0
 \end{pmatrix} x^n + \begin{pmatrix}
@@ -48,8 +55,9 @@ n\\k
 n\\n
 \end{pmatrix} y^n$$
 \end{tetel}
-\begin{definicio}{
-PASCAL HÁROMSZÖG}: A háromszög csúcsán álljon az  $\begin{pmatrix}
+
+\begin{definicio}{PASCAL HÁROMSZÖG}
+A háromszög csúcsán álljon az  $\begin{pmatrix}
 0\\0
 \end{pmatrix}$ együttható. Alatta álljon az $\begin{pmatrix}
 1\\0
@@ -66,8 +74,9 @@ k\\k
 \end{pmatrix}$ együtthatók. A legutóbbi állítás alapján a Pascal-háromszög minden sorának a sorösszege:
 $2^{i-1}$. Ez abból is belátható, hogy minden sor összege kétszerese az előzőnek, ugyanis az együtthatókat úgy is meg lehet kapni, hogy az új elem a felette álló két együttható összegéből áll össze.
 \end{definicio}
-\begin{tetel}{
-BINOMIÁLIS ÖSSZEG Tétel}: Minden n nemnegatív számra
+
+\begin{tetel}{BINOMIÁLIS ÖSSZEG}
+Minden n nemnegatív számra
 $$\begin{pmatrix}
 n\\0
 \end{pmatrix} + \begin{pmatrix}
