@@ -1,37 +1,46 @@
 \section{9. tétel}
 
-\begin{definicio}{
-PÁROSÍTÁS Definíció}: \textbf{Párosításnak} vagy \textbf{részleges párosításnak} nevezünk egy M élhalmazt, ha semelyik két élnek nincsen közös pontja. Az ilyen éleket \textbf{független éleknek} nevezzük. A részleges párosítás \textbf{lefedi} éleinek végpontjait. Egy párosítás \textbf{teljes párosítás}, ha a gráf minden pontját lefedi.
+\begin{definicio}{PÁROSÍTÁS}
+\textbf{Párosításnak} vagy \textbf{részleges párosításnak} nevezünk egy M élhalmazt, ha semelyik két élnek nincsen közös pontja. Az ilyen éleket \textbf{független éleknek} nevezzük. A részleges párosítás \textbf{lefedi} éleinek végpontjait. Egy párosítás \textbf{teljes párosítás}, ha a gráf minden pontját lefedi.
 \end{definicio}
-\begin{definicio}{
-FLEN/LEFOGÓ ÉLEK/PONTOK Definíció}: Jelöljük $\nu(G)$-vel a G gráfban található \textbf{független élek} maximális számát. $X \subseteq V(G)$ egy \textbf{lefogó ponthalmaz}, ha G minden élének legalább egyik végpontját tartalmazza. A lefogó pontok minimális számát $\tau(G)$-vel jelöljük. $Y \subseteq E(G)$ \textbf{lefogó élhalmaz}, ha minden pontot lefog. A lefogó élek minimális számát $\rho(G)$ jelöli. $X \subseteq V(G)$ \textbf{független ponthalmaz}, ha nincs benne két szomszédos pont. A független pontok maximális száma $\alpha(G)$
+
+\begin{definicio}{FLEN/LEFOGÓ ÉLEK/PONTOK}
+Jelöljük $\nu(G)$-vel a G gráfban található \textbf{független élek} maximális számát. $X \subseteq V(G)$ egy \textbf{lefogó ponthalmaz}, ha G minden élének legalább egyik végpontját tartalmazza. A lefogó pontok minimális számát $\tau(G)$-vel jelöljük. $Y \subseteq E(G)$ \textbf{lefogó élhalmaz}, ha minden pontot lefog. A lefogó élek minimális számát $\rho(G)$ jelöli. $X \subseteq V(G)$ \textbf{független ponthalmaz}, ha nincs benne két szomszédos pont. A független pontok maximális száma $\alpha(G)$
 \end{definicio}
-\begin{tetel}{
-CUCCOS VISZONY TÉTEL Minden G gráfra}:
+
+\begin{tetel}{CUCCOS VISZONY TÉTEL}
+Minden G gráfra
 $$\nu(G) \leq \tau(G)$$
 $$\alpha(G) \leq \rho(G)$$
 \end{tetel}
-\begin{leftbar}
-Bizonyítás: Legyen M maximális méretű független élhalmaz. Mivel pusztán M éleinek lefogásához legalább $|M|$ pontra van szükség, ezért $\tau(G) \geq |M| = \nu(G)$.
+
+\begin{bizonyitas}{}
+Legyen M maximális méretű független élhalmaz. Mivel pusztán M éleinek lefogásához legalább $|M|$ pontra van szükség, ezért $\tau(G) \geq |M| = \nu(G)$.
 Hasonlóan bizonyítjuk a második állítást is.
-\end{leftbar}
-\begin{tetel}{
-GALLAI TÉTEL I}. Tétel: Minden olyan G gráfra, mely hurokmentes:
+\end{bizonyitas}
+
+\begin{tetel}{GALLAI TÉTEL I.}
+Minden olyan G gráfra, mely hurokmentes:
 $$\tau(G) + \alpha(G) = v(G) = n$$
 \end{tetel}
-\begin{leftbar}
-Bizonyítás: Egy X halmaz pontjai akkor és csak akkor függetlenek, ha a $V(G)\backslash X$ halmaz lefogó ponthalmaz. Hiszen ha X nem független, akkor van két összekötött pont, és így $V(G)\backslash X$ nem fogja le ezt az élt. Fordítva, ha $V(G)\backslash X$ nem fog le egy huroktól különböző élt, akkor X-ben ennek az élnek mindkét végpontja szerepel. Tehát $\tau(G) \leq |V(G)\backslash X|$ teljesül minden X független ponthalmazra. Ebből pedig következik, hogy a $\tau(G) + \alpha(G) \leq v(G)$. Hasonlóan $\alpha(G) \geq |V(G) \backslash Y|$ minden Y lefogó ponthalmazra, amiből $\tau(G) + \alpha(G) \geq v(G)$ következik.
-\end{leftbar}
-\begin{tetel}{
-GALLAI TÉTEL II}. Tétel: Minden olyan G gráfra, melyben nincs izolált pont:
+
+\begin{bizonyitas}{}
+Egy X halmaz pontjai akkor és csak akkor függetlenek, ha a $V(G)\backslash X$ halmaz lefogó ponthalmaz. Hiszen ha X nem független, akkor van két összekötött pont, és így $V(G)\backslash X$ nem fogja le ezt az élt. Fordítva, ha $V(G)\backslash X$ nem fog le egy huroktól különböző élt, akkor X-ben ennek az élnek mindkét végpontja szerepel. Tehát $\tau(G) \leq |V(G)\backslash X|$ teljesül minden X független ponthalmazra. Ebből pedig következik, hogy a $\tau(G) + \alpha(G) \leq v(G)$. Hasonlóan $\alpha(G) \geq |V(G) \backslash Y|$ minden Y lefogó ponthalmazra, amiből $\tau(G) + \alpha(G) \geq v(G)$ következik.
+\end{bizonyitas}
+
+\begin{tetel}{GALLAI TÉTEL II.}
+Minden olyan G gráfra, melyben nincs izolált pont:
 $$\nu(G) + \rho(G) = v(G) = n$$
 \end{tetel}
-\begin{leftbar}
-Bizonyítás: Egy $\nu(G)$ elemű X független élhalmaz lefog $2\nu(G)$ különböző pontot. A többi pont (mivel nincs izolált) nyilván lefogható $v(G) - 2\nu(G)$ éllel, így $v(G) - \nu(G) \geq \rho(G)$. Másrészt, ha Y egy minimális lefogó élhalmaz, akkor Y néhány (k darab) diszjunkt csillag egyesítése. Ha ugyanis Y tartalmazna kört, akkor annak bármely élét, ha pedig 3 hosszú utat, akkor a közepét el lehetne hagyni Y-ból, mert a többi él még mindig lefogná az összes pontot. Így $\rho(G) = v(G) - k$. Minden csillagból kiválasztunk egy élt, az így kapott élhalmaz nyilván független. Tehát $\nu(G) \geq k = v(G) - \rho(G)$.
-\end{leftbar}
-\begin{tetel}{
-TUTTE-TÉTEL Tétel}: Egy G gráfban akkor és csak akkor van teljes párosítás, ha minden $X \subseteq V(G)$-re $c_p(G - X)\leq |X|$, azaz akárhogy hagyunk el a gráfból k pontot, a maradékban a páratlan komponensek száma nem lehet több, mint k.
+
+\begin{bizonyitas}{}
+Egy $\nu(G)$ elemű X független élhalmaz lefog $2\nu(G)$ különböző pontot. A többi pont (mivel nincs izolált) nyilván lefogható $v(G) - 2\nu(G)$ éllel, így $v(G) - \nu(G) \geq \rho(G)$. Másrészt, ha Y egy minimális lefogó élhalmaz, akkor Y néhány (k darab) diszjunkt csillag egyesítése. Ha ugyanis Y tartalmazna kört, akkor annak bármely élét, ha pedig 3 hosszú utat, akkor a közepét el lehetne hagyni Y-ból, mert a többi él még mindig lefogná az összes pontot. Így $\rho(G) = v(G) - k$. Minden csillagból kiválasztunk egy élt, az így kapott élhalmaz nyilván független. Tehát $\nu(G) \geq k = v(G) - \rho(G)$.
+\end{bizonyitas}
+
+\begin{tetel}{TUTTE-TÉTEL}
+Egy G gráfban akkor és csak akkor van teljes párosítás, ha minden $X \subseteq V(G)$-re $c_p(G - X)\leq |X|$, azaz akárhogy hagyunk el a gráfból k pontot, a maradékban a páratlan komponensek száma nem lehet több, mint k.
 \end{tetel}
-\begin{leftbar}
-Bizonyítás (csak szükséges): Ha G-ben van teljes párosítás, akkor nyilvánvalóan teljesül a feltétel. Hiszen ha elhagyunk a gráfból X-et, akkor a páratlan komponensek mindegyikéből az eredeti gráfban indul ki legalább egy párosításbeli él, és ezek az élek csak egy-egy (különböző) X-beli pontba mehetnek. Tehát $c_p(G - X) \leq |X|$.
-\end{leftbar}
+
+\begin{bizonyitas}{}
+(csak szükséges): Ha G-ben van teljes párosítás, akkor nyilvánvalóan teljesül a feltétel. Hiszen ha elhagyunk a gráfból X-et, akkor a páratlan komponensek mindegyikéből az eredeti gráfban indul ki legalább egy párosításbeli él, és ezek az élek csak egy-egy (különböző) X-beli pontba mehetnek. Tehát $c_p(G - X) \leq |X|$.
+\end{bizonyitas}
