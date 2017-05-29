@@ -1,71 +1,94 @@
 \section{2. tétel}
 
-\begin{definicio}{
-GRÁF Definíció}: Egy \textbf{gráf} rendezett pár, $G = (V,E)$, ahol V egy nem üres halmaz, E pedig az ebből a halmazból képezhető párok egy halmaza, V elemeit \textbf{pontoknak} v. \textbf{csúcsoknak} nevezzük, E elemeit pedig \textbf{éleknek}. A csúcsok számát v(G)-vel jelöljük, az élekét pedig e(G)-vel. A gráf csúcshalmazát V(G)-vel, az élhalmazt pedig E(G)-vel jelöljük.
+% a kommentezett reszek allitolag nem a tetel reszei, ha valaki jobban tudja, nyugodtan allitsa oket vissza vagy torolje
+
+\begin{definicio}{GRÁF}
+Egy \textbf{gráf} rendezett pár, $G = (V,E)$, ahol V egy nem üres halmaz, E pedig az ebből a halmazból képezhető párok egy halmaza, V elemeit \textbf{pontoknak} v. \textbf{csúcsoknak} nevezzük, E elemeit pedig \textbf{éleknek}. A csúcsok számát v(G)-vel jelöljük, az élekét pedig e(G)-vel. A gráf csúcshalmazát V(G)-vel, az élhalmazt pedig E(G)-vel jelöljük.
 \end{definicio}
-\begin{definicio}{
-HUROKÉL, TÖBBSZÖRÖS ÉL Definíció}: Ha az $e \in E$ a {$v_1, v_2$} párnak felel meg, akkor \textbf{hurokélnek} nevezzük azon éleket, melynek két végpontja ugyanazon pont (tehát $v_1 = v_2$). Ha két különböző nem hurokélnek végpontjai azonosak, akkor a két élet \textbf{párhuzamos} v. \textbf{többszörös élnek} nevezzük.
+
+\begin{definicio}{HUROKÉL, TÖBBSZÖRÖS ÉL}
+Ha az $e \in E$ a {$v_1, v_2$} párnak felel meg, akkor \textbf{hurokélnek} nevezzük azon éleket, melynek két végpontja ugyanazon pont (tehát $v_1 = v_2$). Ha két különböző nem hurokélnek végpontjai azonosak, akkor a két élet \textbf{párhuzamos} v. \textbf{többszörös élnek} nevezzük.
 \end{definicio}
-\begin{definicio}{
-EGYSZERŰ GRÁF Definíció}: Azokat a gráfokat, melyek nem tartalmaznak hurokéleket és többszörös éleket, \textbf{egyszerű gráfnak} nevezünk.
+
+\begin{definicio}{EGYSZERŰ GRÁF}
+Azokat a gráfokat, melyek nem tartalmaznak hurokéleket és többszörös éleket, \textbf{egyszerű gráfnak} nevezünk.
 \end{definicio}
-%\begin{definicio}{
-%SZOMSZÉDOS ÉLEK, PONTOK Definíció}: Két él akkor \textbf{szomszédos}, ha legalább egy pontban megosztoznak. Hasonlóan, két pont akkor szomszédos, ha él összeköti őket. Ha egy pont egy él végpontja, akkor azt mondjuk, hogy a pont \textbf{illeszkedik} az élre.
+
+%\begin{definicio}{SZOMSZÉDOS ÉLEK, PONTOK}
+%Két él akkor \textbf{szomszédos}, ha legalább egy pontban megosztoznak. Hasonlóan, két pont akkor szomszédos, ha él összeköti őket. Ha egy pont egy él végpontja, akkor azt mondjuk, hogy a pont \textbf{illeszkedik} az élre.
 %\end{definicio}
-%\begin{definicio}{
-%FOKSZÁM Definíció}: Egy pontra illeszkedő élek számát a pont \textbf{fokszámának} nevezzük. Amennyiben egy pont fokszáma 0, akkor azt \textbf{izolált pontnak} nevezzük. A v pont fokszámát d(v)-vel jelöljük. A maximális fokszámot $\Delta$-val (nagy delta), a minimálisat pedig $\delta$-val (kis delta) jelöljük.
+
+%\begin{definicio}{FOKSZÁM}
+%Egy pontra illeszkedő élek számát a pont \textbf{fokszámának} nevezzük. Amennyiben egy pont fokszáma 0, akkor azt \textbf{izolált pontnak} nevezzük. A v pont fokszámát d(v)-vel jelöljük. A maximális fokszámot $\Delta$-val (nagy delta), a minimálisat pedig $\delta$-val (kis delta) jelöljük.
 %\end{definicio}
-\begin{definicio}{
-KOMPLEMENTER GRÁF Definíció}: Egy G gráf \textbf{komplementerén} azt a $\bar{G}$ gráfot értjük, amelyet akkor kapunk, ha a G-t a $K_{v(G)}$ részgráfjának tekintjük és $\bar{G}$-ben azon pontpárok vannak összekötve, amelyek G-ben nincsenek.
+
+\begin{definicio}{KOMPLEMENTER GRÁF}
+Egy G gráf \textbf{komplementerén} azt a $\bar{G}$ gráfot értjük, amelyet akkor kapunk, ha a G-t a $K_{v(G)}$ részgráfjának tekintjük és $\bar{G}$-ben azon pontpárok vannak összekötve, amelyek G-ben nincsenek.
 \end{definicio}
-\begin{definicio}{
-IZOMORFIA Definíció}: G = (V,E) és G'= (V',E') gráfok \textbf{izomorfak}, ha van olyan egyértelmű megfeleltetés (bijekció), hogy G-ben pontosan akkor szomszédos két pont, a G'-ben a nekik megfelelő pontok szomszédosak, és a szomszédos pontpárok esetén ugyanannyi él fut közöttük.
+
+\begin{definicio}{IZOMORFIA}
+G = (V,E) és G'= (V',E') gráfok \textbf{izomorfak}, ha van olyan egyértelmű megfeleltetés (bijekció), hogy G-ben pontosan akkor szomszédos két pont, a G'-ben a nekik megfelelő pontok szomszédosak, és a szomszédos pontpárok esetén ugyanannyi él fut közöttük.
 \end{definicio}
-\begin{definicio}{
-RÉSZGRÁF Definíció}: A G' = (V',E') gráf a G = (V,E) \textbf{részgráfja}, ha a $V' \subseteq V$, $E' \subseteq E$ valamint egy pont és egy él pontosan akkor illeszkedik egymásra G'-ben, ha a G-ben is illeszkedők.
+
+\begin{definicio}{RÉSZGRÁF}
+A G' = (V',E') gráf a G = (V,E) \textbf{részgráfja}, ha a $V' \subseteq V$, $E' \subseteq E$ valamint egy pont és egy él pontosan akkor illeszkedik egymásra G'-ben, ha a G-ben is illeszkedők.
 \end{definicio}
-\begin{definicio}{
-FESZÍTŐ RÉSZGRÁF Definíció}: G' = (V',E') gráf a G = (V,E)\textbf{ feszítő részgráfja}, ha G' részgráfja G-nek és V' = V.
+
+\begin{definicio}{FESZÍTŐ RÉSZGRÁF}
+G' = (V',E') gráf a G = (V,E)\textbf{ feszítő részgráfja}, ha G' részgráfja G-nek és V' = V.
 \end{definicio}
-\begin{definicio}{
-FESZÍTETT RÉSZGRÁF Definíció}: Ha E' pontosan azokból az E-beli élekből áll, amelyeknek két végpontja V'-ben van, és az E' az összes ilyen élet tartalmazza, akkor G' a G gráf V' által feszített részgráfja.
+
+\begin{definicio}{FESZÍTETT RÉSZGRÁF}
+Ha E' pontosan azokból az E-beli élekből áll, amelyeknek két végpontja V'-ben van, és az E' az összes ilyen élet tartalmazza, akkor G' a G gráf V' által feszített részgráfja.
 \end{definicio}
-\begin{definicio}{
-ÉLSOROZAT, ÚT, KÖR Definíció}: Egy $(v_0, e_1, v_1 ... v_{k-1}, e_k, v_k)$ sorozatot \textbf{élsorozatnak} nevezzük, ha $e_i$ a $v_{i-1}$-et és $v_i$-t összekötő él. Ha $v_0 = v_k$, akkor az élsorozat zárt. Ha a csúcsok mind különbözőek, akkor egy \textbf{útról} beszélünk. Ha a csúcsok mind különbözőek és az élsorozat zárt, akkor pedig egy \textbf{körről}.
+
+\begin{definicio}{ÉLSOROZAT, ÚT, KÖR}
+Egy $(v_0, e_1, v_1 ... v_{k-1}, e_k, v_k)$ sorozatot \textbf{élsorozatnak} nevezzük, ha $e_i$ a $v_{i-1}$-et és $v_i$-t összekötő él. Ha $v_0 = v_k$, akkor az élsorozat zárt. Ha a csúcsok mind különbözőek, akkor egy \textbf{útról} beszélünk. Ha a csúcsok mind különbözőek és az élsorozat zárt, akkor pedig egy \textbf{körről}.
 \end{definicio}
-%\begin{tetel}{
-%EKVIVALENCIA RELÁCIÓ Tétel}: Definiáljuk úgy a $p \equiv q$ relációt, hogy $p \equiv q$ akkor és csak akkor, ha $p,q\in V(G)$ és vezet út p és q közt, vagy p = q, ez egy ekvivalencia reláció.
+
+%\begin{tetel}{EKVIVALENCIA RELÁCIÓ}
+%Definiáljuk úgy a $p \equiv q$ relációt, hogy $p \equiv q$ akkor és csak akkor, ha $p,q\in V(G)$ és vezet út p és q közt, vagy p = q, ez egy ekvivalencia reláció.
 %\end{tetel}
-%\begin{leftbar}
+
+%\begin{bizonyitas}{}
 %Bizonyítás: Reflexivitás és szimmetria triviális. Tranzitivitás: Legyen két utunk, p-t q-val (($p, e_0, p_1, e_1...q$)) és q-t r-rel (($q, f_0, q_1, f_1...r$)) összekötő út. Legyen $p_i$ a legkisebb indexű p, ami előfordul q-k között is. Mondjuk, hogy $p_i = q_j$. Ekkor a ($p, e_0, p_1, e_1...p_i, f, q_{j+1},...r$) egy p-t és r-t összekötő út.
-%\end{leftbar}
-\begin{definicio}{
-ÖSSZEFÜGGŐSÉG Definíció}: G gráf \textbf{összefüggő}, ha bármely 2 csúcs között létezik élsorozat vagy út.
+%\end{bizonyitas}
+
+\begin{definicio}{ÖSSZEFÜGGŐSÉG}
+G gráf \textbf{összefüggő}, ha bármely 2 csúcs között létezik élsorozat vagy út.
 \end{definicio}
-\begin{definicio}{
-KOMPONENS Definíció}: G gráf komponense olyan H feszített részgráfja G-nek, amire teljesül, hogy H összefüggő és bárhogy egy további csúcsot hozzáteszünk, már nem összefüggő feszített részgráfot kapunk.
+
+\begin{definicio}{KOMPONENS}
+G gráf komponense olyan H feszített részgráfja G-nek, amire teljesül, hogy H összefüggő és bárhogy egy további csúcsot hozzáteszünk, már nem összefüggő feszített részgráfot kapunk.
 \end{definicio}
-\begin{definicio}{
-FA Definíció}: Az összefüggő körmentes gráfokat \textbf{fának} nevezzük. Amennyiben körmentes egy gráf, de nem összefüggő (tehát több fából áll), akkor azt \textbf{erdőnek} nevezzük.
+
+\begin{definicio}{FA}
+Az összefüggő körmentes gráfokat \textbf{fának} nevezzük. Amennyiben körmentes egy gráf, de nem összefüggő (tehát több fából áll), akkor azt \textbf{erdőnek} nevezzük.
 \end{definicio}
-\begin{tetel}{
-FA FOKSZÁMA Tétel}: Minden legalább 2 pontú fában van legalább 2 egy fokszámú pont.
+
+\begin{tetel}{FA FOKSZÁMA}
+Minden legalább 2 pontú fában van legalább 2 egy fokszámú pont.
 \end{tetel}
-\begin{leftbar}
+
+\begin{bizonyitas}{}
 Tekintsük a fában található leghosszabb utat, legyen ez ($v_1, v_2,..., v_k$), ekkor beláthatjuk, hogy $v_1$ és $v_k$ végpontok egyfokúak lesznek. T.f.h $v_k$ nem egy fokszámú, tehát belőle vezet még él a fa valamely pontjába. Az út többi pontjába nem vezethet, mivel a fa definíció alapján körmentes, és új pontba sem vezethet, mivel akkor egy hosszabb utat kapnánk, amivel ellentmondást kapunk.
-\end{leftbar}
-\begin{tetel}{
-FA ÉLEINEK SZÁMA Tétel}: n pontú fa éleinek száma n-1.
+\end{bizonyitas}
+
+\begin{tetel}{FA ÉLEINEK SZÁMA}
+n pontú fa éleinek száma n-1.
 \end{tetel}
-\begin{leftbar}
+
+\begin{bizonyitas}{}
 Bizonyítás: Teljes indukcióval. n = 2-re az állítás triviálisan teljesül. T.f.h. az állítás igaz minden $n < n_0$-ra. Az előző tétel szerint minden $n_0$ fában van egy fokszámú pont, ezt hagyjuk el. Ha elhagyjuk ezt a pontot és a hozzá tartozó élet, akkor mivel a maradék $n_0 - 1$ fára már igaz az állítás, látható, hogy az $n_0$ pontú eredeti fának $n_0 - 1$ éle van.
-\end{leftbar}
-\begin{definicio}{
-Az F gráf a G gráf feszítőfája, ha F fa, és részgráfja G-nek}.
+\end{bizonyitas}
+
+\begin{definicio}{Az F gráf a G gráf feszítőfája, ha F fa, és részgráfja G-nek.}
 \end{definicio}
-\begin{tetel}{
-FESZÍTŐFA LÉTEZÉSE Tétel}: Minden összefüggő G gráf tartalmaz feszítőfát.
+
+\begin{tetel}{FESZÍTŐFA LÉTEZÉSE}
+Minden összefüggő G gráf tartalmaz feszítőfát.
 \end{tetel}
-\begin{leftbar}
+
+\begin{bizonyitas}{}
 Ha G-ben van kör, akkor hagyjuk el a kör egy tetszőleges élét, ha a maradék gráfban még mindig van kör, akkor annak is hagyjuk el egy tetszőleges élét, folytatjuk, amíg körmentes lesz a gráf. Ha már nincsen több kör, akkor nézzünk rá, hogy mit kaptunk - az összefüggőség nem sérül, mivel körök egy-egy élét hagytuk el, és pontot se hagytunk el - tehát amit kaptunk, az láthatóan G gráf feszítőfája.
-\end{leftbar}
+\end{bizonyitas}
