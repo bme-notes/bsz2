@@ -2,13 +2,14 @@ sudo: required
 dist: trusty
 language: ruby
 addons:
-  apt_packages:
-   - texlive-xetex
-   - texlive-latex-extra
-   - lmodern
-   - texlive-latex-recommended
-   - xzdec
-   - texlive-fonts-recommended
+  apt:
+    packages:
+     - texlive-xetex
+     - texlive-latex-extra
+     - lmodern
+     - texlive-latex-recommended
+     - xzdec
+     - texlive-fonts-recommended
 script:
  - tlmgr init-usertree
  - tlmgr option repository ftp://tug.org/historic/systems/texlive/2015/tlnet-final
