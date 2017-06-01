@@ -5,7 +5,7 @@ Legyen G egy irányított gráf. Rendeljünk minden éléhez egy c(e) nemnegatí
 \end{definicio}
 
 \begin{definicio}{FOLYAM, FOLYAMÉRTÉK}
-Legyen f(e) az a "vízmennyiség", ami az e élen folyik át. Ez az f függvény \textbf{megengedett függvény}, ha $f(e) \leq c(e)$ minden élre és
+Legyen f(e) az a ``vízmennyiség'', ami az e élen folyik át. Ez az f függvény \textbf{megengedett függvény}, ha $f(e) \leq c(e)$ minden élre és
 $$m(v) = \sum\{f(e)|e\,\,vegpontja\,\,v\} - \sum\{f(e) | e\,\,kezdopontja\,\,v\} = 0$$
 minden $v\in V(G)$-re, kivéve az s és t pontokat. Egy megengedett függvényt \textbf{folyamnak} hívunk. Könnyen belátható, hogy $m(t) = -m(s)$. Ezt a közös értéket a folyam értékének nevezzük és $m_f$-el jelöljük. Egy élt \textbf{telítettnek} hívunk egy folyamban, ha $f(e) = c(e)$ és \textbf{telítetlennek}, ha $f(e) < c(e)$.
 \end{definicio}
