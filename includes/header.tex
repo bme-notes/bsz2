@@ -13,6 +13,7 @@
 \usepackage{framed}
 \usepackage[a4paper,margin=2.5cm]{geometry}
 \usepackage{fancyhdr}
+\usepackage{afterpage}
 \pagestyle{fancy}
 \usepackage[hidelinks]{hyperref}
 \definecolor{shadecolor}{HTML}{eeeeee} %Kindle-optimized color
@@ -28,6 +29,7 @@
 \newenvironment{definicio}[1]{\begin{shaded}\noindent\ignorespaces\textbf{\large Definíció: #1}\normalsize\\}{\end{shaded}\ignorespacesafterend}
 \newenvironment{bizonyitas}[1]{\begin{leftbar}\noindent\ignorespaces\textbf{\large Bizonyítás: #1}\normalsize\\}{\end{leftbar}\ignorespacesafterend}
 
+\lstset{breaklines=true,postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},basicstyle=\small}
 
 \title{\huge\textsc{\the\cim}}
 \author{\the\szerzo}

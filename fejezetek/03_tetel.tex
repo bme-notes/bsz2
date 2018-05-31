@@ -33,7 +33,21 @@ Bemenete a BFS algoritmusnak: Egy G gráf és egy $s \in V$ csúcs.
 	\item Vissza az \textbf{1.} lépéshez.
 	\end{itemize}
 \end{itemize}
+
+Mivel van, akinek a matematikus notáció nem túl olvasható (pl. ezen részlet szerzője), ezért alább olvasható ugyanezen algoritmus C++-szerűen refaktorálva, bizonyos Clean Code szempontokra ügyelve. Az alább látható algoritmus ténylegesen refaktorálás és teljesen egyenértékű a fentivel; nem tartalmaz módosításokat.
+
+\afterpage{%
+  \begin{framed}
+    \noindent \large{\textbf{BFS algoritmus, C++-szerűen}}
+      \lstinputlisting[language=C]{res/bfs.cpp}
+
+  \end{framed}
+  \clearpage
+}
+
+
 Az algoritmus lineáris futásidejű, tehát $c \cdot e$ lépésszámú.
+
 \end{tetel}
 
 \begin{definicio}{BFS-FA}
