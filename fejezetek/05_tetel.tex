@@ -1,13 +1,71 @@
-\section{Spare parts}
+\section{5. tétel: gráfok színezése}
 
-\begin{definicio}{ELVÁGÓ ÉLHALMAZ}
-G összefüggő gráf, $x \in E(G)$. x elvágó élhalmaz, ha $(V(G),E(G)\backslash x) = G'$ és G' nem összefüggő. x vágás, ha x elv. élhalmaz, de semelyik részhalmaza sem az.
+\begin{definicio}{GRÁFOK SZÍNEZÉSE}
+Egy G hurokmentes gráf \textbf{k színnel színezhető}, ha minden csúcsot ki lehet színezni k szín felhasználásával úgy, hogy bármely két szomszédos csúcs színe különböző legyen. G \textbf{kromatikus száma} $\chi(G) = k$, ha k színnel meg lehet színezni G-t, de $k - 1$-gyel már nem. Egy ilyen színezésnél az azonos színű pontok halmazát \textbf{színosztálynak} nevezzük.
 \end{definicio}
 
-\begin{tetel}{VÁGÁSOK ÉS KÖRÖK}
-G összefüggő és síkbarajzolt, ekkor ha C kör a G-ben, a C* vágás lesz G duálisában, G*-ban és fordítva, ha C vágás G-ben, a C* kör lesz a G*-ban.
+\begin{tetel}{MOHÓ SZÍNEZÉS Algoritmus}
+A mohó színezés sorba rendezi a csúcsokat ($v_1, v_2...v_n$) és a $v_i.$-hoz azon legkisebb színt rendeli, amit a ($v_1,...v_{i-1}$) szomszédokhoz még nem rendelt. A mohó színezés nem feltétlenül a legoptimálisabb színezést adja.
 \end{tetel}
 
-\begin{tetel}{FA DUÁLISON BELÜL}
-G összefüggő, egyszerű gráf, F ezen belül feszítőfa. A G* duálison belül ez az F a saját komplementereként fog megjelenni.
+\begin{tetel}{$\chi(G)$ ÉS $\Delta(G)$ VISZONYA}
+Minden G gráfra teljesül, hogy
+$$\chi(G) \leq \Delta(G)+1$$
+\end{tetel}
+
+\begin{bizonyitas}{}
+A mohó színezés segítségével bizonyítjuk. Színezzük ki G pontjait ($v_1, v_2,..., v_n$) úgy, hogy az i-edik lépésben $v_i$-t olyan színre színezzük, ami nem szerepel $v_i$ kiszínezett szomszédságában. Mivel $v_i$-nek legfeljebb $\Delta(G)$ kiszínezett szomszédja lehet, és mindegyik szomszéd legfeljebb egy-egy színt zár ki, ezért $v_i$ színezése elvégezhető a rendelkezésre álló színek valamelyikével (a kimaradó $\Delta(G)+1)$-edik). $v_n$ kiszínezése után G egy $(\Delta(G)+1)$ színezését kapjuk meg.
+\end{bizonyitas}
+
+\begin{definicio}{KLIKK}
+G egy teljes részgráfját \textbf{klikknek} nevezzük. A G-ben található maximális méretű klikk méretet, azaz pontszámát $\omega(G)$-vel jelöljük és a gráf \textbf{klikkszámának} nevezzük.
+\end{definicio}
+
+\begin{tetel}{Minden G gráfra $\chi(G) \geq \omega(G)$.}
+\end{tetel}
+
+\begin{bizonyitas}{}
+G pontjainak kiszínezésével a maximális klikk pontjait is kiszínezzük, mégpedig különböző színekkel. k nagyságú klikk esetén legalább k szín kell.
+\end{bizonyitas}
+
+\begin{tetel}{MYCIELSKI-KONSTRUKCIÓ}
+Minden $k \geq 2$ egész számra van olyan $G_k$ gráf, hogy $\omega(G_k) = 2$ és $\chi(G_k) = k$.
+\end{tetel}
+
+\begin{bizonyitas}{}
+$G_2$-nek nyilván megfelel a 2 pontot és egy élt tartalmazó gráf. T.f.h. hogy már megkonstruáltuk a fenti tulajdonságokkal rendelkező $G_k$ gráfot. Ebből konstruáljuk meg a $G_{k+1}$-et. Jelöljük $G_k$ pontjait $v_1, v_2,..., v_n$-nel. Vegyünk fel $n + 1$ darab új pontot, $u_1, u_2,..., u_n$ és w-t, valamint az új éleket a következőképp: Minden $u_i$-t kössünk össze $v_i$ minden $G_k$-beli szomszédjával, de magával a $v_i$-vel ne. Végül w-t kössük össze $u_i$-val (de a többi v ponttal ne). Belátjuk, hogy az így kapott $G_{k+1}$ gráf kielégíti a feltételeket. Először lássuk be, ha $G_k$-ban nem volt háromszög, akkor $G_{k+1}$-ben sincs, azaz a klikkszáma még mindig 2. T.f.h. mégis van háromszög a $G_{k+1}$-ben. Ennek nyilván nem lehet mindhárom csúcsa $G_k$-ban, mivel ekkor volna már háromszög $G_k$-ban is. Ha w a háromszög egyik csúcsa, az sem jó, mivel akkor a háromszög másik két csúcsa $u_i$ és $u_j$ lehet, viszont ezek nem szomszédosak. Ha $u_i$ a háromszög egyik csúcsa, akkor a maradék két csúcs csak $v_x$ és $v_y$ lehet. Mivel azonban $u_i$ szomszédai megegyeznek a $v_i$ szomszédaival (kivéve w), ezért $v_i$-vel is szomszédosnak kellett volna lennie $v_x$ és $v_y$-nak, ekkor létezett volna $G_k$-ban is háromszög, ami ellentmondás. Ebből kijön az, hogy $\chi(G_{k+1}) \leq k + 1$. Színezzünk ki minden $v_i$-t valamilyen színnel, az $u_i$-ket színezzünk ugyanolyanra (mivel $v_i$-vel nem szomszédos) és w legyen a plusz egy szín, így jól színeztük ki $k+1$ színnel. T.f.h. $\chi(G_{k+1}) = k$. Jelöljük x pont színét c(x)-el, a színeket pedig $1, 2,..., k$-val. Azt is feltehetjük, hogy $c(w) = k$. Mivel w minden $u_i$ ponttal össze van kötve, ezért az $u_i$ pontokat a $1, 2,....k - 1$ színekkel színezzük. Megadunk egy c' színezést a $v_i$ pontok által feszített részgráfon (Ez éppen $G_k$-val izomorf részgráf). Ha $c(v_i) = k$ akkor legyen $c'(v_i) = c(u_i)$, különben $c'(v_i) = c(v_i)$, vagyis a k színűeket színezzük át a ``párjuk'' színére. Belátjuk, hogy c' egy jó $k-1$ színezése $G_k$-nak, ami ellentmondás.
+\end{bizonyitas}
+
+\begin{definicio}{INTERVALLUMGRÁF}
+Legyenek $I_1 = [a_1, b_1], I_2 = [a_2, b_2],...$ korlátos zárt intervallumok, és minden $a_i, b_i$ legyen pozitív egész. Legyenek $p_1, p_2,...$ egy G gráf pontjai és ${p_i, p_j}$ akkor és csak akkor legyen él G-ben, ha $I_i\cap I_j \not= \emptyset$. Az így előálló gráfokat \textbf{intervallumgráfnak} nevezzük.
+\end{definicio}
+
+\begin{tetel}{INTERVALLUMGRÁF SZÍNEZÉSE}
+G intervallumgráf, emiatt:
+$$\omega(G) = \chi(G)$$
+\end{tetel}
+
+\begin{bizonyitas}{}
+Mohó színezéssel bizonyítjuk, méghozzá úgy, hogy az intervallumokat bal végpontja szerint rendezem és ezek alapján növekvő sorrendben színezem, akkor optimális színezést kapok. T.f.h. k színnel színez a mohó algoritmus. A cél az, hogy belássuk a következőt:
+$$k \leq \omega(G) \leq \chi(G) \leq k$$. MAJD.
+\end{bizonyitas}
+
+\begin{definicio}{PÁROS GRÁF}
+Egy G gráfot \textbf{páros gráfnak} nevezünk, ha G pontjainak V(G) halmazát két részre, egy A és B halmazra tudjuk osztani úgy, hogy G minden élének egyik végpontja A-ban, a másik pedig B-ben van. Ennek jelölése: $G = (A,B)$. A $K_{a,b}$-vel jelölt teljes páros gráf olyan $G=(A,B)$ gráf, ahol $|A| = a$ és $|B| = b$ és minden A-beli pont össze van kötve minden B-beli ponttal.
+\end{definicio}
+
+\begin{tetel}{PÁROSÍTÁS LÉTEZÉSE}
+Egy G gráf akkor és csak akkor páros gráf, ha minden G-ben lévő kör páros.
+\end{tetel}
+
+\begin{bizonyitas}{}
+Ha G páros gráf, és C egy kör G-ben, akkor C pontjai felváltva vannak A-ban és B-ben, így $|V(C)|$ nyilván páros. Ha G minden köre páros hosszú, akkor megadhatjuk az A és B halmazt. Válasszunk egy tetszőleges v pontot, legyen ez A első pontja.  v minden szomszédját tegyük bele B-be, majd ezeknek a szomszédjait rakjuk bele A-ba. Ezt folytassuk, amíg ki nem fogyunk a pontokból. Ez biztosan jó elosztás, mivel ha például lenne A-ban két szomszédos pont, akkor léteznie kéne a gráfban páratlan körnek, így ellentmondásra jutnánk. Nem öf. gráfok esetén komponensenként hajtsuk végre.
+\end{bizonyitas}
+
+\begin{tetel}{KROMATIKUS SZÁM ÉS PÁROSÍTÁS KAPCSOLATA}
+Egy legalább egy élt tartalmazó G gráf akkor és csak akkor páros, ha $\chi(G) = 2$.
+\end{tetel}
+
+\begin{tetel}{KAPCSOLAT A PÁROS GRÁF ÉS A PÁRATLAN KÖRÖK KÖZÖTT}
+  $\chi(G) = \Delta(G)+1$ abban az esetben, ha teljes gráfról vagy húr nélküli páratlan körről beszélünk.
 \end{tetel}

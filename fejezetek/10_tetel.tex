@@ -1,43 +1,63 @@
-\section{7. Tétel: Javítóutak módszere}
+\section{10. tétel: Menger tételei}
 
-\begin{definicio}{PÁROSÍTÁS PÁROS GRÁFBAN}
-\textbf{Párosításnak}, vagy \textbf{részleges párosításnak} nevezünk egy M élhalmazt, ha semelyik két élnek közös pontja. Az ilyen éleket független éleknek nevezzük. A részleges párosítás lefedi éleinek végpontjait. Egy párosítás \textbf{teljes párosítás}, ha a gráf minden pontját lefedi.
+\begin{tetel}{DISZJUNKT FOLYAMOK}
+Ha a kapacitások egész számok, akkor van olyan maximális folyam, melyben minden élen a folyam értéke egész. Így nyilvánvaló, hogy ha a kapacitás minden élen 1 vagy 0, akkor van olyan maximális folyam, melynek minden élén a folyam értéke vagy 1 vagy 0. Ha elhagyjuk ez utóbbi éleket, akkor diszjunkt utakat kapunk s-ből t-be. Ezeknek a számát úgy is meg tudjuk kapni, hogy veszünk egy minimális vágást és az élhalmazának az elemszámával lesz egyenlő a diszjunkt utak száma.
+\end{tetel}
+
+\begin{definicio}{DISZJUNKT UTAK}
+Vegyük (G,s,t,c) folyamot, ezen belül veszünk utakat. \textbf{Páronként éldiszjunkt útnak} nevezünk utakat, ha páronként nincsen közös élük. \textbf{Belsőleg pontdiszjunkt utaknak} nevezünk utakat, ha páronként nincs közös pontjuk.
 \end{definicio}
 
-\begin{definicio}{ALTERNÁLÓ ÚT}
-Hozzunk létre egy részleges párosítást egy páros gráfon belül, ekkor a párosítás során bevett élek legyenek az X élhalmaz elemei. Alternáló útnak nevezünk olyan élsorozatot, ami felváltva tartalmaz nem-X beli és X-beli élt.
-\end{definicio}
+Diszjukt folyam algoritmus: Vegyünk tetszőleges hálózatot, és futtassuk le a fentebb leírt módszert rajta úgy, hogy vegyünk egy minimális vágást a hálózatban. A visszaélek (tehát amik a t-t tartalmazó halmazból az s-et tartalmazó halmazba mennek) legyenek 0 értékűek, egyébként pedig 1 értékűek az élek. Ebben már meg lehet keresni a diszjunkt utakat.
 
-\begin{definicio}{JAVÍTÓ ÚT}
-G(A,B,E) páros gráfban van már párosítás (nem teljes). P út \textbf{javító út}, ha párosítatlan A-ból indul, párosítatlan B-be érkezik és P alternáló út. Ha ez a javító út elkészül, úgy tudjuk bevenni, hogy a ``nem-X''-beli éleket bevesszük és a régebben X-beli éleket pedig nem.
-\end{definicio}
-
-\begin{definicio}{JAVÍTÓ UTAS ALGORITMUS (MÓDOSÍTOTT BFS)}
-Bemenetként kapjuk meg M párosítást valamint G(A,B,E) gráfot. Ha létezik ebben a gráfban javító út, akkor azt vegyük be, ezt folytassuk addig, amíg létre tudunk hozni újabb és újabb javító utakat. Ha már nem tudunk újabb élt bevenni a párosításba, akkor álljunk le. Ebben az esetben már maximális a párosítás. Az algoritmus mohó módon működik.
-\end{definicio}
-
-\begin{tetel}{KŐNIG-TÉTEL}
-Ha G páros gráf, akkor $\nu(G) = \tau(G)$. Ha G-ben nincs izolált pont, akkor $\alpha(G) = \rho(G)$ is teljesül.
+\begin{tetel}{MENGER Tétel}
+Ha G egy irányított gráf, $s,t\in V(G)$, akkor az s-ből t-be vezető páronként élidegen irányított utak maximális száma megegyezik az összes irányított s-t utat lefogó élek minimális számával.
 \end{tetel}
 
 \begin{bizonyitas}{}
-Először az első állítást bizonyítjuk. Legyen M egy olyan párosítás, mely a javító utak módszerével már nem bővíthető. Legyen $U = A - X$, T' azon B-beli pontok halmaza, amelyek élerhetőek U-ból alternáló úton. T pedig ezek párjainak halmaza. Legyen $Y = T' \cup (X - T)$. Ennek a halmaznak éppen $|M|$ pontja van. Ezek minden élt lefognak, hiszen $N(T\cup U) = T'$, ugyanúgy, mint a Hall-tétel bizonyításában. Így $\tau(G) \leq |M| \leq \nu(G)$ amiből viszont már következik az állítás a CUCCOS VISZONY (\textit{8. tétel}) tétel alapján. Most már könnyű belátni a második állítást is, Gallai két tétele miatt ugyanis $\nu(G) + \rho(G) = \tau(G) + \alpha(G)$ és imént beláttuk, hogy $\nu(G) = \tau(G)$.
+Ha létezik G-ben k darab ilyen irányított s-t út, akkor az s-t utakat lefogó élek száma nyilvánvalóan legalább k. Nézzük az egyenlőtlenség másik oldaláról is. T.f.h. az s-t utakat lefogó élek minimális száma k. Legyen minden él kapacitása 1. Az így kapott hálózatban a maximális folyam értéke legalább k. Ekkor a Ford-Fulkerson tétel miatt a minimális vágás értéke is legalább k. Azt már beláttuk, hogy van olyan max. folyam, ahol minden élen a folyamérték 0 vagy 1. Lássuk be, hogy G-ben van k élidegen irányított s-t út. Egy ilyen út legalább van, különben nem lehetne k a folyam értéke. Az ebben az útban szereplő élek kapacitását csökkentsük nullára, így a folyam értéke legalább k-1 lesz. Folytassuk a gondolatmenetet és kapunk k élidegen irányított s-t utat.
 \end{bizonyitas}
 
-\begin{tetel}{HALL-TÉTEL}
-Egy $G = (A,B)$ páros gráfban akkor és csak akkor van A-t lefedő párosítás, ha minden $X \subseteq A$ részhalmazra $|N(X)| \geq |X|$ (ezt \textbf{Hall-feltételnek} nevezzük).
+\begin{tetel}{MENGER Tétel}
+Ha G egy irányított gráf, $s,t\in V(G)$ két nem szomszédos pont, akkor az s-ből t-be vezető, végpontoktól eltekintve pontidegen irányított utak maximális száma megegyezik az összes irányított s-t utat s és t felhasználása nélkül lefogó pontok minimális számával.
 \end{tetel}
 
 \begin{bizonyitas}{}
-??? \\
-Ha létezik A-t fedő párosítás, akkor minden A-beli pontnak különböző párja van, tehát tetszőleges $X \subseteq A$-ra. Azt kell igazolnunk, hogy $\nu(G) \geq |A|$. Legyen U minimális (azaz $\tau(G)$ méretű) lefogó ponthalmaz, és legyen $U_A :=U\cap A,U_B:=U\cap B$. Mivel U lefogja az $X := A \backslash U_A$-ból induló éleket, ezért $N(X) \subseteq U_B$, tehát $|(NX)| \leq |U_B|$. A Kőnig-tétel ill. a Hall-feltétel miatt
-$$\nu(G) = \tau(G) = |U| = |U_A| + |U_B| \geq |U_A| + |N(X)| \geq |U_A| + |X| = |A|$$
+Készítsünk egy új G' gráfot. Minden pontot húzzunk szét két ponttá. Ha a G gráfban egy minimális ponthalmaz lefogja az irányított s-t utakat, akkor a lefogó pontoknak megfelelő (v', v'') pontok is lefogó ponthalmazt alkotnak s-t-re G'-ben. Kevesebb él nem elég a lefogáshoz, mert ha a lefogó élek közt lennének (a'', b') típusú élek, akkor ezeket helyettesítjük (b', b'')-vel, ha $b' \neq t$, illetve (a', a'')-val, ha $b' = t$. Így pedig G-ben egy kisebb lefogó ponthalmazt nyernénk. Vagyis a G-beli lefogó pontok és a G'-beli lefogó élek minimális száma egyenlő. Az is könnyen látható, hogy G-beli pontdiszjunkt utaknak G'-ben éldiszjunkt utak felelnek meg és fordítva, G'-beli élidegen utaknak G-ben pontidegen utaknak felelnek egy. Innen az előző tétel segítségével bizonyítjuk az állítást.
 \end{bizonyitas}
 
-\begin{tetel}{FROBENIUS-TÉTEL}
-Egy $G = (A,B)$ páros gráfban akkor és csak akkor van teljes párosítás, ha $|A| = |B|$ és $|N(X)| \geq |X|$ minden $X \subseteq A$-ra.
+\begin{tetel}{MENGER Tétel}
+Ha G egy irányítatlan gráf, $s,t\in V(G)$, akkor az s-ből t-be vezető élidegen irányítatlan utak maximális száma megegyezik az összes irányítatlan s-t utat lefogó élek minimális számával.
 \end{tetel}
 
 \begin{bizonyitas}{}
-A két feltétel szükségessége nyilvánvaló. Ha viszont teljesül a második feltétel, akkor a Hall-tétel miatt van A-t fedő párosítás. Mivel azonban $|A| = |B|$, ezért ez lefedi B-t is.
+Vezessük vissza irányított gráfos problémára. A bizonyítás a számításelmélet jegyzet 70. oldalán található, hosszú.
+\end{bizonyitas}
+
+\begin{tetel}{MENGER Tétel}
+Ha G egy irányítatlan gráf, $s,t\in V(G)$ két nem szomszédos pont, akkor az s-ből t-be vezető, végpontoktól eltekintve pontidegen irányítatlan utak maximális száma megegyezik az összes irányítatlan s-t utat s és t felhasználása nélkül lefogó pontok minimális számával.
+\end{tetel}
+
+\begin{bizonyitas}{}
+Előző tételhez hasonlóan.
+\end{bizonyitas}
+
+\begin{definicio}{TÖBBSZÖRÖS ÖSSZEFÜGGŐSÉG}
+Egy G gráfot \textbf{k-szorosan összefüggőnek} nevezünk, ha legalább k+1 pontja van, és akárhogy hagyunk el belőle k-nál kevesebb pontot, a maradék gráf összefüggő marad. A gráf \textbf{k-szorosan élösszefüggő}, ha akárhogy hagyunk el belőle k-nál kevesebb élt, összefüggő gráfot kapunk. A k-szoros összefüggőség ``erősebb'' a k-szoros élösszefüggőségnél.
+\end{definicio}
+
+\begin{tetel}{A G gráf akkor és csak akkor k-szorosan összefüggő, ha legalább $k + 1$ pontja van, és bármely két pontja között létezik k pontidegen út.}
+Hasonlóan, G akkor és csak akkor k-szorosan élösszefüggő, ha bármely két pontja között létezik k élidegen út.
+\end{tetel}
+
+\begin{bizonyitas}{}
+Először a második részt bizonyítjuk. Ha G k-szorosan élösszefüggő, akkor az u-v utakat lefogó élek minimális száma nyilván legalább k. Így Menger idevágó tétele szerint élidegen u-v utak maximális száma legalább k. Ennek a résznek a megfordítása is következik a Menger tételből. Ha G k-szorosan összefüggő, akkor bármely két, $u,v\in V(G)$ pontot választva legalább k darab, u-tól és v-től különböző pontra van szükség ahhoz, hogy lefogjuk az összes u és v közötti utat (u-v éltől eltekintve). Így az utolsó Menger tétel alapján létezik u és v között k pontidegen út. Ha G bármely két pontja között létezik k pontidegen út, akkor nyilván nem lehet ezeket k-nál kevesebb ponttal lefogni, tehát a k-szoros összefüggőség következik ebből.
+\end{bizonyitas}
+
+\begin{tetel}{MENGER Tétel}
+A legalább 3 pontú G gráf akkor és csak akkor 2-szeresen összefüggő, ha tetszőleges két pontján át vezet kör. Igaz az is, hogy akkor és csak akkor 2-szeresen összefüggő, ha bármely két élén át vezet kör.
+\end{tetel}
+
+\begin{bizonyitas}{}
+Az első állítás triviális, hiszen két pontidegen u-v út együtt egy kört ad, amely átmegy u-n és v-n. A második állítás pedig az elsőből következik. Lássuk be, hogy ha G 2-szeresen összefüggő, akkor e, f éleken keresztül van kör. Vegyünk fel két pontot úgy, hogy ezekkel osszuk két részre az e illetve az f élt. Az így kapott gráf is 2-szeresen összefüggő. Az első állítás szerint ezen a két ponton át is megy kör, és ez a kör az eredeti gráfban átmegy e-n és f-en. A megfordítás ismét nyilvávaló.
 \end{bizonyitas}

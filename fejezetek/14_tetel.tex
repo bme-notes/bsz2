@@ -1,63 +1,59 @@
-\section{10. tétel: Menger tételei}
+\section{14. tétel: DFS algoritmus}
 
-\begin{tetel}{DISZJUNKT FOLYAMOK}
-Ha a kapacitások egész számok, akkor van olyan maximális folyam, melyben minden élen a folyam értéke egész. Így nyilvánvaló, hogy ha a kapacitás minden élen 1 vagy 0, akkor van olyan maximális folyam, melynek minden élén a folyam értéke vagy 1 vagy 0. Ha elhagyjuk ez utóbbi éleket, akkor diszjunkt utakat kapunk s-ből t-be. Ezeknek a számát úgy is meg tudjuk kapni, hogy veszünk egy minimális vágást és az élhalmazának az elemszámával lesz egyenlő a diszjunkt utak száma.
+\url{http://cs.bme.hu/bsz2/dfs.pdf}
+
+\begin{tetel}{A DFS algoritmus a következő adatokat tartja számon}
+\begin{itemize}
+\item d(v): a v csúcs mélységi száma
+\item f(v): a v csúcs befejezési száma
+\item m(v): a v-t megelőző csúcs - tehát amiből a v-t a bejárás elérte
+\item a: a jelenleg aktív csúcs
+\item g: az aktuális gyökérpont
+\item D: az eddigi legnagyobb mélységi szám
+\item F: az eddigi legnagyobb befejezési szám
+\end{itemize}
 \end{tetel}
 
-\begin{definicio}{DISZJUNKT UTAK}
-Vegyük (G,s,t,c) folyamot, ezen belül veszünk utakat. \textbf{Páronként éldiszjunkt útnak} nevezünk utakat, ha páronként nincsen közös élük. \textbf{Belsőleg pontdiszjunkt utaknak} nevezünk utakat, ha páronként nincs közös pontjuk.
+\begin{tetel}{DFS Algoritmus}
+Bemenet: Egy n csúcsú G irányított gráf és egy $s \in V$ csúcs.
+\begin{itemize}
+\item{\textbf{0.}} $d(s) = 1$, minden $v \neq s$-re $d(v) = *$, minden v-re $f(v) = *$, minden v-re $m(v) = *$, $a = s$, $g = s$, $D = 1$, $F = 0$.
+\item{\textbf{1.}}
+\\
+HA létezik olyan $e = \overrightarrow{av}$ él, melyre $d(v) = *$, AKKOR:
+	\begin{itemize}
+	\item $D = D + 1$
+	\item $d(v) = D$
+	\item $m(v) = a$
+	\item $a = v$
+	\item \textbf{1.} lépéshez vissza
+	\end{itemize}
+\item{\textbf{2.}}
+	\begin{itemize}
+	\item $F = F + 1$
+	\item $f(a) = F$
+	\item HA $a \neq g$, AKKOR $a = m(a)$ és \textbf{1.} lépéshez vissza
+	\item HA $D = n$, AKKOR \textbf{STOP}.
+	\item Válasszunk olyan v csúcsot, melyre $d(v) = *$.
+	\item $g = v$, $a = v$, \textbf{1.} lépéshez vissza.
+	\end{itemize}
+\end{itemize}
+\end{tetel}
+
+\begin{definicio}{DFS-ERDŐ}
+s csúcsból indítva G irányított gráfban lefuttatuk a DFS algoritmust. A futáshoz tartozó DFS erdő F. Legyen $e=\overrightarrow{uv}$ a G-nek tetszőleges éle. Ekkor
+\begin{itemize}
+\item e-t faélnek nevezzük, ha $e \in E(F)$.
+\item e-t előreélnek nevezzük, ha nem faél, de F-ben van u-ból v-be irányított út (vagyis v leszármazottja u-nak).
+\item e-t visszaélnek nevezzük, ha F-ben van v-ből u-ba irányított út (tehát v őse u-nak).
+\item e-t keresztélnek nevezzük, ha F-ben sem u-ból v-be, se v-ből u-ba nincs irányított út.
+\end{itemize}
 \end{definicio}
 
-Diszjukt folyam algoritmus: Vegyünk tetszőleges hálózatot, és futtassuk le a fentebb leírt módszert rajta úgy, hogy vegyünk egy minimális vágást a hálózatban. A visszaélek (tehát amik a t-t tartalmazó halmazból az s-et tartalmazó halmazba mennek) legyenek 0 értékűek, egyébként pedig 1 értékűek az élek. Ebben már meg lehet keresni a diszjunkt utakat.
-
-\begin{tetel}{MENGER Tétel}
-Ha G egy irányított gráf, $s,t\in V(G)$, akkor az s-ből t-be vezető páronként élidegen irányított utak maximális száma megegyezik az összes irányított s-t utat lefogó élek minimális számával.
+\begin{tetel}{DFS ÉS ACIKLIKUSSÁG}
+Ha G irányított gráf aciklikus, a DFS futtatásakor nem keletkezik visszél. Ha nincs visszél, akkor f(v) szerinti csökkenő sorrend a topologikus sorrend.
 \end{tetel}
 
 \begin{bizonyitas}{}
-Ha létezik G-ben k darab ilyen irányított s-t út, akkor az s-t utakat lefogó élek száma nyilvánvalóan legalább k. Nézzük az egyenlőtlenség másik oldaláról is. T.f.h. az s-t utakat lefogó élek minimális száma k. Legyen minden él kapacitása 1. Az így kapott hálózatban a maximális folyam értéke legalább k. Ekkor a Ford-Fulkerson tétel miatt a minimális vágás értéke is legalább k. Azt már beláttuk, hogy van olyan max. folyam, ahol minden élen a folyamérték 0 vagy 1. Lássuk be, hogy G-ben van k élidegen irányított s-t út. Egy ilyen út legalább van, különben nem lehetne k a folyam értéke. Az ebben az útban szereplő élek kapacitását csökkentsük nullára, így a folyam értéke legalább k-1 lesz. Folytassuk a gondolatmenetet és kapunk k élidegen irányított s-t utat.
-\end{bizonyitas}
-
-\begin{tetel}{MENGER Tétel}
-Ha G egy irányított gráf, $s,t\in V(G)$ két nem szomszédos pont, akkor az s-ből t-be vezető, végpontoktól eltekintve pontidegen irányított utak maximális száma megegyezik az összes irányított s-t utat s és t felhasználása nélkül lefogó pontok minimális számával.
-\end{tetel}
-
-\begin{bizonyitas}{}
-Készítsünk egy új G' gráfot. Minden pontot húzzunk szét két ponttá. Ha a G gráfban egy minimális ponthalmaz lefogja az irányított s-t utakat, akkor a lefogó pontoknak megfelelő (v', v'') pontok is lefogó ponthalmazt alkotnak s-t-re G'-ben. Kevesebb él nem elég a lefogáshoz, mert ha a lefogó élek közt lennének (a'', b') típusú élek, akkor ezeket helyettesítjük (b', b'')-vel, ha $b' \neq t$, illetve (a', a'')-val, ha $b' = t$. Így pedig G-ben egy kisebb lefogó ponthalmazt nyernénk. Vagyis a G-beli lefogó pontok és a G'-beli lefogó élek minimális száma egyenlő. Az is könnyen látható, hogy G-beli pontdiszjunkt utaknak G'-ben éldiszjunkt utak felelnek meg és fordítva, G'-beli élidegen utaknak G-ben pontidegen utaknak felelnek egy. Innen az előző tétel segítségével bizonyítjuk az állítást.
-\end{bizonyitas}
-
-\begin{tetel}{MENGER Tétel}
-Ha G egy irányítatlan gráf, $s,t\in V(G)$, akkor az s-ből t-be vezető élidegen irányítatlan utak maximális száma megegyezik az összes irányítatlan s-t utat lefogó élek minimális számával.
-\end{tetel}
-
-\begin{bizonyitas}{}
-Vezessük vissza irányított gráfos problémára. A bizonyítás a számításelmélet jegyzet 70. oldalán található, hosszú.
-\end{bizonyitas}
-
-\begin{tetel}{MENGER Tétel}
-Ha G egy irányítatlan gráf, $s,t\in V(G)$ két nem szomszédos pont, akkor az s-ből t-be vezető, végpontoktól eltekintve pontidegen irányítatlan utak maximális száma megegyezik az összes irányítatlan s-t utat s és t felhasználása nélkül lefogó pontok minimális számával.
-\end{tetel}
-
-\begin{bizonyitas}{}
-Előző tételhez hasonlóan.
-\end{bizonyitas}
-
-\begin{definicio}{TÖBBSZÖRÖS ÖSSZEFÜGGŐSÉG}
-Egy G gráfot \textbf{k-szorosan összefüggőnek} nevezünk, ha legalább k+1 pontja van, és akárhogy hagyunk el belőle k-nál kevesebb pontot, a maradék gráf összefüggő marad. A gráf \textbf{k-szorosan élösszefüggő}, ha akárhogy hagyunk el belőle k-nál kevesebb élt, összefüggő gráfot kapunk. A k-szoros összefüggőség ``erősebb'' a k-szoros élösszefüggőségnél.
-\end{definicio}
-
-\begin{tetel}{A G gráf akkor és csak akkor k-szorosan összefüggő, ha legalább $k + 1$ pontja van, és bármely két pontja között létezik k pontidegen út.}
-Hasonlóan, G akkor és csak akkor k-szorosan élösszefüggő, ha bármely két pontja között létezik k élidegen út.
-\end{tetel}
-
-\begin{bizonyitas}{}
-Először a második részt bizonyítjuk. Ha G k-szorosan élösszefüggő, akkor az u-v utakat lefogó élek minimális száma nyilván legalább k. Így Menger idevágó tétele szerint élidegen u-v utak maximális száma legalább k. Ennek a résznek a megfordítása is következik a Menger tételből. Ha G k-szorosan összefüggő, akkor bármely két, $u,v\in V(G)$ pontot választva legalább k darab, u-tól és v-től különböző pontra van szükség ahhoz, hogy lefogjuk az összes u és v közötti utat (u-v éltől eltekintve). Így az utolsó Menger tétel alapján létezik u és v között k pontidegen út. Ha G bármely két pontja között létezik k pontidegen út, akkor nyilván nem lehet ezeket k-nál kevesebb ponttal lefogni, tehát a k-szoros összefüggőség következik ebből.
-\end{bizonyitas}
-
-\begin{tetel}{MENGER Tétel}
-A legalább 3 pontú G gráf akkor és csak akkor 2-szeresen összefüggő, ha tetszőleges két pontján át vezet kör. Igaz az is, hogy akkor és csak akkor 2-szeresen összefüggő, ha bármely két élén át vezet kör.
-\end{tetel}
-
-\begin{bizonyitas}{}
-Az első állítás triviális, hiszen két pontidegen u-v út együtt egy kört ad, amely átmegy u-n és v-n. A második állítás pedig az elsőből következik. Lássuk be, hogy ha G 2-szeresen összefüggő, akkor e, f éleken keresztül van kör. Vegyünk fel két pontot úgy, hogy ezekkel osszuk két részre az e illetve az f élt. Az így kapott gráf is 2-szeresen összefüggő. Az első állítás szerint ezen a két ponton át is megy kör, és ez a kör az eredeti gráfban átmegy e-n és f-en. A megfordítás ismét nyilvávaló.
+Ha keletkezik visszél és $e = \overrightarrow{uv}$ ilyen, akkor G irányított gráf nyilván tartalmaz irányított kört: az F DFS-erdő tartalmaz v-ből u-ba irányított utat (mert e visszél), amit e-vel kiegészítve irányított körré zárhatunk. Tegyük fel ezért, hogy nem keletkezik visszaél. Ha megmutatjuk a tétel 2. állítását, hogy a csúcsoknak a befejezési számozás szerinti fordított sorrendje topologikus rendezés, akkor ebből nyilván következik G aciklikussága is. Azt kell megmutatnunk, hogy G minden $e = \overrightarrow{uv}$ élére $f(v) < f(u)$. Mivel feltettük, hogy visszaél nem keletkezett, ezért e lehet faél, keresztél vagy előreél. Ha e faél vagy előreél, akkor a DFS eljárás során u első aktívvá válásakor az u befejezéséig tartó szakasza során érte el v-t, így ennek során kellett befejeznie azt, tehát a v-t előbb fejezte be u-nál, tehát $f(v) < f(u)$. Ha pedig e keresztél, akkor e vizsgálatának a pillanatában f(v) már kapott értéket, u viszont épp aktív csúcs volt, így ekkor még $f(u) = *$ volt. Mivel az eljárás egyre nagyobb befejezési számokat ad, ezért $f(v) < f(u)$ erre is teljesülni fog.
 \end{bizonyitas}

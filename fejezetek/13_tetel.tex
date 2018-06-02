@@ -1,2 +1,53 @@
-\section{Empty}
+\section{13. tétel: Floyd algoritmusa}
 
+\url{http://cs.bme.hu/bsz2/dfs.pdf}
+
+\begin{tetel}{FLOYD-ALGORITMUS}
+A Floyd-algoritmus a gráfban lévő összes pontpár közt megadja a távolságokat. Ezt a Ford-algoritmussal is megtehettük volna, viszont annak a futási ideje az összes pontból kiindítva $c\cdot ev^2$-tel lett volna arányos. A Floyd-algoritmus ezt megteszi mindössze $c\cdot v^3$ alatt. A sikeres futás feltétele az, hogy a gráfban NE legyen negatív összsúlyú kör.\\
+T.f.h. G irányított gráf a $V(G) = {v_1, v_2,..., v_n}$ pontokon. A $v_i$-ből $v_j$-be mutató él hosszát, azaz súlyát, jelöljük l(i,j)-vel és t.f.h. a gráfban nincs negatív összsúlyú irányított kör. Ha nincs él $v_i$-ből $v_j$-be, akkor legyen $l(i,j) = \infty$. Továbbá $l(i,i) = 0$, minden $i = 1, 2,..., n$-re. Jelölje $d^{(k)}(i,j)$ a $v_i$-ből $v_j$-be vezető legrövidebb olyan irányított út hosszát, mely csak k-nál szigorúan kisebb pontokon megy át. Így $d^{(1)}(i,j) = l(i,j)$ és $d^{(n+1)}$ lesz az eredetileg keresett legrövidebb irányított út hossza lesz $v_i$-ből $v_j$-be. Világos, hogy a $v_i$-ből $v_j$-be vezető legrövidebb olyan út, ami csak $k + 1$-nél szigorúan kisebb pontokon megy át, vagy átmegy $v_k$-n, vagy nem. Ha nem megy át, akkor $d^{(k+1)}(i,j) = d^{(k)}(i,j)$. Ha viszont átmegy, akkor $d^{(k+1)}(i,j) = d^{(k)}(i,k) + d^{(k)}(k,j)$. Csak azt kell megnéznünk, mely esetben találunk rövidebb utat. Ezek után már világos, hogy az algoritmus lépésszáma $c\cdot v^3$-bel arányos.
+\\
+\textbf{Az algoritmus:}
+\begin{itemize}
+\item{\textbf{0.}} Minden i,j rendezett párra legyen $d^{(1)}(i,j) = l(i,j)$ és $k=2$.
+\item{\textbf{1.}} Minden i,j rendezett párra
+$$d^{(k+1)}(i,j) = min\{d^{(k)}(i,j),\,\, d^{(k)}(i,k) + d^{(k)}(k,j)\}$$
+\item{\textbf{2.}} Ha $k = n + 1$, akkor STOP. Különben $k = k + 1$ és folytassuk \textbf{1.} lépésnél.
+\end{itemize}
+\end{tetel}
+
+\begin{definicio}{IRÁNYÍTOTT ACIKLIKUS GRÁF}
+Egy G gráfot akkor nevezünk \textbf{irányított aciclikus gráfnak} (DAG), ha irányított élei vannak és nem tartalmaz kört.
+\end{definicio}
+
+\begin{definicio}{TOPOLOGIKUS ELRENDEZÉS}
+Legyen G egy irányított gráf. G topologikus elrendezése a csúcsoknak egy olyan $v_1, v_2,..., v_n$ sorrendje, melyben $x\rightarrow y \in E$ esetén x előbb van, mint y (azaz ha $x = v_i, y = v_j,\,\,akkor\,\,i<j$)
+\end{definicio}
+
+\begin{tetel}{TOPOLOGIKUS ELRENDEZÉS Lemma}
+Ha G irányított gráf aciklikus, akkor létezik benne nyelő (olyan pont, amiből nincsen kimenő él).
+\end{tetel}
+
+\begin{bizonyitas}{}
+Legyen P a leghosszabb irányított utak egyike, v legyen a végpontja. T.f.h. v nem nyelő. Járjuk be az utat topologikus sorrendben. Az előző állítás annyit jelent, hogy P vagy nem a legutolsó elem a topologikus elrendezésben (ellentmondás) vagy egy, a topologikus sorrendben előrébb lévő ponthoz csatlakozik vissza (ellentmondás).
+\end{bizonyitas}
+
+\begin{tetel}{TOPOLOGIKUS ELRENDEZÉS}
+Egy G irányított gráfhoz akkor és csak akkor létezik topologikus elrendezés, ha az aciklikus.
+\end{tetel}
+
+\begin{bizonyitas}{}
+A szükségeset triviális bizonyítani, viszont az elégségességet nem. Az előbbi lemma állítását felhasználjuk a bizonyításhoz. Keressünk ebben a gráfban egy nyelőcsúcsot, ez a $v_n$ csúcs. Ezt dobjuk ki. Ekkor $G\backslash{v_n}$-ben $v_{n-1}$ lesz nyelő. Ezt is dobjuk ki. Ismételjük, amíg semmi se marad. Amit ``kidobtunk'', ha fordítva sorba rendezzük (tehát a legvégén lesz az először kidobott elem), akkor az egy topologikus sorbarendezése lesz G-nek. A DFS is generál egy ilyet a futása során, ha nincs benne visszaél (tehát ha nincs benne kör).
+\end{bizonyitas}
+
+\begin{tetel}{LEGRÖVIDEBB ÉS LEGHOSSZABB ÚT KERESÉSE DAG-BAN Algoritmus}
+A topologikus rendezést használva lineáris időben, tehát $n+e$-vel arányos lépésszámban megoldható a leghosszabb/legrövidebb út keresése.
+Input legyen a G irányított gráf és annak egy topologikus sorrendje (s).
+\\
+\textbf{Az algoritmus:}
+\begin{itemize}
+\item{\textbf{0.}} $t(s) = 0$, minden $v \neq s$-re $t(v) = \infty$, w: $E(G)\rightarrow \mathbb{R}$ súlyfüggvény.
+\item{\textbf{1.}} FOR i=2 TO n DO:\\
+	$\quad$HA $\exists e = \overrightarrow{v_jv_i}$ él melyre $t(v_j) \neq \infty$ AKKOR: $t(v_i) = min/max(t(v_j)+w(e): e = \overrightarrow{v_jv_i},\,\, t(v_j) \neq \infty)$
+\\END FOR
+\end{itemize}
+\end{tetel}

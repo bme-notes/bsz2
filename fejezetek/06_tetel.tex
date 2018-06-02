@@ -1,52 +1,46 @@
-\section{4. tétel: Hamilton és Euler körök, illetve utak}
+\section{6. tétel: $\nu, \rho, \alpha, \tau$}
 
-\begin{definicio}{EULER-ÚT ÉS KÖR}
-A G gráf \textbf{Euler-körének} nevezünk egy zárt élsorozatot, ha az élsorozat pontosan egyszer tartalmazza G összes élét. Ha az élsorozat nem feltétlenül zárt, akkor \textbf{Euler-útról} beszélünk.
+\begin{definicio}{PÁROSÍTÁS}
+\textbf{Párosításnak} vagy \textbf{részleges párosításnak} nevezünk egy M élhalmazt, ha semelyik két élnek nincsen közös pontja. Az ilyen éleket \textbf{független éleknek} nevezzük. A részleges párosítás \textbf{lefedi} éleinek végpontjait. Egy párosítás \textbf{teljes párosítás}, ha a gráf minden pontját lefedi.
 \end{definicio}
 
-\begin{tetel}{EULER-KÖR LÉTEZÉSE}
-G összefüggő gráfban akkor és csak akkor létezik Euler-kör, ha G minden pontjának fokszáma páros.
-\end{tetel}
-
-\begin{bizonyitas}{}
-Először lássuk be, hogy ha van a gráfban E-kör, akkor minden pont foka páros. Induljunk el a gráf tetszőleges pontjából és járjuk körbe az E-kör mentén. Minden pontban ugyanannyiszor mentünk be, mint ahányszor kimentünk, a ki-bemenések száma a pont fokszáma. Ez biztosan páros. Másik irány jegyzet 29. oldal.%, baszódjon meg ez a bizonyítás.
-\end{bizonyitas}
-
-\begin{tetel}{EULER-ÚT LÉTEZÉSE}
-Egy összefüggő G gráfban akkor és csak akkor létezik Euler-út, ha a páratlan fokszámú pontok száma 0 vagy 2.
-\end{tetel}
-
-\begin{bizonyitas}{}
-Az előző tétel bizonyítása alapján, ebben az esetben ha 0 a páratlan fokszámú pontok száma, akkor Euler-körről is beszélhetünk, ha 2, akkor az élsorozat nem zárt, a két végpontnak lesz eltérő a fokszáma, mivel ezt úgy tudjuk képezni, hogy a két végpontot összekötő élt elhagyjuk.
-\end{bizonyitas}
-
-\begin{definicio}{HAMILTON-ÚT ÉS KÖR}
-Egy G gráfban Hamilton-körnek nevezünk egy H kört, ha G minden pontját pontosan egyszer tartalmazza. Egy utat pedig Hamilton-útnak nevezünk, ha G minden pontját pontosan egyszer tartalmazza.
+\begin{definicio}{FÜGGETLEN/LEFOGÓ ÉLEK/PONTOK HALMAZA (``görög betűk'')}
+Jelöljük $\nu(G)$-vel a G gráfban található \textbf{független élek} maximális számát. $X \subseteq V(G)$ egy \textbf{lefogó ponthalmaz}, ha G minden élének legalább egyik végpontját tartalmazza. A lefogó pontok minimális számát $\tau(G)$-vel jelöljük. $Y \subseteq E(G)$ \textbf{lefogó élhalmaz}, ha minden pontot lefog. A lefogó élek minimális számát $\rho(G)$ jelöli. $X \subseteq V(G)$ \textbf{független ponthalmaz}, ha nincs benne két szomszédos pont. A független pontok maximális száma $\alpha(G)$
 \end{definicio}
 
-\begin{tetel}{SZÜKSÉGES FELTÉTEL A H-KÖR (ÚT) LÉTEZÉSÉHEZ}
-Ha a G gráfban létezik k olyan pont, melyeket elhagyva a gráf több mint k komponensre esik, akkor nem létezik a gráfban H-kör. Ha több mint k+1 komponensre esik, akkor nem létezik a gráfban H-út se.
+\begin{tetel}{``Görög betűk'' viszonya egymáshoz}
+Minden G gráfra
+$$\nu(G) \leq \tau(G)$$
+$$\alpha(G) \leq \rho(G)$$
 \end{tetel}
 
 \begin{bizonyitas}{}
-Indirekt t.f.h. van a gráfban H-kör, ez legyen $(v_1, v_2,..., v_n)$ és legyen $(v_{i_1}, v_{i_2},...,v_{i_k})$ az a k pont, amelyet elhagyva a gráf több mint k komponensre esik. Az elhagyott pontok közötti ``ívek'' biztosan összefüggő komponenseket alkotnak. Pl. a $(v_{i_{1}+1}, v_{i_{1}+2},..., v_{i_{2}-1})$ is összefüggő lesz, hiszen két szomszédos pontja között az eredeti H-kör éle fut. Mivel épp k ilyen ívet kapunk, ezért nem lehet több komponens k-nál (kevesebb lehet, mivel különb. ívek közt futhatnak élek). U.a. bizonyítjuk útra. Ha egy H-útból elhagyunk k pontot, legfeljebb k+1 öf. ív marad.
+Legyen M maximális méretű független élhalmaz. Mivel pusztán M éleinek lefogásához legalább $|M|$ pontra van szükség, ezért $\tau(G) \geq |M| = \nu(G)$.
+Hasonlóan bizonyítjuk a második állítást is.
 \end{bizonyitas}
 
-\begin{tetel}{ELÉGSÉGES FELTÉTEL - ORE TÉTEL}
-Ha az n pontú G egyszerű gráfban minden olyan $x,y\in V(G)$ pontpárra, amelyre ${x,y}\not\in E(G)$ (nem szomszédosak), teljesül az, hogy $d(x) + d(y) \geq n$, akkor a gráfban van H-kör.
+\begin{tetel}{GALLAI TÉTEL I.}
+Minden olyan G gráfra, mely hurokmentes:
+$$\tau(G) + \alpha(G) = v(G) = n$$
 \end{tetel}
 
 \begin{bizonyitas}{}
-Indirekt t.f.h. a gráf kielégíti a feltételt, de nincs benne H-kör. Vegyünk hozzá a gráfhoz éleket úgy, hogy továbbra se legyen benne H-kör. Ezt egészen addig csináljuk, amíg már akárhogyan is veszünk hozzá egy élet, lesz a gráfban H-kör. Az így kapott G' gráfra továbbra is teljesül a feltétel, hiszen új élek behúzásával ``rossz pontpárt'' nem lehet létrehozni. Biztosan van két olyan pont, hogy ${x,y} \not \in E(G')$. Ennek a behúzásával már lesz $G' + {x,y}$-ban H-kör, tehát G'-ben van H-út. Legyen ez $P = {z_1, z_2,...,z_n}$ ahol $z_1 = x$ és $z_n = y$.
-Ha x szomszédos a P út valamely $z_k$ pontjával, akkor y nem lehet összekötve $z_{k-1}$-el, mert akkor az egy H-kört adna. Így tehát y nem lehet összekötve legalább d(x) ponttal, ezért
-$$d(y) \leq n - 1 - d(x)$$
-ami viszont ellentmondás, hisz ${x,y} \not\in E(G)$.
+Egy X halmaz pontjai akkor és csak akkor függetlenek, ha a $V(G)\backslash X$ halmaz lefogó ponthalmaz. Hiszen ha X nem független, akkor van két összekötött pont, és így $V(G)\backslash X$ nem fogja le ezt az élt. Fordítva, ha $V(G)\backslash X$ nem fog le egy huroktól különböző élt, akkor X-ben ennek az élnek mindkét végpontja szerepel. Tehát $\tau(G) \leq |V(G)\backslash X|$ teljesül minden X független ponthalmazra. Ebből pedig következik, hogy a $\tau(G) + \alpha(G) \leq v(G)$. Hasonlóan $\alpha(G) \geq |V(G) \backslash Y|$ minden Y lefogó ponthalmazra, amiből $\tau(G) + \alpha(G) \geq v(G)$ következik.
 \end{bizonyitas}
 
-\begin{tetel}{ELÉGSÉGES FELTÉTEL - DIRAC TÉTEL}
-Ha egy n pontú G egyszerű gráfban minden pont foka legalább n/2, akkor a gráfban létezik H-kör.
+\begin{tetel}{GALLAI TÉTEL II.}
+Minden olyan G gráfra, melyben nincs izolált pont:
+$$\nu(G) + \rho(G) = v(G) = n$$
 \end{tetel}
 
 \begin{bizonyitas}{}
-Ez az előző tételből következik, hiszen ha minden pont foka legalább n/2, akkor teljesül az Ore-tétel feltétele, mivel bármely pontpárra $$d(x) + d(y) \geq n$$
+Egy $\nu(G)$ elemű X független élhalmaz lefog $2\nu(G)$ különböző pontot. A többi pont (mivel nincs izolált) nyilván lefogható $v(G) - 2\nu(G)$ éllel, így $v(G) - \nu(G) \geq \rho(G)$. Másrészt, ha Y egy minimális lefogó élhalmaz, akkor Y néhány (k darab) diszjunkt csillag egyesítése. Ha ugyanis Y tartalmazna kört, akkor annak bármely élét, ha pedig 3 hosszú utat, akkor a közepét el lehetne hagyni Y-ból, mert a többi él még mindig lefogná az összes pontot. Így $\rho(G) = v(G) - k$. Minden csillagból kiválasztunk egy élt, az így kapott élhalmaz nyilván független. Tehát $\nu(G) \geq k = v(G) - \rho(G)$.
+\end{bizonyitas}
+
+\begin{tetel}{TUTTE-TÉTEL}
+Egy G gráfban akkor és csak akkor van teljes párosítás, ha minden $X \subseteq V(G)$-re $c_p(G - X)\leq |X|$, azaz akárhogy hagyunk el a gráfból k pontot, a maradékban a páratlan komponensek száma nem lehet több, mint k.
+\end{tetel}
+
+\begin{bizonyitas}{}
+(csak szükséges): Ha G-ben van teljes párosítás, akkor nyilvánvalóan teljesül a feltétel. Hiszen ha elhagyunk a gráfból X-et, akkor a páratlan komponensek mindegyikéből az eredeti gráfban indul ki legalább egy párosításbeli él, és ezek az élek csak egy-egy (különböző) X-beli pontba mehetnek. Tehát $c_p(G - X) \leq |X|$.
 \end{bizonyitas}

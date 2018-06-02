@@ -1,46 +1,61 @@
-\section{6. tétel: $\nu, \rho, \alpha, \tau$}
+\section{9. tétel: hálózatok és folyamok}
 
-\begin{definicio}{PÁROSÍTÁS}
-\textbf{Párosításnak} vagy \textbf{részleges párosításnak} nevezünk egy M élhalmazt, ha semelyik két élnek nincsen közös pontja. Az ilyen éleket \textbf{független éleknek} nevezzük. A részleges párosítás \textbf{lefedi} éleinek végpontjait. Egy párosítás \textbf{teljes párosítás}, ha a gráf minden pontját lefedi.
+\begin{definicio}{HÁLÓZAT}
+Legyen G egy irányított gráf. Rendeljünk minden éléhez egy c(e) nemnegatív számot, amit az él \textbf{kapacitásának} nevezünk. Jelöljünk ki két pontot, s-et és t-t G-ben, melyet \textbf{termelőnek} és \textbf{fogyasztónak} nevezünk. Ekkor a (G,s,t,c) négyest \textbf{hálózatnak} nevezzük.
 \end{definicio}
 
-\begin{definicio}{FÜGGETLEN/LEFOGÓ ÉLEK/PONTOK HALMAZA (``görög betűk'')}
-Jelöljük $\nu(G)$-vel a G gráfban található \textbf{független élek} maximális számát. $X \subseteq V(G)$ egy \textbf{lefogó ponthalmaz}, ha G minden élének legalább egyik végpontját tartalmazza. A lefogó pontok minimális számát $\tau(G)$-vel jelöljük. $Y \subseteq E(G)$ \textbf{lefogó élhalmaz}, ha minden pontot lefog. A lefogó élek minimális számát $\rho(G)$ jelöli. $X \subseteq V(G)$ \textbf{független ponthalmaz}, ha nincs benne két szomszédos pont. A független pontok maximális száma $\alpha(G)$
+\begin{definicio}{FOLYAM, FOLYAMÉRTÉK}
+Legyen f(e) az a ``vízmennyiség'', ami az e élen folyik át. Ez az f függvény \textbf{megengedett függvény}, ha $f(e) \leq c(e)$ minden élre és
+$$m(v) = \sum\{f(e)|e\,\,vegpontja\,\,v\} - \sum\{f(e) | e\,\,kezdopontja\,\,v\} = 0$$
+minden $v\in V(G)$-re, kivéve az s és t pontokat. Egy megengedett függvényt \textbf{folyamnak} hívunk. Könnyen belátható, hogy $m(t) = -m(s)$. Ezt a közös értéket a folyam értékének nevezzük és $m_f$-el jelöljük. Egy élt \textbf{telítettnek} hívunk egy folyamban, ha $f(e) = c(e)$ és \textbf{telítetlennek}, ha $f(e) < c(e)$.
 \end{definicio}
 
-\begin{tetel}{``Görög betűk'' viszonya egymáshoz}
-Minden G gráfra
-$$\nu(G) \leq \tau(G)$$
-$$\alpha(G) \leq \rho(G)$$
+\begin{definicio}{VÁGÁS}
+Legyen $s \in X \subseteq V(G) \backslash {t}$, sem X, sem $V(G) - X$ nem üres halmaz. Azoknak az éleknek a C halmazát, melyeknek egyik végpontja X-beli, másik $V(G) - X$-beli, a hálózati folyam egy (s,t)-\textbf{vágásának} nevezzük. A \textbf{vágás értéke}, c(C), azon éleken levő kapacitások összege, melyek egy X-beli pontból egy $V(G) - X$-beli pontba mutatnak. Ezeket előremutató éleknek nevezzük. Tehát a vágás értékében nem játszanak szerepet a visszafelé mutató élek, vagyis azok, melyek egy X-beli pontba mutatnak.
+\end{definicio}
+
+\begin{tetel}{JAVÍTÓ ÚT HÁLÓZATRA Algoritmus}
+Legyen a gráfban $s = v_0, v_1... v_k = t$ egy út, aminek most nem kell feltétlenül az irányítás szerint haladnia. Növelhetjük a folyam értékét abban az esetben, ha minden $i = 0,1,2,...,k-1$-re vagy $e_i = (v_i , v_{i + 1})$ és $f(e_i) < c(e_i) $, vagy $e_i = (v_{i + 1} , v_i )$ és $f(e_i) > 0 $.
+Ekkor az első típusú éleken növeljük a folyam értékét, míg a második típusúakon csökkentjük, így az össz folyamérték nő. Az ilyen utakat javító utaknak hívjuk.\\ Egy folyam értéke akkor és csak akkor maximális, ha nincs javító út s-ből t-be.
+\end{tetel}
+
+\begin{tetel}{MAXIMÁLIS FOLYAM}
+Egy folyam értéke akkor és csak akkor maximális, ha nincs javító út s-ből t-be.
 \end{tetel}
 
 \begin{bizonyitas}{}
-Legyen M maximális méretű független élhalmaz. Mivel pusztán M éleinek lefogásához legalább $|M|$ pontra van szükség, ezért $\tau(G) \geq |M| = \nu(G)$.
-Hasonlóan bizonyítjuk a második állítást is.
+Legyen P egy javító út. Ekkor P minden első típusú élére a $c(e) - f(e)$, második típusú élére pedig f(e) érték szigorúan pozitív. Legyen ezeknek minimuma d. Az első típusú élekre növeljük f(e)-t d-vel, második típusúaknál csökkentsük f(e)-t d-vel. Ekkor a módosított folyam is megengedett marad, értéke viszont d-vel nőtt. T.f.h. nincs javító út s-ből t-be. Lehetnek azonban olyan pontok a gráfban amelyek elérhetőek s-ből javító úton. Legyen az ilyen pontok halmaza $X \subset V(G)$. Ekkor sem X, sem $V(G) - X$ nem üres, hiszen $s \in X, t\in V(G) - X$. Tekintsünk egy olyan e élt, mely egy X-beli x pontból egy nem X-beli y-ba mutat. Ekkor $f(e) = c(e)$, hiszen ellenkező esetben az s-ből x-be vezető javító út e-vel meghosszabbítva egy s-ből y-ba vezető javító utat szolgáltatna. Ugyanígy egy olyan élre, ami egy nem X-beliből egy X-belibe mutat, teljesül, hogy f(e) = 0. Tehát az X és $V(G) - X$ között futó élek mind telítettek, és a visszafele mutató éleket nem használjuk, tehát ezen a vágáson nem folyhat több víz. Vagyis f maximális folyam.
 \end{bizonyitas}
 
-\begin{tetel}{GALLAI TÉTEL I.}
-Minden olyan G gráfra, mely hurokmentes:
-$$\tau(G) + \alpha(G) = v(G) = n$$
+\begin{tetel}{FORD-FULKERSON (MAXFLOW-MINCUT) TÉTEL}
+A maximális folyam értéke egyenlő a minimális vágás értékével, azaz
+$$max\{m_f|f\,\,egy\,\,folyam\,\,s-bol\,\,t-be\} = min(c(C)|C\,\,vagas)$$
 \end{tetel}
 
 \begin{bizonyitas}{}
-Egy X halmaz pontjai akkor és csak akkor függetlenek, ha a $V(G)\backslash X$ halmaz lefogó ponthalmaz. Hiszen ha X nem független, akkor van két összekötött pont, és így $V(G)\backslash X$ nem fogja le ezt az élt. Fordítva, ha $V(G)\backslash X$ nem fog le egy huroktól különböző élt, akkor X-ben ennek az élnek mindkét végpontja szerepel. Tehát $\tau(G) \leq |V(G)\backslash X|$ teljesül minden X független ponthalmazra. Ebből pedig következik, hogy a $\tau(G) + \alpha(G) \leq v(G)$. Hasonlóan $\alpha(G) \geq |V(G) \backslash Y|$ minden Y lefogó ponthalmazra, amiből $\tau(G) + \alpha(G) \geq v(G)$ következik.
+A maximális folyam nyilván nem lehet nagyobb a minimális vágásnál, hiszen ha minden előremutató él telített, a visszafele mutató éleken pedig 0 a folyam értéke, akkor ezen a vágáson nem folyhat át több víz. Az előző tételben beláttuk, hogy ha létezik egy f maximális folyam, akkor létezik ilyen értékű vágás. Azt, hogy maximális értékű folyam mindig létezik, a következő tételben bizonyítjuk.
 \end{bizonyitas}
 
-\begin{tetel}{GALLAI TÉTEL II.}
-Minden olyan G gráfra, melyben nincs izolált pont:
-$$\nu(G) + \rho(G) = v(G) = n$$
+\begin{tetel}{EDMONDS-CARP TÉTEL}
+Ha mindig a legrövidebb javító utat vesszük, akkor a maximális folyam meghatározásához szükséges lépések száma felülről becsülhető a pontok számának polinomjával.
 \end{tetel}
 
-\begin{bizonyitas}{}
-Egy $\nu(G)$ elemű X független élhalmaz lefog $2\nu(G)$ különböző pontot. A többi pont (mivel nincs izolált) nyilván lefogható $v(G) - 2\nu(G)$ éllel, így $v(G) - \nu(G) \geq \rho(G)$. Másrészt, ha Y egy minimális lefogó élhalmaz, akkor Y néhány (k darab) diszjunkt csillag egyesítése. Ha ugyanis Y tartalmazna kört, akkor annak bármely élét, ha pedig 3 hosszú utat, akkor a közepét el lehetne hagyni Y-ból, mert a többi él még mindig lefogná az összes pontot. Így $\rho(G) = v(G) - k$. Minden csillagból kiválasztunk egy élt, az így kapott élhalmaz nyilván független. Tehát $\nu(G) \geq k = v(G) - \rho(G)$.
-\end{bizonyitas}
-
-\begin{tetel}{TUTTE-TÉTEL}
-Egy G gráfban akkor és csak akkor van teljes párosítás, ha minden $X \subseteq V(G)$-re $c_p(G - X)\leq |X|$, azaz akárhogy hagyunk el a gráfból k pontot, a maradékban a páratlan komponensek száma nem lehet több, mint k.
+\begin{tetel}{EGÉSZÉRTÉKŰSÉGI LEMMA}
+Ha (G,s,t,c) hálózatban minden e él c(e) kapacitása egész szám, akkor létezik olyan f maximális folyam, hogy f a G gráf minden élén egész értéket vesz fel. Az ilyen folyamot \textbf{egészfolyamnak} nevezzük.
 \end{tetel}
 
-\begin{bizonyitas}{}
-(csak szükséges): Ha G-ben van teljes párosítás, akkor nyilvánvalóan teljesül a feltétel. Hiszen ha elhagyunk a gráfból X-et, akkor a páratlan komponensek mindegyikéből az eredeti gráfban indul ki legalább egy párosításbeli él, és ezek az élek csak egy-egy (különböző) X-beli pontba mehetnek. Tehát $c_p(G - X) \leq |X|$.
-\end{bizonyitas}
+\begin{tetel}{A FOLYAMPROBLÉMA ÁLTALÁNOSÍTÁSAI}
+T.f.h. a hálózatban több termelő, $s_1, s_2,...,s_k$ és több fogyasztó, $t_1, t_2,..t_k$ van. A feladat az összes termelőtől az összes fogyasztóig eljutó folyam maximalizálása. Vegyünk fel két s', t' pontot, és kössük össze s'-t az összes termelővel, t'-t pedig az összes fogyasztóval, az élek kapacitása ezek között pedig legyen $\infty$.
+\\
+Ekkor az s' és a t'-t vesszük termelőnek és fogyasztónak, innen triviális a megoldás.
+\\
+\\
+Ha nem csak élekhez, hanem pontokhoz is rendelhetünk c(v) kapacitásokat és megköveteljük, hogy minden v-re
+$\sum_{u,v\in E}^{} f(u,v) \leq c(v)$
+, akkor minden v pontot helyettesítsünk két ponttal, v' és v''-vel. Ha egy él az u pontból a v pontba mutatott, akkor helyette vegyünk fel egy u''-ból v'-be mutató élet a hozzá tartozó kapacitással együtt, ezen kívül minden v'-ből mutasson c(v) kapacitású él v''-be.
+\\
+\\
+Amennyiben irányítatlan élek is szerepelnek a hálózatban, akkor cseréljük le őket két, átellenes irányított éllel, mindkettő kapacitása legyen az irányítatlan él kapacitásával egyenlő.
+\end{tetel}
+
+\large{TODO: algoritmus maximális folyam és minimális vágás megkeresésére.}

@@ -1,42 +1,81 @@
-\section{8. tétel: gráfok élszínezése, élkromatikus szám($\chi_G$)}
+\section{11. tétel: BFS és Kruskal algoritmusa}
 
-% a kommentezett reszek allitolag nem a tetel reszei, ha valaki jobban tudja, nyugodtan allitsa oket vissza vagy torolje
+\url{http://cs.bme.hu/bsz2/bfs.pdf}
 
-\begin{definicio}{REGULÁRIS GRÁF}
-Egy gráfot \textbf{$k$-regulárisnak} nevezünk, ha minden pont foka $k$. Egy gráfra azt mondjuk, hogy \textbf{reguláris}, ha létezik olyan k, amire k-reguláris.
+\begin{tetel}{A BFS-algoritmus futása során a következőket tartjuk nyilván}
+\begin{itemize}
+\item $b(i) (i = 1,2,3,...)$: az i-edikként bejárt csúcs
+\item $t(v) (v \in V)$: v távolsága s-től
+\item $m(v) (v \in V, v \neq s)$: v-t megelőző csúcs az algoritmus által megtalált, s-ből v-be vezető legrövidebb úton
+\item j: az eddig bejárt csúcsok száma
+\item k: a jelenleg aktív csúcs sorszáma a $b(1), b(2),...$ sorozatban.
+\end{itemize}
+\end{tetel}
+
+\begin{tetel}{BFS Algoritmus}
+Bemenete a BFS algoritmusnak: Egy G gráf és egy $s \in V$ csúcs.
+\\
+\textbf{Az algoritmus:}
+\begin{itemize}
+\item{\textbf{0.}} $j = 1$, $k = 1$, $b(1) = s$, $t(s) = 0$, minden $v \neq s$-re $t(v) = *$
+\item{\textbf{1.}} HA a b(k) csúcsnak van olyan v szomszédja, amelyre $t(v) = *$, AKKOR:
+	\begin{itemize}
+	\item $j = j + 1$
+	\item $b(j) = v$
+	\item $t(v) = t(b(k)) + 1$
+	\item $m(v) = b(k)$
+	\item Vissza az \textbf{1.} lépéshez.
+	\end{itemize}
+\item{\textbf{2.}}
+	\begin{itemize}
+	\item Ha $k = j$, akkor \textbf{STOP}.
+	\item $k = k + 1$
+	\item Vissza az \textbf{1.} lépéshez.
+	\end{itemize}
+\end{itemize}
+
+Mivel van, akinek a matematikus notáció nem túl olvasható (pl. ezen részlet szerzője), ezért alább olvasható ugyanezen algoritmus C++-szerűen refaktorálva, bizonyos Clean Code szempontokra ügyelve. Az alább látható algoritmus ténylegesen refaktorálás és teljesen egyenértékű a fentivel; nem tartalmaz módosításokat.
+
+\afterpage{%
+  \begin{framed}
+    \noindent \large{\textbf{BFS algoritmus, C++-szerűen}}
+      \lstinputlisting[language=C]{res/bfs.cpp}
+
+  \end{framed}
+  \clearpage
+}
+
+
+Az algoritmus lineáris futásidejű, tehát $c \cdot e$ lépésszámú.
+
+\end{tetel}
+
+\begin{definicio}{BFS-FA}
+A BFS algoritmus futtatása után kapott F feszítőfát nevezzük \textbf{BFS fának}. F összefüggő, ha az eredeti bemeneti gráf is összefüggő volt, valamint F nem tartalmaz kört (a fa definíciója miatt). Az is megfigyelhető, hogy bármely $v \in V$ csúcsra az s-et v-vel összekötő F-beli út a legrövidebbek egyike az s-ből a v-be vezető G-beli utak közül.
 \end{definicio}
 
-\begin{tetel}{REGULÁRIS GRÁFBAN TELJES PÁROSÍTÁS}
-Minden reguláris páros gráfban létezik teljes párosítás.
+\begin{tetel}{Kruskal Algoritmus}
+Bemenet: G gráf és az élekhez tartozó w súlyfüggvény. Az éleket rendezzük sorba úgy, hogy a legalacsonyabb költségűek legyenek először a sorban. A sorban kezdjünk előre haladni. Ha az él bevétele esetén a kapott gráf körmentes marad, akkor vegyük be. Ezt addig ismételjük, amíg van izolált pont, vagy amíg az élsorozat végére nem érünk. A kapott gráf a G gráf minimális költségű feszítőfája.
+\\
+\\
+Ezt az eljárást \textbf{mohó algoritmusnak} nevezzük, mivel a végrehajtás során minden lépésben az éppen akkor a legjobbnak tűnő lehetőséget választjuk ki.
 \end{tetel}
 
-\begin{bizonyitas}{}
-Vegyünk egy páros gráfot A, B pontosztállyal, ami k-reguláris. Először lássuk be, hogy ugyanaz az elemszáma A és B-nek. A-ból $k\cdot n$ él megy ki, B-be pedig $k \cdot m$ él megy. $k\cdot n = k\cdot m$, osszuk le k-val $\rightarrow n = m$. Hall-feltétel: $|N(A) \geq |A|$. A-ból $k\cdot|A|$ él megy ki, ezek a N(A) csúcsokba mennek. Ez annyit jelent, hogy egy N(A)-beli csúcsba átlagosan $(k\cdot |A|) \backslash |N(A)|$ él megy, tehát $(k\cdot |A|) \backslash |N(A)| \leq k$ (mivel egy csúcsba maximum k él megy). Szorozzuk be $|N(A|$-val és osszunk k-val. $|A| \leq |N(A)|$, Hall feltétel OK, Frobenius-tétel OK, létezik teljes párosítás.
-%Tegyük fel, hogy G k-reguláris és rendelkezik A, B pontosztályokkal és $k \geq 1$, és tekintsünk tetszőleges $X \subseteq A$ ponthalmazt. Mivel X-beli pontokból összesen $|X|\cdot k$ darab él indul ki, és N(X) minden pontjába ezek közül legfeljebb k fut be, ezért
-%$$|N(X)| \geq \frac{1}{k}k|X| = |X|$$
-%Az $X = A$ esetre ugyanezzel a módszerrel $|A| = |B|$, mert $N(A) = B$ és így az A-beli pontokból kiinduló élekből N(A) minden pontjába pontosan k él fut be. Ebből Frobenius tétellel kijön a teljes párosítás.
-\end{bizonyitas}
-
-\begin{definicio}{ÉLSZÍNEZÉS}
-Egy G gráf élei \textbf{k színnel színezhetőek}, ha minden élt ki lehet színezni k színnel úgy, hogy bármely két szomszédos él színe különböző legyen. G \textbf{élkromatikus száma} $\chi_e(G) = k$, ha G élei k színnel színezhetőek, de $k - 1$-gyel már nem.
+\begin{definicio}{MINIMÁLIS SÚLYÚ FESZÍTŐFA}
+Legyen G gráf és annak éleihez rendelt $w: E \rightarrow \mathbb{R}$ súlyfüggvény. A gráfnak azon feszítőfáját, melyre ez a súlyfüggvény minimális, a gráf \textbf{minimális súlyú feszítőfájának} nevezzük.
 \end{definicio}
 
-\begin{tetel}{VIZING-TÉTEL}
-Ha G egyszerű gráf, akkor $\chi_e(G) \leq \Delta(G) + 1$. Bizonyítás $\emptyset$.
-\end{tetel}
-
-\begin{tetel}{ÉLKROMATIKUS SZÁM}
-Tetszőleges G gráfra $\chi_e(G) \geq \Delta(G)$ áll.
+\begin{tetel}{}
+A Kruskal-algoritmus minimális súlyú feszítőfát talál.
 \end{tetel}
 
 \begin{bizonyitas}{}
-Az egy csúcsból induló élek egymástól különböző színt kapnak, és ez speciálisan a maximális fokszámú csúcsokból induló élekre is igaz.
+Két állítást kell bizonyítanunk - azt, hogy feszítőfát ad az algoritmus, és azt, hogy az minimális. Kezdjük az elsővel. Legyen G egy összefüggő, súlyozott gráf (tehát van súlyfüggvény hozzárendelve) és F legyen egy részgráfja, amit az algoritmus produkál. F-ben nem lehet kör, mivel az algoritmus egy fát épít. F nem lehet nem összefüggő sem, mivel az első él (amit az algoritmus talál), ami összeköt két független komponenst F-ben még nem hozhat létre kört. Tehát F feszítőgráf.
+\\
+A következő állítást teljes indukcióval bizonyítjuk be. Legyen H egy élhalmaz, amit az algoritmus a futása során generál, a minimális súlyú feszítőfának ezt a H élhalmazt tartalmaznia kell, hiszen ebben vannak minimális súlyú élek.
+Az első lépésnél az állítás igaz, hiszen H üres, és minden gráfnak részgráfja az üres gráf. A k-adik lépésnél vegyük az állítást igaznak és legyen T a minimális súlyú feszítőfa, ami tartalmazza H-t. Ha az algoritmus által kiválasztott következő él, e, szintúgy benne van a T-ben, akkor az állítás szintúgy igaz a $H + {e}$ élhalmazra. Különben $T + {e}$ élhalmazban létezik egy C kör, és ezen kívül még létezik egy olyan f él, ami befejezi a C kört, de nem része H-nak. (Ha nem létezne f, akkor e-t már nem vehettük volna be, mivel kört produkált volna $H + f$-ben). Ekkor $T - {f} + {e}$ szintúgy egy fa, és azonos az összsúlya T-jével, hiszen T-nek minimális az összsúlya, és f-nek a súlya nem lehet kisebb, mint e-nek, hiszen akkor e helyett az f élet választotta volna az algoritmus. Tehát $T - {f} + {e}$ egy minimális súlyú feszítőfa. Ezek alapján az indukciós feltevést bebizonyítottuk, és az állítás igaz, amikor H egy feszítőfává válik, ami csak akkor igaz, ha H egy minimális súlyú feszítőfa.
 \end{bizonyitas}
 
-\begin{tetel}{KŐNIG-TÉTEL}
-Ha G páros gráf, akkor $\chi_e(G) = \Delta(G)$
+\begin{tetel}{Alkalmazás}
+Pontok - városok, élek - utak, súly - hossz; Villamos hálózatok, Kirchhoff-törvények, áramköri elemekhez súlyokat párosítunk
 \end{tetel}
-
-\begin{bizonyitas}{}
-Elég azt igazolni, hogy $\chi_e(G) \leq \Delta(G)$ az előző állítás miatt. Létezik olyan H páros gráf, melynek G részgráfja, és H minden csúcsának fokszáma $\Delta(G)$. Ha sikerül a $\Delta(G)$-reguláris H gráf éleit $\Delta(G)$ színnel kiszínezni, akkor egyúttal a G részgráf éleinek is megkapjuk egy ugyanennyi színnel való színezését. H gráf élszínezéséhez elegendő azt megmutatni, hogy tetszőleges reguláris páros gráfban létezik teljes párosítás, ezt pedig már bizonyítottuk egy fentebbi tételben.
-\end{bizonyitas}
