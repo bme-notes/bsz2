@@ -1,4 +1,4 @@
-\section{4. tétel}
+\section{3. tétel: Síkbanrajzolhatóság}
 
 \begin{definicio}{SÍKBARAJZOLHATÓSÁG}
 G \textbf{síkbarajzolható} gráf, ha lerajzolható úgy (a síkba), hogy az élei a csúcsokon kívül sehol máshol ne keresztezzék egymást.
@@ -54,3 +54,33 @@ Ha G egyszerű, síkbarajzolható gráf, akkor $$\delta = min\, d(v) \leq 5$$ az
 \begin{bizonyitas}{}
 Feltehetjük, hogy a gráf pontjainak a száma legalább 3. T.f.h. $\delta \geq 6$. Mivel a fokszámok összege egyenlő az élszámok kétszeresével, $6n \leq 2e$. Az élszám-becslés alapján azonban $2e \leq 6n - 12$, ezzel ellentmondásra jutottunk, mivel $6n \not\leq 6n - 12$.
 \end{bizonyitas}
+
+\begin{tetel}{KURATOWSKI-GRÁFOK}
+A Kuratowski-gráfok, tehát a $K_5$ és a $K_{3,3}$ nem rajzolhatóak síkba.
+\end{tetel}
+
+\begin{bizonyitas}{}
+Ha $K_5$ síkbarajzolható volna, akkor teljesülne rá az élbecslés tétel. Azonban $K_5$ pontjainak száma 5, éleinek száma 10 és $10 \not\leq 3 \cdot 5 -6 = 9$, tehát $K_5$ nem síkbarajzolható.
+A $K_{3,3}$ minden körének hossza legalább 4. Ha volna 3 hosszú kör, legalább 2 ``kút'' vagy ``ház'' között kellene annak mennie, ami nem lehetséges. Így tehát a 2. élbecslés alkalmazható. $K_{3,3}$ pontjainak a száma 6, éleinek száma 9 és $9 \not\leq 2 \cdot 6 - 4 = 8$, tehát $K_{3,3}$ nem síkbarajzolható.
+\end{bizonyitas}
+
+Érdemes megjegyezni, hogy ezeknek a topologikus izomorf megfelelőit (tehát ha egy él helyett 2 hosszú út van) se lehet síkba lerajzolni. Ezeket úgy tudjuk konstruálni, hogy egy él helyett vagy egy új, 2-fokú csúccsal helyettesítünk, vagy egy 2-fokú csúcsot egy éllel.
+
+\begin{definicio}{TOPOLOGIKUS IZOMORFIA}
+A G és H gráfok \textbf{topologikusan izomorfak}, ha a fentebb említett transzformációk ismételt alkalmazásával izomorf gráfokba transzformálhatóak.
+\end{definicio}
+
+\begin{tetel}{KURATOWSKI-TÉTEL}
+Egy gráf akkor és csak akkor síkbarajzolható, ha nem tartalmaz olyan részgráfot, amely topologikusan izomorf lenne $K_{3,3}$-al vagy $K_5$-el. \textbf{A bizonyítás a szükségességre fentebb található.}
+\end{tetel}
+
+\begin{definicio}{DUÁLIS}
+Egy G gráf \textbf{duálisát} úgy kapjuk meg, hogy G tartományaihoz rendelünk pontokat (G* pontjai) és G*-ban akkor kötünk össze két pontot, ha a megfelelő G-beli tartományoknak van közös határvonala.
+\end{definicio}
+
+A duális gráfban tehát $n* = t$ és $t* = n$, valamint $e* = e$.
+A párhuzamos élekből ``soros élek'', hurokélekből pedig elvágó élek lesznek.
+
+\begin{tetel}{FA DUÁLISON BELÜL}
+G összefüggő, egyszerű gráf, F ezen belül feszítőfa. A G* duálison belül ez az F a saját komplementereként fog megjelenni.
+\end{tetel}
