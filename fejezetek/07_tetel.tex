@@ -21,7 +21,7 @@ Ha G páros gráf, akkor $\nu(G) = \tau(G)$. Ha G-ben nincs izolált pont, akkor
 \end{tetel}
 
 \begin{bizonyitas}{}
-Először az első állítást bizonyítjuk. Legyen M egy olyan párosítás, mely a javító utak módszerével már nem bővíthető. Legyen $U = A - X$, T' azon B-beli pontok halmaza, amelyek élerhetőek U-ból alternáló úton. T pedig ezek párjainak halmaza. Legyen $Y = T' \cup (X - T)$. Ennek a halmaznak éppen $|M|$ pontja van. Ezek minden élt lefognak, hiszen $N(T\cup U) = T'$, ugyanúgy, mint a Hall-tétel bizonyításában. Így $\tau(G) \leq |M| \leq \nu(G)$ amiből viszont már következik az állítás a CUCCOS VISZONY (\textit{8. tétel}) tétel alapján. Most már könnyű belátni a második állítást is, Gallai két tétele miatt ugyanis $\nu(G) + \rho(G) = \tau(G) + \alpha(G)$ és imént beláttuk, hogy $\nu(G) = \tau(G)$.
+Először az első állítást bizonyítjuk. Legyen M egy olyan párosítás, mely a javító utak módszerével már nem bővíthető. Legyen $U = A - X$, T' azon B-beli pontok halmaza, amelyek elérhetőek U-ból alternáló úton. T pedig ezek párjainak halmaza. Legyen $Y = T' \cup (X - T)$. Ennek a halmaznak éppen $|M|$ pontja van. Ezek minden élt lefognak, hiszen $N(T\cup U) = T'$, ugyanúgy, mint a Hall-tétel bizonyításában. Így $\tau(G) \leq |M| \leq \nu(G)$ amiből viszont már következik az állítás a CUCCOS VISZONY (\textit{8. tétel}) tétel alapján. Most már könnyű belátni a második állítást is, Gallai két tétele miatt ugyanis $\nu(G) + \rho(G) = \tau(G) + \alpha(G)$ és imént beláttuk, hogy $\nu(G) = \tau(G)$.
 \end{bizonyitas}
 
 \begin{tetel}{HALL-TÉTEL}
@@ -30,7 +30,7 @@ Egy $G = (A,B)$ páros gráfban akkor és csak akkor van A-t lefedő párosítá
 
 \begin{bizonyitas}{}
 ??? \\
-Ha létezik A-t fedő párosítás, akkor minden A-beli pontnak különböző párja van, tehát tetszőleges $X \subseteq A$-ra. Azt kell igazolnunk, hogy $\nu(G) \geq |A|$. Legyen U minimális (azaz $\tau(G)$ méretű) lefogó ponthalmaz, és legyen $U_A :=U\cap A,U_B:=U\cap B$. Mivel U lefogja az $X := A \backslash U_A$-ból induló éleket, ezért $N(X) \subseteq U_B$, tehát $|(NX)| \leq |U_B|$. A Kőnig-tétel ill. a Hall-feltétel miatt
+Ha létezik A-t fedő párosítás, akkor minden A-beli pontnak különböző párja van, tehát tetszőleges $X \subseteq A$-ra. Azt kell igazolnunk, hogy $\nu(G) \geq |A|$. Legyen U minimális (azaz $\tau(G)$ méretű) lefogó ponthalmaz, és legyen $U_A :=U\cap A,U_B:=U\cap B$. Mivel U lefogja az $X := A \backslash U_A$-ból induló éleket, ezért $N(X) \subseteq U_B$, tehát $|(NX)| \leq |U_B|$. A Kőnig-tétel illetve a Hall-feltétel miatt
 $$\nu(G) = \tau(G) = |U| = |U_A| + |U_B| \geq |U_A| + |N(X)| \geq |U_A| + |X| = |A|$$
 \end{bizonyitas}
 

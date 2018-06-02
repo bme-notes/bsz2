@@ -17,7 +17,7 @@ Ha G egy irányított gráf, $s,t\in V(G)$, akkor az s-ből t-be vezető páronk
 \end{tetel}
 
 \begin{bizonyitas}{}
-Ha létezik G-ben k darab ilyen irányított s-t út, akkor az s-t utakat lefogó élek száma nyilvánvalóan legalább k. Nézzük az egyenlőtlenség másik oldaláról is. T.f.h. az s-t utakat lefogó élek minimális száma k. Legyen minden él kapacitása 1. Az így kapott hálózatban a maximális folyam értéke legalább k. Ekkor a Ford-Fulkerson tétel miatt a minimális vágás értéke is legalább k. Azt már beláttuk, hogy van olyan max. folyam, ahol minden élen a folyamérték 0 vagy 1. Lássuk be, hogy G-ben van k élidegen irányított s-t út. Egy ilyen út legalább van, különben nem lehetne k a folyam értéke. Az ebben az útban szereplő élek kapacitását csökkentsük nullára, így a folyam értéke legalább k-1 lesz. Folytassuk a gondolatmenetet és kapunk k élidegen irányított s-t utat.
+Ha létezik G-ben k darab ilyen irányított s-t út, akkor az s-t utakat lefogó élek száma nyilvánvalóan legalább k. Nézzük az egyenlőtlenség másik oldaláról is. T.f.h. az s-t utakat lefogó élek minimális száma k. Legyen minden él kapacitása 1. Az így kapott hálózatban a maximális folyam értéke legalább k. Ekkor a Ford-Fulkerson tétel miatt a minimális vágás értéke is legalább k. Azt már beláttuk, hogy van olyan maximális folyam, ahol minden élen a folyamérték 0 vagy 1. Lássuk be, hogy G-ben van k élidegen irányított s-t út. Egy ilyen út legalább van, különben nem lehetne k a folyam értéke. Az ebben az útban szereplő élek kapacitását csökkentsük nullára, így a folyam értéke legalább k-1 lesz. Folytassuk a gondolatmenetet és kapunk k élidegen irányított s-t utat.
 \end{bizonyitas}
 
 \begin{tetel}{MENGER Tétel}
@@ -61,5 +61,5 @@ A legalább 3 pontú G gráf akkor és csak akkor 2-szeresen összefüggő, ha t
 \end{tetel}
 
 \begin{bizonyitas}{}
-Az első állítás triviális, hiszen két pontidegen u-v út együtt egy kört ad, amely átmegy u-n és v-n. A második állítás pedig az elsőből következik. Lássuk be, hogy ha G 2-szeresen összefüggő, akkor e, f éleken keresztül van kör. Vegyünk fel két pontot úgy, hogy ezekkel osszuk két részre az e illetve az f élt. Az így kapott gráf is 2-szeresen összefüggő. Az első állítás szerint ezen a két ponton át is megy kör, és ez a kör az eredeti gráfban átmegy e-n és f-en. A megfordítás ismét nyilvávaló.
+Az első állítás triviális, hiszen két pontidegen u-v út együtt egy kört ad, amely átmegy u-n és v-n. A második állítás pedig az elsőből következik. Lássuk be, hogy ha G 2-szeresen összefüggő, akkor e, f éleken keresztül van kör. Vegyünk fel két pontot úgy, hogy ezekkel osszuk két részre az e illetve az f élt. Az így kapott gráf is 2-szeresen összefüggő. Az első állítás szerint ezen a két ponton át is megy kör, és ez a kör az eredeti gráfban átmegy e-n és f-en. A megfordítás ismét nyilvánvaló.
 \end{bizonyitas}

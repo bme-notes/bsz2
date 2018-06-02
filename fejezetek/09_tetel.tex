@@ -6,7 +6,7 @@ Legyen G egy irányított gráf. Rendeljünk minden éléhez egy c(e) nemnegatí
 
 \begin{definicio}{FOLYAM, FOLYAMÉRTÉK}
 Legyen f(e) az a ``vízmennyiség'', ami az e élen folyik át. Ez az f függvény \textbf{megengedett függvény}, ha $f(e) \leq c(e)$ minden élre és
-$$m(v) = \sum\{f(e)|e\,\,vegpontja\,\,v\} - \sum\{f(e) | e\,\,kezdopontja\,\,v\} = 0$$
+$$m(v) = \sum\{f(e)|e\,\,\text{végpontja}\,\,v\} - \sum\{f(e) | e\,\,\text{kezdőpontja}\,\,v\} = 0$$
 minden $v\in V(G)$-re, kivéve az s és t pontokat. Egy megengedett függvényt \textbf{folyamnak} hívunk. Könnyen belátható, hogy $m(t) = -m(s)$. Ezt a közös értéket a folyam értékének nevezzük és $m_f$-el jelöljük. Egy élt \textbf{telítettnek} hívunk egy folyamban, ha $f(e) = c(e)$ és \textbf{telítetlennek}, ha $f(e) < c(e)$.
 \end{definicio}
 
@@ -16,7 +16,7 @@ Legyen $s \in X \subseteq V(G) \backslash {t}$, sem X, sem $V(G) - X$ nem üres 
 
 \begin{tetel}{JAVÍTÓ ÚT HÁLÓZATRA Algoritmus}
 Legyen a gráfban $s = v_0, v_1... v_k = t$ egy út, aminek most nem kell feltétlenül az irányítás szerint haladnia. Növelhetjük a folyam értékét abban az esetben, ha minden $i = 0,1,2,...,k-1$-re vagy $e_i = (v_i , v_{i + 1})$ és $f(e_i) < c(e_i) $, vagy $e_i = (v_{i + 1} , v_i )$ és $f(e_i) > 0 $.
-Ekkor az első típusú éleken növeljük a folyam értékét, míg a második típusúakon csökkentjük, így az össz folyamérték nő. Az ilyen utakat javító utaknak hívjuk.\\ Egy folyam értéke akkor és csak akkor maximális, ha nincs javító út s-ből t-be.
+Ekkor az első típusú éleken növeljük a folyam értékét, míg a második típusúakon csökkentjük, így az összesen folyamérték nő. Az ilyen utakat javító utaknak hívjuk.\\ Egy folyam értéke akkor és csak akkor maximális, ha nincs javító út s-ből t-be.
 \end{tetel}
 
 \begin{tetel}{MAXIMÁLIS FOLYAM}
@@ -29,7 +29,7 @@ Legyen P egy javító út. Ekkor P minden első típusú élére a $c(e) - f(e)$
 
 \begin{tetel}{FORD-FULKERSON (MAXFLOW-MINCUT) TÉTEL}
 A maximális folyam értéke egyenlő a minimális vágás értékével, azaz
-$$max\{m_f|f\,\,egy\,\,folyam\,\,s-bol\,\,t-be\} = min(c(C)|C\,\,vagas)$$
+$$max\{m_f|f\,\,egy\,\,folyam\,\,\text{s-ből}\,\,t-be\} = min(c(C)|C\,\,\text{vágás})$$
 \end{tetel}
 
 \begin{bizonyitas}{}
