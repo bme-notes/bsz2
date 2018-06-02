@@ -1,14 +1,16 @@
 \section{10. tétel: Menger tételei}
 
+\begin{definicio}{DISZJUNKT UTAK}
+Vegyük (G,s,t,c) folyamot, ezen belül veszünk utakat. \textbf{Páronként éldiszjunkt vagy élidegen útnak} nevezünk utakat, ha páronként nincsen közös élük. \textbf{Belsőleg pontdiszjunkt utaknak} nevezünk utakat, ha páronként nincs közös pontjuk.
+\end{definicio}
+
 \begin{tetel}{DISZJUNKT FOLYAMOK}
 Ha a kapacitások egész számok, akkor van olyan maximális folyam, melyben minden élen a folyam értéke egész. Így nyilvánvaló, hogy ha a kapacitás minden élen 1 vagy 0, akkor van olyan maximális folyam, melynek minden élén a folyam értéke vagy 1 vagy 0. Ha elhagyjuk ez utóbbi éleket, akkor diszjunkt utakat kapunk s-ből t-be. Ezeknek a számát úgy is meg tudjuk kapni, hogy veszünk egy minimális vágást és az élhalmazának az elemszámával lesz egyenlő a diszjunkt utak száma.
 \end{tetel}
 
-\begin{definicio}{DISZJUNKT UTAK}
-Vegyük (G,s,t,c) folyamot, ezen belül veszünk utakat. \textbf{Páronként éldiszjunkt útnak} nevezünk utakat, ha páronként nincsen közös élük. \textbf{Belsőleg pontdiszjunkt utaknak} nevezünk utakat, ha páronként nincs közös pontjuk.
-\end{definicio}
-
-Diszjukt folyam algoritmus: Vegyünk tetszőleges hálózatot, és futtassuk le a fentebb leírt módszert rajta úgy, hogy vegyünk egy minimális vágást a hálózatban. A visszaélek (tehát amik a t-t tartalmazó halmazból az s-et tartalmazó halmazba mennek) legyenek 0 értékűek, egyébként pedig 1 értékűek az élek. Ebben már meg lehet keresni a diszjunkt utakat.
+\begin{tetel}{DISZJUNKT FOLYAM ALGORITMUS}
+Vegyünk tetszőleges hálózatot, és futtassuk le a fentebb leírt módszert rajta úgy, hogy vegyünk egy minimális vágást a hálózatban. A visszaélek (tehát amik a t-t tartalmazó halmazból az s-et tartalmazó halmazba mennek) legyenek 0 értékűek, egyébként pedig 1 értékűek az élek. Ebben már meg lehet keresni a diszjunkt utakat.
+\end{tetel}
 
 \begin{tetel}{MENGER Tétel}
 Ha G egy irányított gráf, $s,t\in V(G)$, akkor az s-ből t-be vezető páronként élidegen irányított utak maximális száma megegyezik az összes irányított s-t utat lefogó élek minimális számával.

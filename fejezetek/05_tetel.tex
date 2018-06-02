@@ -1,4 +1,4 @@
-\section{5. tétel: gráfok színezése}
+\section{5. tétel: Gráfok színezése}
 
 \begin{definicio}{GRÁFOK SZÍNEZÉSE}
 Egy G hurokmentes gráf \textbf{k színnel színezhető}, ha minden csúcsot ki lehet színezni k szín felhasználásával úgy, hogy bármely két szomszédos csúcs színe különböző legyen. G \textbf{kromatikus száma} $\chi(G) = k$, ha k színnel meg lehet színezni G-t, de $k - 1$-gyel már nem. Egy ilyen színezésnél az azonos színű pontok halmazát \textbf{színosztálynak} nevezzük.
@@ -54,7 +54,7 @@ $$k \leq \omega(G) \leq \chi(G) \leq k$$. MAJD.
 Egy G gráfot \textbf{páros gráfnak} nevezünk, ha G pontjainak V(G) halmazát két részre, egy A és B halmazra tudjuk osztani úgy, hogy G minden élének egyik végpontja A-ban, a másik pedig B-ben van. Ennek jelölése: $G = (A,B)$. A $K_{a,b}$-vel jelölt teljes páros gráf olyan $G=(A,B)$ gráf, ahol $|A| = a$ és $|B| = b$ és minden A-beli pont össze van kötve minden B-beli ponttal.
 \end{definicio}
 
-\begin{tetel}{PÁROSÍTÁS LÉTEZÉSE}
+\begin{tetel}{FELTÉTEL A GRÁF PÁROS MIVOLTÁRA}
 Egy G gráf akkor és csak akkor páros gráf, ha minden G-ben lévő kör páros.
 \end{tetel}
 
@@ -66,6 +66,6 @@ Ha G páros gráf, és C egy kör G-ben, akkor C pontjai felváltva vannak A-ban
 Egy legalább egy élt tartalmazó G gráf akkor és csak akkor páros, ha $\chi(G) = 2$.
 \end{tetel}
 
-\begin{tetel}{KAPCSOLAT A PÁROS GRÁF ÉS A PÁRATLAN KÖRÖK KÖZÖTT}
+\begin{tetel}{KAPCSOLAT A PÁROS GRÁFOK ÉS A PÁRATLAN KÖRÖK KÖZÖTT}
   $\chi(G) = \Delta(G)+1$ abban az esetben, ha teljes gráfról vagy húr nélküli páratlan körről beszélünk.
 \end{tetel}

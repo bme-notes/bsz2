@@ -1,6 +1,7 @@
 %% BME-Notes jegyzethez header
 %% Ha nem érted, mi történik itt, akkor inkább ne változtasd meg!
 %% A fájlok fordításához XeLaTeX-et kell használni
+
 \documentclass[]{article}
 \usepackage{lmodern}
 \usepackage{amssymb}
@@ -15,6 +16,7 @@
 \usepackage{fancyhdr}
 \usepackage{afterpage}
 \pagestyle{fancy}
+\hyphenpenalty=10000 % Sajnos nem sikerült megoldani a magyar elválasztást, ezért egyszerűen kikapcsoltam :( (no persze fél óra szenvedés után :@)
 \usepackage[hidelinks]{hyperref}
 \definecolor{shadecolor}{HTML}{eeeeee} %Kindle-optimized color
 \setcounter{secnumdepth}{0} %this automagically removes extra numbering toc and sections
