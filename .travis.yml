@@ -12,7 +12,7 @@ addons:
      - texlive-fonts-recommended
 script:
  - tlmgr init-usertree
- - tlmgr option repository ftp://tug.org/historic/systems/texlive/2015/tlnet-final
+ - tlmgr option repository ftp://tug.org/historic/systems/texlive/2017/tlnet-final
  - tlmgr update --all
  - tlmgr install etoolbox tcolorbox framed polyglossia hyperref pgf xcolor
  - xelatex bsz2.tex
