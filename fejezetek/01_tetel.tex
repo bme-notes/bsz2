@@ -1,4 +1,4 @@
-\section{1. tétel}
+\section{1. tétel: Kombinatorika}
 
 \begin{definicio}{FAKTORIÁLIS}
 Az $n(n-1)(n-2)...\cdot2\cdot1$ szorzatot n \textbf{faktoriálisának} nevezzük. Definíció szerint $0! = 1$.\\
@@ -6,11 +6,11 @@ Jel: $n!$
 \end{definicio}
 
 \begin{definicio}{PERMUTÁCIÓ}
-Az n elem összes lehetséges sorrendjének a száma $n!$ és ezt hívjük \textbf{permutációnak}.
+Az n elem összes lehetséges sorrendjének a száma $n!$ és ezt hívjuk \textbf{permutációnak}.
 \end{definicio}
 
 \begin{definicio}{ISMÉTLÉSES PERMUTÁCIÓ}
-$k_1$ darab első típusú elem, ..., $k_n$ darab n-edik típusú elem lehetséges sorbarendezésének a száma a $k_1 + k_2 + ... + k_n$ \textbf{ismétléses permutációi}. Számuk:
+$k_1$ darab első típusú elem, ..., $k_n$ darab n-edik típusú elem lehetséges sorba rendezésének a száma a $k_1 + k_2 + ... + k_n$ \textbf{ismétléses permutációi}. Számuk:
 $$\frac{(k_1+k_2+...+k_n)!}{k_1!\cdot k_2!\cdot...\cdot k_n!}$$
 \end{definicio}
 
@@ -42,18 +42,8 @@ n+k-1\\k
 \end{definicio}
 
 \begin{tetel}{BINOMIÁLIS TÉTEL}
-Tetszőleges valós x, y-ra és nemnegatív egész n-re:$$
-(x+y)^n = \begin{pmatrix}
-n\\0
-\end{pmatrix} x^n + \begin{pmatrix}
-n\\1
-\end{pmatrix} x^{n-1}y + \begin{pmatrix}
-n\\2
-\end{pmatrix} x^{n-2}y^2 + ... + \begin{pmatrix}
-n\\k
-\end{pmatrix} x^{n-k}y^k + ... + \begin{pmatrix}
-n\\n
-\end{pmatrix} y^n$$
+  Tetszőleges valós x, y-ra és nemnegatív egész n-re:
+  \[ (x+y)^n = \sum_{k=0}^{n} \binom{n}{k} x^{n-k}y^{k} {\color{gray} = \binom{n}{0}x^n + \binom{n}{1}x^{n-1}y^1 + \binom{n}{2}x^{n-2}y^2 + \dots + \binom{n}{n}y^n } \]
 \end{tetel}
 
 \begin{definicio}{PASCAL HÁROMSZÖG}
@@ -72,7 +62,7 @@ k\\k-1
 \end{pmatrix}$, $\begin{pmatrix}
 k\\k
 \end{pmatrix}$ együtthatók. A legutóbbi állítás alapján a Pascal-háromszög minden sorának a sorösszege:
-$2^{i-1}$. Ez abból is belátható, hogy minden sor összege kétszerese az előzőnek, ugyanis az együtthatókat úgy is meg lehet kapni, hogy az új elem a felette álló két együttható összegéből áll össze.
+$2^{k-1}$. Ez abból is belátható, hogy minden sor összege kétszerese az előzőnek, ugyanis az együtthatókat úgy is meg lehet kapni, hogy az új elem a felette álló két együttható összegéből áll össze.
 \end{definicio}
 
 \begin{tetel}{BINOMIÁLIS ÖSSZEG}

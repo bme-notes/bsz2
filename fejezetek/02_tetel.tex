@@ -1,4 +1,4 @@
-\section{2. tétel}
+\section{2. tétel: Gráfelméleti alapfogalmak}
 
 % a kommentezett reszek allitolag nem a tetel reszei, ha valaki jobban tudja, nyugodtan allitsa oket vissza vagy torolje
 
@@ -43,7 +43,7 @@ Ha E' pontosan azokból az E-beli élekből áll, amelyeknek két végpontja V'-
 \end{definicio}
 
 \begin{definicio}{ÉLSOROZAT, ÚT, KÖR}
-Egy $(v_0, e_1, v_1 ... v_{k-1}, e_k, v_k)$ sorozatot \textbf{élsorozatnak} nevezzük, ha $e_i$ a $v_{i-1}$-et és $v_i$-t összekötő él. Ha $v_0 = v_k$, akkor az élsorozat zárt. Ha a csúcsok mind különbözőek, akkor egy \textbf{útról} beszélünk. Ha a csúcsok mind különbözőek és az élsorozat zárt, akkor pedig egy \textbf{körről}.
+  Egy $(v_0, e_1, v_1 ... v_{k-1}, e_k, v_k)$ sorozatot \textbf{élsorozatnak} vagy \textbf{sétának} nevezünk, ha $e_i$ a $v_{i-1}$-et és $v_i$-t összekötő él. Ha $v_0 = v_k$, akkor az élsorozat zárt. Ha a csúcsok mind különbözőek, akkor egy \textbf{útról} beszélünk. Ha a csúcsok mind különbözőek és az élsorozat zárt, akkor pedig egy \textbf{körről}.
 \end{definicio}
 
 %\begin{tetel}{EKVIVALENCIA RELÁCIÓ}
@@ -79,7 +79,7 @@ n pontú fa éleinek száma n-1.
 \end{tetel}
 
 \begin{bizonyitas}{}
-Teljes indukcióval. n = 2-re az állítás triviálisan teljesül. T.f.h. az állítás igaz minden $n < n_0$-ra. Az előző tétel szerint minden $n_0$ fában van egy fokszámú pont, ezt hagyjuk el. Ha elhagyjuk ezt a pontot és a hozzá tartozó élet, akkor mivel a maradék $n_0 - 1$ fára már igaz az állítás, látható, hogy az $n_0$ pontú eredeti fának $n_0 - 1$ éle van.
+  Teljes indukcióval. $n=2$ csúcsú fára triviálisan teljesül az állítás ($2-1=1$ éle van). Tegyük fel, hogy minden $n$ csúcsú fára is, azaz minden $n$ csúcsú fának $n-1$ éle van. Tekintsünk minden $n+1$ csúcsú fát, amiknek az előző tétel miatt legkevesebb kettő levele van. Ha elhagyjuk az egyik levelet és a hozzátartozó élet, akkor megkapunk egyet az előbb tárgyalt $n$ csúcsú fák közül, amikre feltettük, hogy $n-1$ élük van. Ez esetben, ha az imént leválasztott levelet ``visszatesszük'', eggyel nő az élek és a csúcsok száma is, azaz lesz egy $n+1$ csúcsú fánk, aminek $n$ éle van. Tehát, ha $n$ csúcsú fára teljesül az állítás, akkor $n+1$ csúcsúra is. Ezzel és a kezdeti triviális megállapítással teljes indukcióval beláttuk az állítást.
 \end{bizonyitas}
 
 \begin{definicio}{FESZÍTŐFA}

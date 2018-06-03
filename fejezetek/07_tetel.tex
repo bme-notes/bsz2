@@ -1,24 +1,43 @@
-\section{7. tétel}
+\section{7. Tétel: Javítóutak módszere}
 
-\begin{definicio}{GRÁFOK SZÍNEZÉSE}
-Egy G hurokmentes gráf \textbf{k színnel színezhető}, ha minden csúcsot ki lehet színezni k szín felhasználásával úgy, hogy bármely két szomszédos csúcs színe különböző legyen. G \textbf{kromatikus száma} $\chi(G) = k$, ha k színnel meg lehet színezni G-t, de $k - 1$-gyel már nem. Egy ilyen színezésnél az azonos színű pontok halmazát \textbf{színosztálynak} nevezzük.
+\begin{definicio}{PÁROSÍTÁS}
+\textbf{Párosításnak}, vagy \textbf{részleges párosításnak} nevezünk egy M élhalmazt, ha semelyik két élnek közös pontja. Az ilyen éleket független éleknek nevezzük. A részleges párosítás lefedi éleinek végpontjait. Egy párosítás \textbf{teljes párosítás}, ha a gráf minden pontját lefedi.
 \end{definicio}
 
-\begin{definicio}{KLIKK}
-G egy teljes részgráfját \textbf{klikknek} nevezzük. A G-ben található maximális méretű klikk méretet, azaz pontszámát $\omega(G)$-vel jelöljük és a gráf \textbf{klikkszámának} nevezzük.
+\begin{definicio}{ALTERNÁLÓ ÚT}
+Hozzunk létre egy részleges párosítást egy páros gráfon belül, ekkor a párosítás során bevett élek legyenek az X élhalmaz elemei. Alternáló útnak nevezünk olyan élsorozatot, ami felváltva tartalmaz nem-X beli és X-beli élt.
 \end{definicio}
 
-\begin{tetel}{Minden G gráfra $\chi(G) \geq \omega(G)$.}
+\begin{definicio}{JAVÍTÓ ÚT}
+G(A,B,E) páros gráfban van már párosítás (nem teljes). P út \textbf{javító út}, ha párosítatlan A-ból indul, párosítatlan B-be érkezik és P alternáló út. Ha ez a javító út elkészül, úgy tudjuk bevenni, hogy a ``nem-X''-beli éleket bevesszük és a régebben X-beli éleket pedig nem.
+\end{definicio}
+
+\begin{definicio}{JAVÍTÓ UTAS ALGORITMUS (MÓDOSÍTOTT BFS)}
+Bemenetként kapjuk meg M párosítást valamint G(A,B,E) gráfot. Ha létezik ebben a gráfban javító út, akkor azt vegyük be, ezt folytassuk addig, amíg létre tudunk hozni újabb és újabb javító utakat. Ha már nem tudunk újabb élt bevenni a párosításba, akkor álljunk le. Ebben az esetben már maximális a párosítás. Az algoritmus mohó módon működik.
+\end{definicio}
+
+\begin{tetel}{KŐNIG-TÉTEL}
+Ha G páros gráf, akkor $\nu(G) = \tau(G)$. Ha G-ben nincs izolált pont, akkor $\alpha(G) = \rho(G)$ is teljesül.
 \end{tetel}
 
 \begin{bizonyitas}{}
-G pontjainak kiszínezésével a maximális klikk pontjait is kiszínezzük, mégpedig különböző színekkel. k nagyságú klikk esetén legalább k szín kell.
+Először az első állítást bizonyítjuk. Legyen M egy olyan párosítás, mely a javító utak módszerével már nem bővíthető. Legyen $U = A - X$, T' azon B-beli pontok halmaza, amelyek elérhetőek U-ból alternáló úton. T pedig ezek párjainak halmaza. Legyen $Y = T' \cup (X - T)$. Ennek a halmaznak éppen $|M|$ pontja van. Ezek minden élt lefognak, hiszen $N(T\cup U) = T'$, ugyanúgy, mint a Hall-tétel bizonyításában. Így $\tau(G) \leq |M| \leq \nu(G)$ amiből viszont már következik az állítás a CUCCOS VISZONY (\textit{8. tétel}) tétel alapján. Most már könnyű belátni a második állítást is, Gallai két tétele miatt ugyanis $\nu(G) + \rho(G) = \tau(G) + \alpha(G)$ és imént beláttuk, hogy $\nu(G) = \tau(G)$.
 \end{bizonyitas}
 
-\begin{tetel}{MYCIELSKI-KONSTRUKCIÓ}
-Minden $k \geq 2$ egész számra van olyan $G_k$ gráf, hogy $\omega(G_k) = 2$ és $\chi(G_k) = k$.
+\begin{tetel}{HALL-TÉTEL}
+Egy $G = (A,B)$ páros gráfban akkor és csak akkor van A-t lefedő párosítás, ha minden $X \subseteq A$ részhalmazra $|N(X)| \geq |X|$ (ezt \textbf{Hall-feltételnek} nevezzük).
 \end{tetel}
 
 \begin{bizonyitas}{}
-$G_2$-nek nyilván megfelel a 2 pontot és egy élt tartalmazó gráf. T.f.h. hogy már megkonstruáltuk a fenti tulajdonságokkal rendelkező $G_k$ gráfot. Ebből konstruáljuk meg a $G_{k+1}$-et. Jelöljük $G_k$ pontjait $v_1, v_2,..., v_n$-nel. Vegyünk fel $n + 1$ darab új pontot, $u_1, u_2,..., u_n$ és w-t, valamint az új éleket a következőképp: Minden $u_i$-t kössünk össze $v_i$ minden $G_k$-beli szomszédjával, de magával a $v_i$-vel ne. Végül w-t kössük össze $u_i$-val (de a többi v ponttal ne). Belátjuk, hogy az így kapott $G_{k+1}$ gráf kielégíti a feltételeket. Először lássuk be, ha $G_k$-ban nem volt háromszög, akkor $G_{k+1}$-ben sincs, azaz a klikkszáma még mindig 2. T.f.h. mégis van háromszög a $G_{k+1}$-ben. Ennek nyilván nem lehet mindhárom csúcsa $G_k$-ban, mivel ekkor volna már háromszög $G_k$-ban is. Ha w a háromszög egyik csúcsa, az sem jó, mivel akkor a háromszög másik két csúcsa $u_i$ és $u_j$ lehet, viszont ezek nem szomszédosak. Ha $u_i$ a háromszög egyik csúcsa, akkor a maradék két csúcs csak $v_x$ és $v_y$ lehet. Mivel azonban $u_i$ szomszédai megegyeznek a $v_i$ szomszédaival (kivéve w), ezért $v_i$-vel is szomszédosnak kellett volna lennie $v_x$ és $v_y$-nak, ekkor létezett volna $G_k$-ban is háromszög, ami ellentmondás. Ebből kijön az, hogy $\chi(G_{k+1}) \leq k + 1$. Színezzünk ki minden $v_i$-t valamilyen színnel, az $u_i$-ket színezzünk ugyanolyanra (mivel $v_i$-vel nem szomszédos) és w legyen a plusz egy szín, így jól színeztük ki $k+1$ színnel. T.f.h. $\chi(G_{k+1}) = k$. Jelöljük x pont színét c(x)-el, a színeket pedig $1, 2,..., k$-val. Azt is feltehetjük, hogy $c(w) = k$. Mivel w minden $u_i$ ponttal össze van kötve, ezért az $u_i$ pontokat a $1, 2,....k - 1$ színekkel színezzük. Megadunk egy c' színezést a $v_i$ pontok által feszített részgráfon (Ez éppen $G_k$-val izomorf részgráf). Ha $c(v_i) = k$ akkor legyen $c'(v_i) = c(u_i)$, különben $c'(v_i) = c(v_i)$, vagyis a k színűeket színezzük át a ``párjuk'' színére. Belátjuk, hogy c' egy jó $k-1$ színezése $G_k$-nak, ami ellentmondás.
+??? \\
+Ha létezik A-t fedő párosítás, akkor minden A-beli pontnak különböző párja van, tehát tetszőleges $X \subseteq A$-ra. Azt kell igazolnunk, hogy $\nu(G) \geq |A|$. Legyen U minimális (azaz $\tau(G)$ méretű) lefogó ponthalmaz, és legyen $U_A :=U\cap A,U_B:=U\cap B$. Mivel U lefogja az $X := A \backslash U_A$-ból induló éleket, ezért $N(X) \subseteq U_B$, tehát $|(NX)| \leq |U_B|$. A Kőnig-tétel illetve a Hall-feltétel miatt
+$$\nu(G) = \tau(G) = |U| = |U_A| + |U_B| \geq |U_A| + |N(X)| \geq |U_A| + |X| = |A|$$
+\end{bizonyitas}
+
+\begin{tetel}{FROBENIUS-TÉTEL}
+Egy $G = (A,B)$ páros gráfban akkor és csak akkor van teljes párosítás, ha $|A| = |B|$ és $|N(X)| \geq |X|$ minden $X \subseteq A$-ra.
+\end{tetel}
+
+\begin{bizonyitas}{}
+A két feltétel szükségessége nyilvánvaló. Ha viszont teljesül a második feltétel, akkor a Hall-tétel miatt van A-t fedő párosítás. Mivel azonban $|A| = |B|$, ezért ez lefedi B-t is.
 \end{bizonyitas}

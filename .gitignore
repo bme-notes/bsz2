@@ -7,3 +7,6 @@
 *~
 \#*\#
 dockercmd.sh
+*.fdb_latexmk
+*.fls
+*.xdv

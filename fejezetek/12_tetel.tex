@@ -1,41 +1,46 @@
-\section{12. tétel}
+\section{12. tétel: Legrövidebb utak adott csúcsból: Dijsktra és Ford algoritmusai}
 
-\begin{definicio}{HÁLÓZAT}
-Legyen G egy irányított gráf. Rendeljünk minden éléhez egy c(e) nemnegatív számot, amit az él \textbf{kapacitásának} nevezünk. Jelöljünk ki két pontot, s-et és t-t G-ben, melyet \textbf{termelőnek} és \textbf{fogyasztónak} nevezünk. Ekkor a (G,s,t,c) négyest \textbf{hálózatnak} nevezzük.
-\end{definicio}
+% \begin{tetel}{Az algoritmusok futása során a következőket tartjuk számon}
+Az algoritmusok futása során a következőket tartjuk számon:
 
-\begin{definicio}{FOLYAM, FOLYAMÉRTÉK}
-Legyen f(e) az a ``vízmennyiség'', ami az e élen folyik át. Ez az f függvény \textbf{megengedett függvény}, ha $f(e) \leq c(e)$ minden élre és
-$$m(v) = \sum\{f(e)|e\,\,vegpontja\,\,v\} - \sum\{f(e) | e\,\,kezdopontja\,\,v\} = 0$$
-minden $v\in V(G)$-re, kivéve az s és t pontokat. Egy megengedett függvényt \textbf{folyamnak} hívunk. Könnyen belátható, hogy $m(t) = -m(s)$. Ezt a közös értéket a folyam értékének nevezzük és $m_f$-el jelöljük. Egy élt \textbf{telítettnek} hívunk egy folyamban, ha $f(e) = c(e)$ és \textbf{telítetlennek}, ha $f(e) < c(e)$.
-\end{definicio}
+\begin{itemize}
+\item[] l(e) - az e él hossza
+\item[] d(v) - a v pontba az s kezdőpontból eddigi legrövidebb út hossza. d(s) = 0.
+\end{itemize}
+Kulcslépések:
+\begin{itemize}
+\item[\textbf{(*)}]$d(s) = 0$, minden $v \neq s$-re $d(v) = \infty$
+\item[\textbf{(**)}]Ha x-ből vezet egy e él y-ba és $d(y) > d(x) + l(e)$, akkor $d(y) = d(x) + l(e)$.
+\end{itemize}
+%\end{tetel}
 
-\begin{definicio}{VÁGÁS}
-Legyen $s \in X \subseteq V(G) \backslash {t}$, sem X, sem $V(G) - X$ nem üres halmaz. Azoknak az éleknek a C halmazát, melyeknek egyik végpontja X-beli, másik $V(G) - X$-beli, a hálózati folyam egy (s,t)-\textbf{vágásának} nevezzük. A \textbf{vágás értéke}, c(C), azon éleken levő kapacitások összege, melyek egy X-beli pontból egy $V(G) - X$-beli pontba mutatnak. Ezeket előremutató éleknek nevezzük. Tehát a vágás értékében nem játszanak szerepet a visszafelé mutató élek, vagyis azok, melyek egy X-beli pontba mutatnak.
-\end{definicio}
-
-\begin{tetel}{JAVÍTÓ ÚT HÁLÓZATRA Algoritmus}
-Legyen a gráfban $s = v_0, v_1... v_k = t$ egy út, aminek most nem kell feltétlenül az irányítás szerint haladnia. Növelhetjük a folyam értékét abban az esetben, ha minden $i = 0,1,2,...,k-1$-re vagy $e_i = (v_i , v_{i + 1})$ és $f(e_i) < c(e_i) $, vagy $e_i = (v_{i + 1} , v_i )$ és $f(e_i) > 0 $.
-Ekkor az első típusú éleken növeljük a folyam értékét, míg a második típusúakon csökkentjük, így az össz folyamérték nő. Az ilyen utakat javító utaknak hívjuk.\\ Egy folyam értéke akkor és csak akkor maximális, ha nincs javító út s-ből t-be.
+\begin{tetel}{DIJKSTRA-ALGORITMUS}
+\textbf{Az algoritmus:}
+\begin{itemize}
+\item[\textbf{0.}] $S = {s}, T = V\backslash {s}$ és \textbf{(*)}.
+\item[\textbf{1.}] Minden S-beli pontból minden T-beli pontba vezető e élre végezzük el \textbf{(**)} javítást.
+\item[\textbf{2.}] A T-beli pontok közül legyen $v_0$ az, amelyiken a d(v) érték a legkisebb. Tegyük át $v_0$-t T-ből S-be.
+\item[\textbf{3.}] Ha T üres, \textbf{STOP}. Ha nem, vissza \textbf{1.} lépéshez.
+\end{itemize}
+Az algoritmus lépésszáma $c\cdot n^3$, mivel az 1. lépés k. elvégzésekor $|S| = k,\,\, |T| = v - k$, így az összes \textbf{(**)} hívások száma $\sum k(v-k) = \sum kv - \sum k^2$ és ennek az összege $k^3$-höz közelít.\\Az algoritmusnak létezik egy kedvezőbb futási idejű változata, $c\cdot n^2$ lépésszámmal.\\
+\textbf{Az optimalizált algoritmus:}
+\begin{itemize}
+\item[\textbf{0.}] $S = {s}, T = V\backslash {s}$ és \textbf{(*)}, valamint $v_0 = s$.
+\item[\textbf{1.}] Csak a $v_0$-ból a T-beli pontokba vezető e élekre végezzük el a \textbf{(**)} javítást.
+\item[\textbf{2.}] A T-beli pontok közül legyen $v_0$ az, amelyiken a d(v) érték a legkisebb. Tegyük át $v_0$-t T-ből S-be.
+\item[\textbf{3.}] Ha T üres, \textbf{STOP}. Ha nem, vissza \textbf{1.} lépéshez.
+\end{itemize}
 \end{tetel}
 
-\begin{tetel}{MAXIMÁLIS FOLYAM}
-Egy folyam értéke akkor és csak akkor maximális, ha nincs javító út s-ből t-be.
-\end{tetel}
-
-\begin{bizonyitas}{}
-Legyen P egy javító út. Ekkor P minden első típusú élére a $c(e) - f(e)$, második típusú élére pedig f(e) érték szigorúan pozitív. Legyen ezeknek minimuma d. Az első típusú élekre növeljük f(e)-t d-vel, második típusúaknál csökkentsük f(e)-t d-vel. Ekkor a módosított folyam is megengedett marad, értéke viszont d-vel nőtt. T.f.h. nincs javító út s-ből t-be. Lehetnek azonban olyan pontok a gráfban amelyek elérhetőek s-ből javító úton. Legyen az ilyen pontok halmaza $X \subset V(G)$. Ekkor sem X, sem $V(G) - X$ nem üres, hiszen $s \in X, t\in V(G) - X$. Tekintsünk egy olyan e élt, mely egy X-beli x pontból egy nem X-beli y-ba mutat. Ekkor $f(e) = c(e)$, hiszen ellenkező esetben az s-ből x-be vezető javító út e-vel meghosszabbítva egy s-ből y-ba vezető javító utat szolgáltatna. Ugyanígy egy olyan élre, ami egy nem X-beliből egy X-belibe mutat, teljesül, hogy f(e) = 0. Tehát az X és $V(G) - X$ között futó élek mind telítettek, és a visszafele mutató éleket nem használjuk, tehát ezen a vágáson nem folyhat több víz. Vagyis f maximális folyam.
-\end{bizonyitas}
-
-\begin{tetel}{FORD-FULKERSON (MAXFLOW-MINCUT) TÉTEL}
-A maximális folyam értéke egyenlő a minimális vágás értékével, azaz
-$$max\{m_f|f\,\,egy\,\,folyam\,\,s-bol\,\,t-be\} = min(c(C)|C\,\,vagas)$$
-\end{tetel}
-
-\begin{bizonyitas}{}
-A maximális folyam nyilván nem lehet nagyobb a minimális vágásnál, hiszen ha minden előremutató él telített, a visszafele mutató éleken pedig 0 a folyam értéke, akkor ezen a vágáson nem folyhat át több víz. Az előző tételben beláttuk, hogy ha létezik egy f maximális folyam, akkor létezik ilyen értékű vágás. Azt, hogy maximális értékű folyam mindig létezik, a következő tételben bizonyítjuk.
-\end{bizonyitas}
-
-\begin{tetel}{EDMONDS-CARP TÉTEL}
-Ha mindig a legrövidebb javító utat vesszük, akkor a maximális folyam meghatározásához szükséges lépések száma felülről becsülhető a pontok számának polinomjával.
+\begin{tetel}{FORD-ALGORITMUS}
+A Ford-algoritmus megengedi a negatív súlyú éleket is, valamint az algoritmus egyszerűbb, mint a Dijsktra-algoritmus.
+\begin{itemize}
+\item[\textbf{0.}] Számozzuk meg az éleket 1-től e-ig, ezt rögzítsük le (tetszőleges sorrend). Legyen $i = 1$ és \textbf{(*)}.
+\item[\textbf{1.}] A rögzített sorrendben végezzük el a \textbf{(**)} javítást minden élen.
+\item[\textbf{2.}] $i = i + 1$. Ha $i > v$, akkor \textbf{STOP}. Különben folytassuk \textbf{1.} lépésnél.
+\end{itemize}
+Az algoritmus lépésszáma $c\cdot e\cdot v$, ez jóval nagyobb általában, mint $n^2$, ezt az árat kell megfizetnünk a negatív élhossz feature-ért. Mi történik negatív kör esetén? Ezt valahogyan fel kell ismerni! A módosított 2. lépés, ami jelzi, ha negatív összsúlyú körbe kerültünk:
+\begin{itemize}
+\item[\textbf{2.}] Ha az \textbf{1.} lépés során egyetlen javítás sem történt, akkor \textbf{STOP} (és megvannak a minimális úthosszak). Különben $i = i + 1$. Ha $i \leq v + 1$, folytassuk \textbf{1.} lépésnél, ha pedig $i > v + 1$, akkor \textbf{STOP} (és van negatív összsúlyú kör).
+\end{itemize}
 \end{tetel}
