@@ -1,22 +1,15 @@
 sudo: required
 dist: trusty
 language: ruby
-addons:
-  apt:
-    packages:
-     - texlive-xetex
-     - texlive-latex-extra
-     - lmodern
-     - texlive-latex-recommended
-     - xzdec
-     - texlive-fonts-recommended
+services:
+ - docker
+before_install:
+ - docker pull martonbognar/bme-latex
 script:
- - tlmgr init-usertree
- - tlmgr option repository ftp://tug.org/historic/systems/texlive/2017/tlnet-final
- - tlmgr update --all
- - tlmgr install etoolbox tcolorbox framed polyglossia hyperref pgf xcolor
- - xelatex bsz2.tex
- - xelatex bsz2.tex
+ - wget https://raw.githubusercontent.com/bme-notes/docker/master/dockercmd.sh
+ - chmod +x dockercmd.sh
+ - ./dockercmd.sh xelatex bsz2.tex
+ - ./dockercmd.sh xelatex bsz2.tex
 deploy:
   provider: releases
   api_key:
