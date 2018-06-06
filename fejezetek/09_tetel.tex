@@ -7,11 +7,21 @@ Legyen G egy irányított gráf. Rendeljünk minden éléhez egy c(e) nemnegatí
 \begin{definicio}{FOLYAM, FOLYAMÉRTÉK}
 Legyen f(e) az a ``vízmennyiség'', ami az e élen folyik át. Ez az f függvény \textbf{megengedett függvény}, ha $f(e) \leq c(e)$ minden élre és
 $$m(v) = \sum\{f(e)|e\,\,\text{végpontja}\,\,v\} - \sum\{f(e) | e\,\,\text{kezdőpontja}\,\,v\} = 0$$
-minden $v\in V(G)$-re, kivéve az s és t pontokat. Egy megengedett függvényt \textbf{folyamnak} hívunk. Könnyen belátható, hogy $m(t) = -m(s)$. Ezt a közös értéket a folyam értékének nevezzük és $m_f$-el jelöljük. Egy élt \textbf{telítettnek} hívunk egy folyamban, ha $f(e) = c(e)$ és \textbf{telítetlennek}, ha $f(e) < c(e)$.
+minden $v\in V(G)$-re, kivéve az s és t pontokat.
+\begin{center}
+(ez tehát azt jelenti, hogy a kezdő és végpont kivételével fennáll, hogy\\``ami befolyik, az rögtön kifolyik'', azaz nincs csúcsban vízfelhalmozódás)
+\end{center}
+Egy megengedett függvényt \textbf{folyamnak} hívunk. Könnyen belátható, hogy $m(t) = -m(s)$. Ezt a közös értéket a folyam értékének nevezzük és $m_f$-el jelöljük. Egy élt \textbf{telítettnek} hívunk egy folyamban, ha $f(e) = c(e)$ és \textbf{telítetlennek}, ha $f(e) < c(e)$.
 \end{definicio}
 
 \begin{definicio}{VÁGÁS}
 Legyen $s \in X \subseteq V(G) \backslash {t}$, sem X, sem $V(G) - X$ nem üres halmaz. Azoknak az éleknek a C halmazát, melyeknek egyik végpontja X-beli, másik $V(G) - X$-beli, a hálózati folyam egy (s,t)-\textbf{vágásának} nevezzük. A \textbf{vágás értéke}, c(C), azon éleken levő kapacitások összege, melyek egy X-beli pontból egy $V(G) - X$-beli pontba mutatnak. Ezeket előremutató éleknek nevezzük. Tehát a vágás értékében nem játszanak szerepet a visszafelé mutató élek, vagyis azok, melyek egy X-beli pontba mutatnak.
+\end{definicio}
+
+\begin{definicio}{VÁGÁS, ezúttal magyar nyelven}
+  Osszuk a vizsgált gráf csúcsait két részre; mindkét rész tartalmazzon legalább egy csúcsot, ezen felül az első s-t, a második t-t foglalja magába. Azon élek halmazát, mely ezt a két részt összekötik, \textbf{vágásnak} hívjuk. A \textbf{vágás értéke} az a szám, amit úgy kapunk, ha összegezzük azon élek kapacitását, amik s-t tartalmazó csoportból a t-t tartalmazó csoportba irányítottak (azaz összegezzük az előre mutató élek kapacitását). Tehát a vágás értékének számolásakor a visszafelé mutató élekkel nem foglalkozunk.
+
+  \imgkozep{vagas}
 \end{definicio}
 
 \begin{tetel}{JAVÍTÓ ÚT HÁLÓZATRA Algoritmus}
@@ -36,7 +46,7 @@ $$max\{m_f|f\,\,egy\,\,folyam\,\,\text{s-ből}\,\,t-be\} = min(c(C)|C\,\,\text{v
 A maximális folyam nyilván nem lehet nagyobb a minimális vágásnál, hiszen ha minden előremutató él telített, a visszafele mutató éleken pedig 0 a folyam értéke, akkor ezen a vágáson nem folyhat át több víz. Az előző tételben beláttuk, hogy ha létezik egy f maximális folyam, akkor létezik ilyen értékű vágás. Azt, hogy maximális értékű folyam mindig létezik, a következő tételben bizonyítjuk.
 \end{bizonyitas}
 
-\begin{tetel}{EDMONDS-CARP TÉTEL}
+\begin{tetel}{EDMONDS-KARP TÉTEL}
 Ha mindig a legrövidebb javító utat vesszük, akkor a maximális folyam meghatározásához szükséges lépések száma felülről becsülhető a pontok számának polinomjával.
 \end{tetel}
 

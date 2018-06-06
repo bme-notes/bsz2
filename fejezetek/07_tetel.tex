@@ -1,8 +1,6 @@
 \section{7. Tétel: Javítóutak módszere}
 
-\begin{definicio}{PÁROSÍTÁS}
-\textbf{Párosításnak}, vagy \textbf{részleges párosításnak} nevezünk egy M élhalmazt, ha semelyik két élnek közös pontja. Az ilyen éleket független éleknek nevezzük. A részleges párosítás lefedi éleinek végpontjait. Egy párosítás \textbf{teljes párosítás}, ha a gráf minden pontját lefedi.
-\end{definicio}
+\input{includes/reusable/ParositasDef.tex}
 
 \begin{definicio}{ALTERNÁLÓ ÚT}
 Hozzunk létre egy részleges párosítást egy páros gráfon belül, ekkor a párosítás során bevett élek legyenek az X élhalmaz elemei. Alternáló útnak nevezünk olyan élsorozatot, ami felváltva tartalmaz nem-X beli és X-beli élt.
@@ -21,7 +19,7 @@ Ha G páros gráf, akkor $\nu(G) = \tau(G)$. Ha G-ben nincs izolált pont, akkor
 \end{tetel}
 
 \begin{bizonyitas}{}
-Először az első állítást bizonyítjuk. Legyen M egy olyan párosítás, mely a javító utak módszerével már nem bővíthető. Legyen $U = A - X$, T' azon B-beli pontok halmaza, amelyek elérhetőek U-ból alternáló úton. T pedig ezek párjainak halmaza. Legyen $Y = T' \cup (X - T)$. Ennek a halmaznak éppen $|M|$ pontja van. Ezek minden élt lefognak, hiszen $N(T\cup U) = T'$, ugyanúgy, mint a Hall-tétel bizonyításában. Így $\tau(G) \leq |M| \leq \nu(G)$ amiből viszont már következik az állítás a CUCCOS VISZONY (\textit{8. tétel}) tétel alapján. Most már könnyű belátni a második állítást is, Gallai két tétele miatt ugyanis $\nu(G) + \rho(G) = \tau(G) + \alpha(G)$ és imént beláttuk, hogy $\nu(G) = \tau(G)$.
+Először az első állítást bizonyítjuk. Legyen M egy olyan párosítás, mely a javító utak módszerével már nem bővíthető. Legyen $U = A - X$, T' azon B-beli pontok halmaza, amelyek elérhetőek U-ból alternáló úton. T pedig ezek párjainak halmaza. Legyen $Y = T' \cup (X - T)$. Ennek a halmaznak éppen $|M|$ pontja van. Ezek minden élt lefognak, hiszen $N(T\cup U) = T'$, ugyanúgy, mint a Hall-tétel bizonyításában. Így $\tau(G) \leq |M| \leq \nu(G)$ amiből viszont már következik az állítás a ``görög betűkről'' szóló tétel alapján. Most már könnyű belátni a második állítást is, Gallai két tétele miatt ugyanis $\nu(G) + \rho(G) = \tau(G) + \alpha(G)$ és imént beláttuk, hogy $\nu(G) = \tau(G)$.
 \end{bizonyitas}
 
 \begin{tetel}{HALL-TÉTEL}
