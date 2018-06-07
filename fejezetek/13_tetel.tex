@@ -3,23 +3,30 @@
 \url{http://cs.bme.hu/bsz2/dfs.pdf}
 
 \begin{tetel}{FLOYD-ALGORITMUS}
-A Floyd-algoritmus a gráfban lévő összes pontpár közt megadja a távolságokat. Ezt a Ford-algoritmussal is megtehettük volna, viszont annak a futási ideje az összes pontból kiindítva $c\cdot ev^2$-tel lett volna arányos. A Floyd-algoritmus ezt megteszi mindössze $c\cdot v^3$ alatt. A sikeres futás feltétele az, hogy a gráfban NE legyen negatív összsúlyú kör.\\
-T.f.h. G irányított gráf a $V(G) = {v_1, v_2,..., v_n}$ pontokon. A $v_i$-ből $v_j$-be mutató él hosszát, azaz súlyát, jelöljük l(i,j)-vel és t.f.h. a gráfban nincs negatív összsúlyú irányított kör. Ha nincs él $v_i$-ből $v_j$-be, akkor legyen $l(i,j) = \infty$. Továbbá $l(i,i) = 0$, minden $i = 1, 2,..., n$-re. Jelölje $d^{(k)}(i,j)$ a $v_i$-ből $v_j$-be vezető legrövidebb olyan irányított út hosszát, mely csak k-nál szigorúan kisebb pontokon megy át. Így $d^{(1)}(i,j) = l(i,j)$ és $d^{(n+1)}$ lesz az eredetileg keresett legrövidebb irányított út hossza lesz $v_i$-ből $v_j$-be. Világos, hogy a $v_i$-ből $v_j$-be vezető legrövidebb olyan út, ami csak $k + 1$-nél szigorúan kisebb pontokon megy át, vagy átmegy $v_k$-n, vagy nem. Ha nem megy át, akkor $d^{(k+1)}(i,j) = d^{(k)}(i,j)$. Ha viszont átmegy, akkor $d^{(k+1)}(i,j) = d^{(k)}(i,k) + d^{(k)}(k,j)$. Csak azt kell megnéznünk, mely esetben találunk rövidebb utat. Ezek után már világos, hogy az algoritmus lépésszáma $c\cdot v^3$-bel arányos.
-\\
-\textbf{Az algoritmus:}
-\begin{itemize}
-\item{\textbf{0.}} Minden i,j rendezett párra legyen $d^{(1)}(i,j) = l(i,j)$ és $k=2$.
-\item{\textbf{1.}} Minden i,j rendezett párra
-$$d^{(k+1)}(i,j) = min\{d^{(k)}(i,j),\,\, d^{(k)}(i,k) + d^{(k)}(k,j)\}$$
-\item{\textbf{2.}} Ha $k = n + 1$, akkor STOP. Különben $k = k + 1$ és folytassuk \textbf{1.} lépésnél.
-\end{itemize}
+  A Floyd-algoritmus a gráfban lévő összes pontpár közt megadja a távolságokat.  A sikeres futás feltétele az, hogy a gráfban NE legyen negatív összsúlyú kör.\\
+  \\
+  \textbf{Az algoritmus:}
+  \begin{itemize}
+  \item{\textbf{0.}} Minden i,j rendezett párra legyen $d^{(1)}(i,j) = l(i,j)$ és $k=2$.
+  \item{\textbf{1.}} Minden i,j rendezett párra
+    $$d^{(k+1)}(i,j) = min\{d^{(k)}(i,j),\,\, d^{(k)}(i,k) + d^{(k-1)}(k,j)\}$$
+  \item{\textbf{2.}} Ha $k = n + 1$, akkor STOP. Különben $k = k + 1$ és folytassuk \textbf{1.} lépésnél.
+  \end{itemize}
+
+  Tehát nagyjából annyit teszünk, hogy $k = 2 ... n+1$ alkalommal javítunk egyet az egyes csúcsokhoz rendelt távolságokon a Dijkstra vagy Ford algoritmust taglaló tételhez hasonló módszerrel. Lényegi különbség, hogy itt azonban nem 
+  
+  Ezt a Ford-algoritmussal is megtehettük volna, viszont annak a futási ideje az összes pontból kiindítva $c\cdot ev^2$-tel lett volna arányos. A Floyd-algoritmus ezt megteszi mindössze $c\cdot v^3$ alatt.
 \end{tetel}
+\begin{bizonyitas}{}
+T.f.h. G irányított gráf a $V(G) = {v_1, v_2,..., v_n}$ pontokon. A $v_i$-ből $v_j$-be mutató él hosszát, azaz súlyát, jelöljük l(i,j)-vel és t.f.h. a gráfban nincs negatív összsúlyú irányított kör. Ha nincs él $v_i$-ből $v_j$-be, akkor legyen $l(i,j) = \infty$. Továbbá $l(i,i) = 0$, minden $i = 1, 2,..., n$-re. Jelölje $d^{(k)}(i,j)$ a $v_i$-ből $v_j$-be vezető legrövidebb olyan irányított út hosszát, mely csak k-nál szigorúan kisebb pontokon megy át. Így $d^{(1)}(i,j) = l(i,j)$ és $d^{(n+1)}$ lesz az eredetileg keresett legrövidebb irányított út hossza lesz $v_i$-ből $v_j$-be. Világos, hogy a $v_i$-ből $v_j$-be vezető legrövidebb olyan út, ami csak $k + 1$-nél szigorúan kisebb pontokon megy át, vagy átmegy $v_k$-n, vagy nem. Ha nem megy át, akkor $d^{(k+1)}(i,j) = d^{(k)}(i,j)$. Ha viszont átmegy, akkor $d^{(k+1)}(i,j) = d^{(k)}(i,k) + d^{(k)}(k,j)$. Csak azt kell megnéznünk, mely esetben találunk rövidebb utat. Ezek után már világos, hogy az algoritmus lépésszáma $c\cdot v^3$-bel arányos.
+\end{bizonyitas}
+
 
 \begin{definicio}{IRÁNYÍTOTT ACIKLIKUS GRÁF}
 Egy G gráfot akkor nevezünk \textbf{irányított aciclikus gráfnak} (DAG), ha irányított élei vannak és nem tartalmaz kört.
 \end{definicio}
 
-\begin{definicio}{TOPOLOGIKUS ELRENDEZÉS}
+\begin{definicio}{TOPOLOGIKUS ELRENDEZÉS LÉTEZÉSE}
 Legyen G egy irányított gráf. G topologikus elrendezése a csúcsoknak egy olyan $v_1, v_2,..., v_n$ sorrendje, melyben $x\rightarrow y \in E$ esetén x előbb van, mint y (azaz ha $x = v_i, y = v_j,\,\,akkor\,\,i<j$)
 \end{definicio}
 
@@ -43,11 +50,10 @@ A szükségeset triviális bizonyítani, viszont az elégségességet nem. Az el
 A topologikus rendezést használva lineáris időben, tehát $n+e$-vel arányos lépésszámban megoldható a leghosszabb/legrövidebb út keresése.
 Input legyen a G irányított gráf és annak egy topologikus sorrendje (s).
 \\
-\textbf{Az algoritmus:}
-\begin{itemize}
-\item{\textbf{0.}} $t(s) = 0$, minden $v \neq s$-re $t(v) = \infty$, w: $E(G)\rightarrow \mathbb{R}$ súlyfüggvény.
-\item{\textbf{1.}} FOR i=2 TO n DO:\\
-	$\quad$HA $\exists e = \overrightarrow{v_jv_i}$ él melyre $t(v_j) \neq \infty$ AKKOR: $t(v_i) = min/max(t(v_j)+w(e): e = \overrightarrow{v_jv_i},\,\, t(v_j) \neq \infty)$
-\\END FOR
-\end{itemize}
+\textbf{Az algoritmus:}\\
+Legrövidebb út kereséséhez a korábbiakhoz hasonlóan minden csúcshoz végtelen nagy távolságot rendelünk hozzá, a kezdő csúcshoz pedig egyet.
+
+Utána topologikus sorrendben haladunk a csúcsokon, és a kimenő élek végpontjain lévő csúcsoknál megpróbáljuk javítani a korábbiakhoz szintén hasonlóan a távolságot: ha a mi irányunkból összeségében kisebb távolság jön ki a csúcsra, kicseréljük, egyébként hagyjuk, ami eleve ott volt. Ha egy adott pontból így minden kimenő éllel végeztünk, haladunk tehát a topologikus sorrendben a következő pontra.
+
+Két pont között az út hasonlóan található meg: az összes él hosszát szorozzuk meg -1-gyel és keressük meg ismét a legrövidebb utat (tehát abszolút értékben ezúttal a legnagyobb számot). A leghosszabb utak az egyes csúcsokba így a csúcskhoz rendelt értékek abszolút értékei lesznek.
 \end{tetel}
