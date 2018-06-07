@@ -133,7 +133,7 @@ Az algoritmus lineáris futásidejű, tehát $c \cdot e$ lépésszámú.
 \end{definicio}
 
 \begin{tetel}{Kruskal Algoritmus}
-Bemenet: G gráf és az élekhez tartozó w súlyfüggvény. Az éleket rendezzük sorba úgy, hogy a legalacsonyabb költségűek legyenek először a sorban. A sorban kezdjünk előre haladni. Ha az él bevétele esetén a kapott gráf körmentes marad, akkor vegyük be. Ezt addig ismételjük, amíg van izolált pont, vagy amíg az élsorozat végére nem érünk. A kapott gráf a G gráf minimális költségű feszítőfája.
+Bemenet: G gráf és az élekhez tartozó w súlyfüggvény. Az éleket rendezzük sorba úgy, hogy a legalacsonyabb költségűek legyenek először a sorban. A sorban kezdjünk előre haladni. Ha az él bevétele esetén a kapott gráf körmentes marad, akkor vegyük be. Ezt addig ismételjük, amíg  a kapott gráf nem feszítőfa vagy amíg az élsorozat végére nem érünk. A kapott gráf a G gráf minimális költségű feszítőfája.
 \\
 \\
 Ezt az eljárást \textbf{mohó algoritmusnak} nevezzük, mivel a végrehajtás során minden lépésben az éppen akkor a legjobbnak tűnő lehetőséget választjuk ki.
@@ -153,7 +153,3 @@ Két állítást kell bizonyítanunk - azt, hogy feszítőfát ad az algoritmus,
 A következő állítást teljes indukcióval bizonyítjuk be. Legyen H egy élhalmaz, amit az algoritmus a futása során generál, a minimális súlyú feszítőfának ezt a H élhalmazt tartalmaznia kell, hiszen ebben vannak minimális súlyú élek.
 Az első lépésnél az állítás igaz, hiszen H üres, és minden gráfnak részgráfja az üres gráf. A k-adik lépésnél vegyük az állítást igaznak és legyen T a minimális súlyú feszítőfa, ami tartalmazza H-t. Ha az algoritmus által kiválasztott következő él, e, szintúgy benne van a T-ben, akkor az állítás szintúgy igaz a $H + {e}$ élhalmazra. Különben $T + {e}$ élhalmazban létezik egy C kör, és ezen kívül még létezik egy olyan f él, ami befejezi a C kört, de nem része H-nak. (Ha nem létezne f, akkor e-t már nem vehettük volna be, mivel kört produkált volna $H + f$-ben). Ekkor $T - {f} + {e}$ szintúgy egy fa, és azonos az összsúlya T-jével, hiszen T-nek minimális az összsúlya, és f-nek a súlya nem lehet kisebb, mint e-nek, hiszen akkor e helyett az f élet választotta volna az algoritmus. Tehát $T - {f} + {e}$ egy minimális súlyú feszítőfa. Ezek alapján az indukciós feltevést bebizonyítottuk, és az állítás igaz, amikor H egy feszítőfává válik, ami csak akkor igaz, ha H egy minimális súlyú feszítőfa.
 \end{bizonyitas}
-
-\begin{tetel}{Alkalmazás}
-Pontok - városok, élek - utak, súly - hossz; Villamos hálózatok, Kirchhoff-törvények, áramköri elemekhez súlyokat párosítunk
-\end{tetel}
