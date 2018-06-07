@@ -40,6 +40,106 @@ HA létezik olyan $e = \overrightarrow{av}$ él, melyre $d(v) = *$, AKKOR:
 \end{itemize}
 \end{tetel}
 
+\begin{tetel}{DFS Algoritmus, for coders}
+Bemenet: Egy n csúcsú G irányított gráf és egy $s \in V$ csúcs.
+\begin{itemize}
+\item{\textbf{0. Inicializálás}}
+  \begin{itemize}
+  \item $[MelysegiSzam](s) = 1$
+  \item minden $v \neq s$-re $[MelysegiSzam](v) = NEM\_TUDJUK$
+  \item minden v-re $[BefejezesiSzam](v) = NEM\_TUDJUK$
+  \item minden v-re $[MegelozoCsucs](v) = NEM\_TUDJUK$
+  \item $[AktivCsucs]=s$
+  \item $[GyokerPont] = s$
+  \item $[MaxMelyseg] = 1$
+  \item $[MaxBefejezesiSzam] = 0$
+  \end{itemize}
+\item{\textbf{1.}}
+\\
+HA létezik olyan $e = \overrightarrow{av}$ él, melyre $[MelysegiSzam](v) = NEM\_TUDJUK$, AKKOR:
+	\begin{itemize}
+	\item $[MaxMelyseg] = [MaxMelyseg] + 1$
+	\item $[MelysegiSzam](v) = [MaxMelyseg]$
+	\item $[MegelozoCsucs](v) = [AktivCsucs]$
+	\item $[AktivCsucs] = v$
+	\item \textbf{1.} lépéshez vissza
+	\end{itemize}
+\item{\textbf{2.}}
+	\begin{itemize}
+	\item $[MaxBefejezesiSzam] = [MaxBefejezesiSzam] + 1$
+	\item $[BefejezesiSzam]([AktivCsucs]) = [MaxBefejezesiSzam]$
+	\item HA $[AktivCsucs] \neq [GyokerPont]$, AKKOR $[AktivCsucs] = [MegelozoCsucs]([AktivCsucs])$ és \textbf{1.} lépéshez vissza
+	\item HA $[MaxMelyseg] = n$, AKKOR \textbf{STOP}.
+	\item Válasszunk olyan v csúcsot, melyre $[MelysegiSzam](v) = NEM\_TUDJUK$.
+	\item $[GyokerPont] = v$, $[AktivCsucs] = v$, \textbf{1.} lépéshez vissza.
+	\end{itemize}
+\end{itemize}
+\end{tetel}
+
+\begin{tetel}{DFS Algoritmus, for coders}
+Bemenet: Egy n csúcsú G irányított gráf és egy $s \in V$ csúcs.
+\begin{itemize}
+\item{\textbf{0. INICIALIZÁLÁS}}
+  \begin{itemize}
+  \item Csinálunk egy üres táblázatot, ezekkel az adatokkal:\\
+    
+    \begin{tabular}{c l c}
+      Jelölés & Jelentés & 1. oszlop\\
+      \hline
+      v & csúcs & s\\
+      d & mélységi szám (kb. az iteráció száma) & 1\\
+      f & befejezési szám (hanyadikként fejeztük be) & URES\\
+      m & honnan derítettük fel ezt a csúcsot & -\\
+      a & aktív csúcs mutató & $\uparrow$\\
+    \end{tabular}
+
+  \item Külön helyen (nem táblázatban) jegyezzük ezeket az adatokat:\\
+    
+    \begin{tabular}{c l c}
+      Jelölés & Jelentés & Inicializálás\\
+      \hline
+      g & Gyökérpont (nem összefüggő gráfokra) & s\\
+      D & Eddigi legnagyobb mélységi szám& 1\\
+      F & Eddigi legnagyobb befejezési száma& 0\\
+    \end{tabular}
+  \end{itemize}
+\item{\textbf{1. HALADÁS ELŐRE}}
+  \\
+  HA a jelenleg aktív csúcsból ($a$) vezet olyan él, aminek a mélységi száma ($m$) URES (vagyis a jelenleg aktív csúcsból tudunk haladni ``előre''), AKKOR:
+  \begin{itemize}
+  \item Megnöveljük eggyel a maximális mélységet
+  \item A táblázatot bővítjük egy új oszloppal:\\
+
+    \begin{tabular}{c l}
+      Jelölés & Új oszlop\\
+      \hline
+      m & az előbb említett él elején lévő csúcs - jegyezzük, honnan jöttünk\\
+      d & az új, megnövelt maximális mélység\\
+    \end{tabular}
+
+    (f-et még nem ismerjük, hagyjuk üresen)
+
+  \item Az aktív csúcs nyilacskát tegyük eggyel jobbra.
+
+	\item \textbf{1. HALADÁS ELŐRE} lépéshez vissza
+	\end{itemize}
+    KÜLÖNBEN nem tudunk tovább előre menni, ezért el kell indulnunk vissza; 2. lépés.
+\item{\textbf{2. VISSZA}}
+  \begin{itemize}
+  \item ``Befejezzük'' a jelenlegi aktív csúcsot: inkrementáljuk a befejezési számot ($F$) és beírjuk ehhez a csúcshoz ($f$).
+  \item Ha a jelenlegi aktív csúcs nem gyökérpont, tehát lehet belőle visszamenni, akkor menjünk is vissza: írjuk be az aktív csúcshoz a megelőző csúcsot, és próbálkozzunk újra a haladással az 1. lépés szerint.
+  \item Folytassuk a 3. lépésnél
+  \end{itemize}
+\item \textbf{3. NEM ÖSSZEFÜGGŐ A GRÁF}
+  \begin{itemize}
+  \item Azaz, ha minden csúcsot bejártunk már, akkor leállhatunk.
+  \item KÜLÖNBEN Válasszunk olyan v csúcsot, melyre még ismeretlen a mélységi szám, tehát olyat, amit még nem jártunk be. Tekintsük ezt gyökérpontnak és tegyük oda az aktív csúcs nyilacskát. Folytassuk az 1. lépésnél.
+  \end{itemize}
+\end{itemize}
+
+Ha a gráf egy DAG, akkor a \textbf{topologikus sorrend} a befejezési sorrend fordítottja.
+\end{tetel}
+
 \begin{definicio}{DFS-ERDŐ}
 s csúcsból indítva G irányított gráfban lefuttattuk a DFS algoritmust. A futáshoz tartozó DFS erdő F. Legyen $e=\overrightarrow{uv}$ a G-nek tetszőleges éle. Ekkor
 \begin{itemize}
