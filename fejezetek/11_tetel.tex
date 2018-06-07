@@ -32,7 +32,7 @@ Bemenete a BFS algoritmusnak: Egy G gráf és egy $s \in V$ csúcs.
 	\item $k = k + 1$
 	\item Vissza az \textbf{1.} lépéshez.
 	\end{itemize}
-\end{itemize}
+  \end{itemize}
 
 % Mivel van, akinek a matematikus notáció nem túl olvasható (pl. ezen részlet szerzője), ezért alább olvasható ugyanezen algoritmus C++-szerűen refaktorálva, bizonyos Clean Code szempontokra ügyelve. Az alább látható algoritmus ténylegesen refaktorálás és teljesen egyenértékű a fentivel; nem tartalmaz módosításokat.
 
@@ -49,12 +49,91 @@ Az algoritmus lineáris futásidejű, tehát $c \cdot e$ lépésszámú.
 
 \end{tetel}
 
+\begin{tetel}{BFS Algoritmus, for coders}
+  Bemenete a BFS algoritmusnak: Egy G gráf és egy $s \in V$ csúcs.
+
+  \textbf{Az algoritmus:}
+  \begin{lstlisting}
+
+    0.:
+    [BejartCsucsokSzama] = 1;
+    [AktivCsucsSzama] = 1;
+    [BejartCsucsok](1) = s;
+    [CsucsTavolsagaSTol](s) = 0;
+
+    minden v != s-re [CsucsTavolsagaSTol](v) = [NemTudjukMertNemJartukBe];
+
+    1.:
+    HA a [BejartCsucsok]([AktivCsucsSzama]) csúcsnak van olyan v szomszedja,
+    amelyre [CsucsTavolsagaSTol](v) = [NemTudjukMertNemJartukBe], AKKOR {
+      [BejartCsucsokSzama] = [BejartCsucsokSzama] + 1
+      [BejartCsucsok]([BejartCsucsokSzama]) = v
+      [CsucsTavolsagaSTol](v) = [CsucsTavolsagaSTol]([BejartCsucsok]([AktivCsucsSzama])) + 1
+      [ElozoBejartCsucs](v) = [BejartCsucsok]([AktivCsucsSzama])
+      Vissza az 1. lepeshez.
+    }
+
+    2.:
+    Ha [AktivCsucsSzama] = [BejartCsucsokSzama], akkor STOP.
+    [AktivCsucsSzama] = [AktivCsucsSzama] + 1
+    Vissza az 1. lepeshez.
+
+
+  \end{lstlisting}
+  Az algoritmus lineáris futásidejű, tehát $c \cdot e$ lepesszámú.
+
+\end{tetel}
+
+\begin{tetel}{BFS Algoritmus, compiled for human beings}
+  \begin{itemize}
+  \item 0.: Inicializálás
+    \begin{itemize}
+    \item Csinálunk egy táblázatot, melyben kapnak egy-egy sort ezek a mezők:
+      \begin{tabular}{c | l}
+        i & Aktuális iteráció sorszáma  \\
+        \hline
+        b & Aktuálisan bejárt csúcs; ez az oszlopot is azonosítja. \\
+        t & Ezen csúcs távolsága s-től \\
+        m & A bejárási sorrendben az aktuális csúcsot ([b]-t) megelőző csúcs\\
+        k & Mutató a halvány karikás csúcsra (ld. később)
+      \end{tabular}
+    \item ``Bejárjuk'' az s csúcsot: beírjuk a 0. iterációhoz s-t és távolságát [s]-től: 0-t. [m] itt üresen marad.
+
+      \begin{tabular}{c | c}
+        i & 0 \\
+        \hline
+        b & s \\
+        t & 0 \\
+        m & - \\
+        k & $\uparrow$ \\
+      \end{tabular}
+      \item Bekarikázzuk halványan, ceruzával az s csúcsot.
+    \end{itemize}
+  \item 1.: Felderítés
+    \begin{itemize}
+    \item HA a halvány karikás csúcsnak van még a táblázatban nem szereplő szomszédja, AKKOR válasszunk ki egyet és
+      \begin{itemize}
+      \item írjuk be a táblázatba a betűjét, és hogy hány lépésből tudunk eljutni hozzá s-ből. Írjuk be m-hez a halvány bekarikázott csúcsot.
+      \item Folytassuk az 1. lépéstől.
+      \end{itemize}
+    \item KÜLÖNBEN folytassuk a 2. lépéstől
+    \end{itemize}
+  \item 2.: Halvány karika mozgatása
+    \begin{itemize}
+      
+    \item HA a nyilacska a táblázat végére ért, AKKOR készen vagyunk.
+    \item KÜLÖNBEN radírozzuk ki a jelenlegi helyéről és rakjuk a tőle jobbra lévőbe; egyúttal a halvány karikát is mozgassuk az előző nyilas csúcsról a következőre.
+    \end{itemize}
+  \end{itemize}
+\end{tetel}
+
 \begin{definicio}{BFS-FA}
-A BFS algoritmus futtatása után kapott F feszítőfát nevezzük \textbf{BFS fának}. F összefüggő, ha az eredeti bemeneti gráf is összefüggő volt, valamint F nem tartalmaz kört (a fa definíciója miatt). Az is megfigyelhető, hogy bármely $v \in V$ csúcsra az s-et v-vel összekötő F-beli út a legrövidebbek egyike az s-ből a v-be vezető G-beli utak közül.
+  A BFS algoritmus futtatása után kapott F feszítőfát nevezzük \textbf{BFS fának}. F összefüggő, ha az eredeti bemeneti gráf is összefüggő volt, valamint F nem tartalmaz kört (a fa definíciója miatt). Az is megfigyelhető, hogy bármely $v \in V$ csúcsra az s-et v-vel összekötő F-beli út a legrövidebbek egyike az s-ből a v-be vezető G-beli utak közül.
+  \imgkozep{bfstree}
 \end{definicio}
 
 \begin{tetel}{Kruskal Algoritmus}
-Bemenet: G gráf és az élekhez tartozó w súlyfüggvény. Az éleket rendezzük sorba úgy, hogy a legalacsonyabb költségűek legyenek először a sorban. A sorban kezdjünk előre haladni. Ha az él bevétele esetén a kapott gráf körmentes marad, akkor vegyük be. Ezt addig ismételjük, amíg van izolált pont, vagy amíg az élsorozat végére nem érünk. A kapott gráf a G gráf minimális költségű feszítőfája.
+Bemenet: G gráf és az élekhez tartozó w súlyfüggvény. Az éleket rendezzük sorba úgy, hogy a legalacsonyabb költségűek legyenek először a sorban. A sorban kezdjünk előre haladni. Ha az él bevétele esetén a kapott gráf körmentes marad, akkor vegyük be. Ezt addig ismételjük, amíg  a kapott gráf nem feszítőfa vagy amíg az élsorozat végére nem érünk. A kapott gráf a G gráf minimális költségű feszítőfája.
 \\
 \\
 Ezt az eljárást \textbf{mohó algoritmusnak} nevezzük, mivel a végrehajtás során minden lépésben az éppen akkor a legjobbnak tűnő lehetőséget választjuk ki.
@@ -74,7 +153,3 @@ Két állítást kell bizonyítanunk - azt, hogy feszítőfát ad az algoritmus,
 A következő állítást teljes indukcióval bizonyítjuk be. Legyen H egy élhalmaz, amit az algoritmus a futása során generál, a minimális súlyú feszítőfának ezt a H élhalmazt tartalmaznia kell, hiszen ebben vannak minimális súlyú élek.
 Az első lépésnél az állítás igaz, hiszen H üres, és minden gráfnak részgráfja az üres gráf. A k-adik lépésnél vegyük az állítást igaznak és legyen T a minimális súlyú feszítőfa, ami tartalmazza H-t. Ha az algoritmus által kiválasztott következő él, e, szintúgy benne van a T-ben, akkor az állítás szintúgy igaz a $H + {e}$ élhalmazra. Különben $T + {e}$ élhalmazban létezik egy C kör, és ezen kívül még létezik egy olyan f él, ami befejezi a C kört, de nem része H-nak. (Ha nem létezne f, akkor e-t már nem vehettük volna be, mivel kört produkált volna $H + f$-ben). Ekkor $T - {f} + {e}$ szintúgy egy fa, és azonos az összsúlya T-jével, hiszen T-nek minimális az összsúlya, és f-nek a súlya nem lehet kisebb, mint e-nek, hiszen akkor e helyett az f élet választotta volna az algoritmus. Tehát $T - {f} + {e}$ egy minimális súlyú feszítőfa. Ezek alapján az indukciós feltevést bebizonyítottuk, és az állítás igaz, amikor H egy feszítőfává válik, ami csak akkor igaz, ha H egy minimális súlyú feszítőfa.
 \end{bizonyitas}
-
-\begin{tetel}{Alkalmazás}
-Pontok - városok, élek - utak, súly - hossz; Villamos hálózatok, Kirchhoff-törvények, áramköri elemekhez súlyokat párosítunk
-\end{tetel}

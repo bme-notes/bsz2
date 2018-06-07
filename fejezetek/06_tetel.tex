@@ -1,26 +1,49 @@
 \section{6. tétel: $\nu, \rho, \alpha, \tau$}
 
+\label{sec:parositas}
 \begin{definicio}{PÁROSÍTÁS}
-\textbf{Párosításnak} vagy \textbf{részleges párosításnak} nevezünk egy M élhalmazt, ha semelyik két élnek nincsen közös pontja. Az ilyen éleket \textbf{független éleknek} nevezzük. A részleges párosítás \textbf{lefedi} éleinek végpontjait. Egy párosítás \textbf{teljes párosítás}, ha a gráf minden pontját lefedi.
+  \begin{itemize}
+  \item \textbf{Független élhalmaz} vagy \textbf{(Részleges/Teljes) Párosítás}: olyan élhalmaz, amiben semelyik két élnek nincsen közös pontja.
+  \item A párosítás éleinek végpontjait \textbf{lefedi}.
+    \begin{itemize}
+    \item Teljes párosítás: lefedi a gráf összes csúcsát.
+    \item Részleges párosítás: nem :)
+    \end{itemize}
+  \end{itemize}
+  \imgkozep{parositas}
 \end{definicio}
 
 \begin{definicio}{FÜGGETLEN/LEFOGÓ ÉLEK/PONTOK HALMAZA (``görög betűk'')}
   \begin{itemize}
   \item Jelöljük $\nu(G)$-vel a G gráfban található \textbf{független élek} maximális számát.
-  \item $X \subseteq V(G)$ egy \textbf{lefogó ponthalmaz}, ha G minden élének legalább egyik végpontját tartalmazza.\\
-    A lefogó pontok minimális számát $\tau(G)$-vel jelöljük.
   \item $Y \subseteq E(G)$ \textbf{lefogó élhalmaz}, ha minden pontot lefog.\\
     A lefogó élek minimális számát $\rho(G)$ jelöli.
   \item $X \subseteq V(G)$ \textbf{független ponthalmaz}, ha nincs benne két szomszédos pont.\\
     A független pontok maximális száma $\alpha(G)$
+  \item $X \subseteq V(G)$ egy \textbf{lefogó ponthalmaz}, ha G minden élének legalább egyik végpontját tartalmazza.\\
+    A lefogó pontok minimális számát $\tau(G)$-vel jelöljük.
   \end{itemize}
-
+  \imgkozep{gorogbetuk}
+\begin{center}
+  \begin{tabular}{l c c}
+    & Legnagyobb független & Legkisebb lefogó\\
+    Ponthalmaz & $\alpha(G)$ & $\tau(G)$\\
+    Élhalmaz & $\nu(G)$ & $\rho(G)$
+  \end{tabular}
+\end{center}
 \end{definicio}
 
 \begin{tetel}{``Görög betűk'' viszonya egymáshoz}
-Minden G gráfra
-$$\nu(G) \leq \tau(G)$$
-$$\alpha(G) \leq \rho(G)$$
+  Minden G gráfra
+  
+  \begin{minipage}{0.2\textwidth}
+    $$\nu(G) \leq \tau(G)$$
+    $$\alpha(G) \leq \rho(G)$$
+  \end{minipage}
+  \begin{minipage}{0.6\textwidth}
+    $$\text{független élek maximális száma} \leq \text{lefogó pontok minimális száma}$$
+    $$\text{független pontok maximális száma} \leq \text{lefogó élek minimális száma}$$
+  \end{minipage}
 \end{tetel}
 
 \begin{bizonyitas}{}

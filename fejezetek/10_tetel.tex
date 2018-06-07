@@ -4,14 +4,6 @@
 Vegyük (G,s,t,c) folyamot, ezen belül veszünk utakat. \textbf{Páronként éldiszjunkt vagy élidegen útnak} nevezünk utakat, ha páronként nincsen közös élük. \textbf{Belsőleg pontdiszjunkt utaknak} nevezünk utakat, ha páronként nincs közös pontjuk.
 \end{definicio}
 
-\begin{tetel}{DISZJUNKT FOLYAMOK}
-Ha a kapacitások egész számok, akkor van olyan maximális folyam, melyben minden élen a folyam értéke egész. Így nyilvánvaló, hogy ha a kapacitás minden élen 1 vagy 0, akkor van olyan maximális folyam, melynek minden élén a folyam értéke vagy 1 vagy 0. Ha elhagyjuk ez utóbbi éleket, akkor diszjunkt utakat kapunk s-ből t-be. Ezeknek a számát úgy is meg tudjuk kapni, hogy veszünk egy minimális vágást és az élhalmazának az elemszámával lesz egyenlő a diszjunkt utak száma.
-\end{tetel}
-
-\begin{tetel}{DISZJUNKT FOLYAM ALGORITMUS}
-Vegyünk tetszőleges hálózatot, és futtassuk le a fentebb leírt módszert rajta úgy, hogy vegyünk egy minimális vágást a hálózatban. A visszaélek (tehát amik a t-t tartalmazó halmazból az s-et tartalmazó halmazba mennek) legyenek 0 értékűek, egyébként pedig 1 értékűek az élek. Ebben már meg lehet keresni a diszjunkt utakat.
-\end{tetel}
-
 \begin{tetel}{MENGER Tétel}
 Ha G egy irányított gráf, $s,t\in V(G)$, akkor az s-ből t-be vezető páronként élidegen irányított utak maximális száma megegyezik az összes irányított s-t utat lefogó élek minimális számával.
 \end{tetel}
@@ -48,7 +40,8 @@ Előző tételhez hasonlóan.
 Egy G gráfot \textbf{k-szorosan összefüggőnek} nevezünk, ha legalább k+1 pontja van, és akárhogy hagyunk el belőle k-nál kevesebb pontot, a maradék gráf összefüggő marad. A gráf \textbf{k-szorosan élösszefüggő}, ha akárhogy hagyunk el belőle k-nál kevesebb élt, összefüggő gráfot kapunk. A k-szoros összefüggőség ``erősebb'' a k-szoros élösszefüggőségnél.
 \end{definicio}
 
-\begin{tetel}{A G gráf akkor és csak akkor k-szorosan összefüggő, ha legalább $k + 1$ pontja van, és bármely két pontja között létezik k pontidegen út.}
+\begin{tetel}{EKVIVALENCIA PONT- ÉS ÉLÖSSZEFÜGGŐSÉGRE}
+A G gráf akkor és csak akkor k-szorosan összefüggő, ha legalább $k + 1$ pontja van, és bármely két pontja között létezik k pontidegen út.
 Hasonlóan, G akkor és csak akkor k-szorosan élösszefüggő, ha bármely két pontja között létezik k élidegen út.
 \end{tetel}
 

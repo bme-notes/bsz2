@@ -27,6 +27,11 @@
 \newtoks\datum
 
 \newcommand{\ujfejezet}[1]{\newpage \input{./fejezetek/#1.tex}}
+\newcommand{\imgkozep}[1]{
+  \begin{center}
+    \includegraphics[width=0.8\textwidth]{img/#1}
+  \end{center}
+}
 \newenvironment{tetel}[1]{\begin{framed}\noindent\ignorespaces\textbf{\large Tétel: #1}\normalsize\\}{\end{framed}\ignorespacesafterend}
 \newenvironment{definicio}[1]{\begin{shaded}\noindent\ignorespaces\textbf{\large Definíció: #1}\normalsize\\}{\end{shaded}\ignorespacesafterend}
 \newenvironment{bizonyitas}[1]{\begin{leftbar}\noindent\ignorespaces\textbf{\large Bizonyítás: #1}\normalsize\\}{\end{leftbar}\ignorespacesafterend}
