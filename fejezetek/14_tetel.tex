@@ -142,11 +142,13 @@ Ha a gráf egy DAG, akkor a \textbf{topologikus sorrend} a befejezési sorrend f
 
 \begin{definicio}{DFS-ERDŐ}
 s csúcsból indítva G irányított gráfban lefuttattuk a DFS algoritmust. A futáshoz tartozó DFS erdő F. Legyen $e=\overrightarrow{uv}$ a G-nek tetszőleges éle. Ekkor
+A BFS-erdő építéséhez hasonlóan megkaphatjuk a DFS-erdőt úgy, hogy az egyes mélységi szinteknek megfelelő fában helyezzük el a gráf pontjait, és berajzoljuk a gráfban meglévő éleket. Ebben az esetben utóbbiakat az alábbiak szerint osztályozhatjuk:
 \begin{itemize}
-\item e-t faélnek nevezzük, ha $e \in E(F)$.
-\item e-t előreélnek nevezzük, ha nem faél, de F-ben van u-ból v-be irányított út (vagyis v leszármazottja u-nak).
-\item e-t visszaélnek nevezzük, ha F-ben van v-ből u-ba irányított út (tehát v őse u-nak).
-\item e-t keresztélnek nevezzük, ha F-ben sem u-ból v-be, se v-ből u-ba nincs irányított út.
+\item faél: a DFS-fa része
+\item előreél: ősből a leszármazottba mutat, de nem faél.\\
+  Ez úgy állhat elő, hogy az algoritmus nem feltétlenül haladt végig a kérdéses élen, de az az irány is egy lehetősége volt egy bizonyos pontján az algoritmusnak.
+\item visszaél: leszármazottból az ősbe mutat.
+\item keresztél: olyan csúcsok között haladnak, amelyek nem leszármazottjai egymásnak.
 \end{itemize}
 \end{definicio}
 
