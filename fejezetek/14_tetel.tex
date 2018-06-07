@@ -9,7 +9,7 @@
 \item m(v): a v-t megelőző csúcs - tehát amiből a v-t a bejárás elérte
 \item a: a jelenleg aktív csúcs
 \item g: az aktuális gyökérpont
-\item D: az eddigi legnagyobb mélységi szám
+\item D: aktuális mélységi szám
 \item F: az eddigi legnagyobb befejezési szám
 \end{itemize}
 \end{tetel}
@@ -32,7 +32,7 @@ HA létezik olyan $e = \overrightarrow{av}$ él, melyre $d(v) = *$, AKKOR:
 	\begin{itemize}
 	\item $F = F + 1$
 	\item $f(a) = F$
-	\item HA $a \neq g$, AKKOR $a = m(a)$ és \textbf{1.} lépéshez vissza
+	\item HA $a \neq g$, AKKOR $a = m(a)$, $D = D - 1$ és \textbf{1.} lépéshez vissza
 	\item HA $D = n$, AKKOR \textbf{STOP}.
 	\item Válasszunk olyan v csúcsot, melyre $d(v) = *$.
 	\item $g = v$, $a = v$, \textbf{1.} lépéshez vissza.
@@ -46,20 +46,20 @@ Bemenet: Egy n csúcsú G irányított gráf és egy $s \in V$ csúcs.
 \item{\textbf{0. Inicializálás}}
   \begin{itemize}
   \item $[MelysegiSzam](s) = 1$
-  \item minden $v \neq s$-re $[MelysegiSzam](v) = NEM\_TUDJUK$
-  \item minden v-re $[BefejezesiSzam](v) = NEM\_TUDJUK$
-  \item minden v-re $[MegelozoCsucs](v) = NEM\_TUDJUK$
+  \item minden $v \neq s$-re $[MelysegiSzam](v) = URES$
+  \item minden v-re $[BefejezesiSzam](v) = URES$
+  \item minden v-re $[MegelozoCsucs](v) = URES$
   \item $[AktivCsucs]=s$
   \item $[GyokerPont] = s$
-  \item $[MaxMelyseg] = 1$
+  \item $[Melyseg] = 1$
   \item $[MaxBefejezesiSzam] = 0$
   \end{itemize}
 \item{\textbf{1.}}
 \\
-HA létezik olyan $e = \overrightarrow{av}$ él, melyre $[MelysegiSzam](v) = NEM\_TUDJUK$, AKKOR:
+HA létezik olyan $e = \overrightarrow{av}$ él, melyre $[MelysegiSzam](v) = URES$, AKKOR:
 	\begin{itemize}
-	\item $[MaxMelyseg] = [MaxMelyseg] + 1$
-	\item $[MelysegiSzam](v) = [MaxMelyseg]$
+	\item $[Melyseg] = [Melyseg] + 1$
+	\item $[MelysegiSzam](v) = [Melyseg]$
 	\item $[MegelozoCsucs](v) = [AktivCsucs]$
 	\item $[AktivCsucs] = v$
 	\item \textbf{1.} lépéshez vissza
@@ -68,9 +68,9 @@ HA létezik olyan $e = \overrightarrow{av}$ él, melyre $[MelysegiSzam](v) = NEM
 	\begin{itemize}
 	\item $[MaxBefejezesiSzam] = [MaxBefejezesiSzam] + 1$
 	\item $[BefejezesiSzam]([AktivCsucs]) = [MaxBefejezesiSzam]$
-	\item HA $[AktivCsucs] \neq [GyokerPont]$, AKKOR $[AktivCsucs] = [MegelozoCsucs]([AktivCsucs])$ és \textbf{1.} lépéshez vissza
-	\item HA $[MaxMelyseg] = n$, AKKOR \textbf{STOP}.
-	\item Válasszunk olyan v csúcsot, melyre $[MelysegiSzam](v) = NEM\_TUDJUK$.
+	\item HA $[AktivCsucs] \neq [GyokerPont]$, AKKOR $[AktivCsucs] = [MegelozoCsucs]([AktivCsucs])$; $[Melyseg] = [Melyseg] - 1$ és \textbf{1.} lépéshez vissza
+	\item HA $[Melyseg] = n$, AKKOR \textbf{STOP}.
+	\item Válasszunk olyan v csúcsot, melyre $[MelysegiSzam](v) = URES$.
 	\item $[GyokerPont] = v$, $[AktivCsucs] = v$, \textbf{1.} lépéshez vissza.
 	\end{itemize}
 \end{itemize}
@@ -127,7 +127,7 @@ Bemenet: Egy n csúcsú G irányított gráf és egy $s \in V$ csúcs.
 \item{\textbf{2. VISSZA}}
   \begin{itemize}
   \item ``Befejezzük'' a jelenlegi aktív csúcsot: inkrementáljuk a befejezési számot ($F$) és beírjuk ehhez a csúcshoz ($f$).
-  \item Ha a jelenlegi aktív csúcs nem gyökérpont, tehát lehet belőle visszamenni, akkor menjünk is vissza: írjuk be az aktív csúcshoz a megelőző csúcsot, és próbálkozzunk újra a haladással az 1. lépés szerint.
+  \item Ha a jelenlegi aktív csúcs nem gyökérpont, tehát lehet belőle visszamenni, akkor menjünk is vissza: írjuk be az aktív csúcshoz a megelőző csúcsot, illetve csökkentsük a mélységet, és próbálkozzunk újra a haladással az 1. lépés szerint.
   \item Folytassuk a 3. lépésnél
   \end{itemize}
 \item \textbf{3. NEM ÖSSZEFÜGGŐ A GRÁF}
