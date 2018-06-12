@@ -9,7 +9,7 @@
 \item m(v): a v-t megelőző csúcs - tehát amiből a v-t a bejárás elérte
 \item a: a jelenleg aktív csúcs
 \item g: az aktuális gyökérpont
-\item D: a legnagyobb mélységi szám
+\item D: az utolsó (legnagyobb) mélységi szám
 \item F: az eddigi legnagyobb befejezési szám
 \end{itemize}
 \end{tetel}
@@ -51,15 +51,15 @@ Bemenet: Egy n csúcsú G irányított gráf és egy $s \in V$ csúcs.
   \item minden v-re $[MegelozoCsucs](v) = URES$
   \item $[AktivCsucs]=s$
   \item $[GyokerPont] = s$
-  \item $[MaxMelyseg] = 1$
+  \item $[UtolsoMelysegiSzam] = 1$
   \item $[MaxBefejezesiSzam] = 0$
   \end{itemize}
 \item{\textbf{1.}}
 \\
 HA létezik olyan $e = \overrightarrow{av}$ él, melyre $[MelysegiSzam](v) = URES$, AKKOR:
 	\begin{itemize}
-	\item $[MaxMelyseg] = [MaxMelyseg] + 1$
-	\item $[MelysegiSzam](v) = [MaxMelyseg]$
+	\item $[UtolsoMelysegiSzam] = [UtolsoMelysegiSzam] + 1$
+	\item $[MelysegiSzam](v) = [UtolsoMelysegiSzam]$
 	\item $[MegelozoCsucs](v) = [AktivCsucs]$
 	\item $[AktivCsucs] = v$
 	\item \textbf{1.} lépéshez vissza
@@ -69,7 +69,7 @@ HA létezik olyan $e = \overrightarrow{av}$ él, melyre $[MelysegiSzam](v) = URE
 	\item $[MaxBefejezesiSzam] = [MaxBefejezesiSzam] + 1$
 	\item $[BefejezesiSzam]([AktivCsucs]) = [MaxBefejezesiSzam]$
 	\item HA $[AktivCsucs] \neq [GyokerPont]$, AKKOR $[AktivCsucs] = [MegelozoCsucs]([AktivCsucs])$ és \textbf{1.} lépéshez vissza
-	\item HA $[MaxMelyseg] = n$, AKKOR \textbf{STOP}.
+	\item HA $[UtolsoMelysegiSzam] = n$, AKKOR \textbf{STOP}.
 	\item Válasszunk olyan v csúcsot, melyre $[MelysegiSzam](v) = NEM\_TUDJUK$.
 	\item $[GyokerPont] = v$, $[AktivCsucs] = v$, \textbf{1.} lépéshez vissza.
 	\end{itemize}
@@ -130,7 +130,7 @@ Bemenet: Egy n csúcsú G irányított gráf és egy $s \in V$ csúcs.
   \item Ha a jelenlegi aktív csúcs nem gyökérpont, tehát lehet belőle visszamenni, akkor menjünk is vissza: írjuk be az aktív csúcshoz a megelőző csúcsot, illetve csökkentsük a mélységet, és próbálkozzunk újra a haladással az 1. lépés szerint.
   \item Folytassuk a 3. lépésnél
   \end{itemize}
-\item \textbf{3. NEM ÖSSZEFÜGGŐ A GRÁF}
+\item \textbf{3. BERAGADTUNK}
   \begin{itemize}
   \item Azaz, ha minden csúcsot bejártunk már, akkor leállhatunk.
   \item KÜLÖNBEN Válasszunk olyan v csúcsot, melyre még ismeretlen a mélységi szám, tehát olyat, amit még nem jártunk be. Tekintsük ezt gyökérpontnak és tegyük oda az aktív csúcs nyilacskát. Folytassuk az 1. lépésnél.
