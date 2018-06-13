@@ -9,8 +9,16 @@ G összefüggő gráfban akkor és csak akkor létezik Euler-kör, ha G minden p
 \end{tetel}
 
 \begin{bizonyitas}{}
-  Először lássuk be, hogy ha van a gráfban E-kör, akkor minden pont foka páros. Induljunk el a gráf tetszőleges pontjából és járjuk körbe az E-kör mentén. Minden pontban ugyanannyiszor mentünk be, mint ahányszor kimentünk, a ki- és bemenések száma a pont fokszáma. Ez biztosan páros. A másik irányt ez a jegyzet nem tartalmazza, de sajnos kell :( %, baszódjon meg ez a bizonyítás. % lol :D
-\\ Szeretettel ajánljuk, jó nehéz. Ha valaki érti, esetleg küldhetne egy pull request-et lefordítva emberi nyelvre: \\  \url{https://hu.wikipedia.org/wiki/Euler-k%C3%B6r#Sz%C3%BCks%C3%A9ges_%C3%A9s_el%C3%A9gs%C3%A9ges_felt%C3%A9tel_Euler-k%C3%B6r_l%C3%A9tez%C3%A9s%C3%A9re}
+  Először lássuk be, hogy ha van a gráfban E-kör, akkor minden pont foka páros. Induljunk el a gráf tetszőleges pontjából és járjuk körbe az E-kör mentén. Minden pontban ugyanannyiszor mentünk be, mint ahányszor kimentünk, a ki- és bemenések száma a pont fokszáma. Ez biztosan páros.
+Most lássuk, be, hogy ha $G$ összefüggő és csupa páros fokszámú csúcsa van, akkor létezik benne Euler-kör. A bizonyításához vegyük ezt az algoritmust:
+\begin{itemize}
+\item[\textbf{0.}] Legyen $v \in V(G)$ a gráf egy teszőleges csúcsa
+\item[\textbf{1.}] Induljunk el az $v$ csúcsból élismétlés nélküli élsorozaton elakadásig, ezt az élsorozatot nevezzük $P$-nek. Ekkor belátható, hogy $P$-nek $v$-ben kell végződnie. Egyrészt nem tudunk köztes pontban elakadni, mert minden csúcs amibe bemegyünk, abból ki is (páros fokszámokat itt használjuk ki). Másrészt speciálisan a kezdő ($v$) csúcsból kifelé és befelé haladás a kör elejét és végét adja.
+\item[\textbf{2.}] HA $P$ már Euler-kör $\implies$ \textbf{STOP}
+\item[\textbf{3.}] HA nem akkor, létezik olyan $w$ csúcs a $P$ élsorozatban, amely $P$-beli és nem $P$-beli éleket is tartalmaz (ha nem így lenne akkor nem összefüggő a gráf). Vegyük ez a $w $ csúcsot futassuk le rá az algoritmust ezúttal $G$ gráf $E(G) \ E(P)$ élhalmazzal rendelkező részgráfjában, ez ad egy $Q$ utat.
+\item[\textbf{4.}] Adjuk össze a két élsorozatot: $v \rightarrow w + Q + w \rightarrow v$ ezt nevezzük P' élsorozatnak. Ugrás vissza a \textbf{2.} lépéshez (hiszen lehet még $w$-hez hasonló csúcs az eredeti élsorozatban).
+\end{itemize}
+Ezt a rekurzív algoritmust tetszőleges csupa páros fokszámú összefüggő gráfra alkalmazva végül Euler-kört kell kapjunk. Ennek belátásához, már csak az algoritmus lépésszámának végessége kell. Ami nyilvánvaló hisz $|E(P')| > |E(P)|$ (P' hosszabb élsorozat kell legyen minimum 2 éllel), ez viszont nem tud $E(G)$ elemszáma felé nőni.
 \end{bizonyitas}
 
 \begin{tetel}{EULER-ÚT LÉTEZÉSE}
