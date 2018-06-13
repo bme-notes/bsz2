@@ -47,7 +47,8 @@ $$\omega(G) = \chi(G)$$
 
 \begin{bizonyitas}{}
 Mohó színezéssel bizonyítjuk, méghozzá úgy, hogy az intervallumokat bal végpontja szerint rendezem és ezek alapján növekvő sorrendben színezem, akkor optimális színezést kapok. T.f.h. k színnel színez a mohó algoritmus. A cél az, hogy belássuk a következőt:
-$$k \leq \omega(G) \leq \chi(G) \leq k$$. MAJD.
+$$k \leq \omega(G) \leq \chi(G) \leq k$$
+Tfh. az algoritmus $k$ színnel színezhető, azaz $\chi(G) \leq k$. Vegyük az első olyan $I_j$ intervallumot, amely a $k.$ színt kapta. Ekkor ennek az intervallumnak a bal végpontja benne van a korábbi $I_t$, $I_{t+1}$, ... $I_{t + k - 1}$ intervallumokban. Ezek az $I_j = I_{t + k}$ intervallummal együtt $k$ csúcsú klikket alkotnak. Azaz $k \leq \omega(G)$, ami bizonyítja a tételt.
 \end{bizonyitas}
 
 \begin{definicio}{PÁROS GRÁF}
